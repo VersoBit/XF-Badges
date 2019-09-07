@@ -1,0 +1,9 @@
+{
+    "event_id": "criteria_user",
+    "execute_order": 10,
+    "callback_class": "CMTV\\Badges\\EventListener",
+    "callback_method": "criteriaUser",
+    "active": true,
+    "hint": "",
+    "description": "Adding addon user criteria"
+}

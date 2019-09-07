@@ -1,0 +1,16 @@
+<xf:set var="$badge">
+	<span class="badgeAlert badgeAlert--{$content.badge_id} {$content.class}">
+		<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" arg-badge="{$content}" arg-context="alert" />
+		
+		<a href="{{ link('members', $xf.visitor) }}#badges" class="badgeTitle fauxBlockLink-blockLink">
+			{$content.title}
+		</a>
+	</span>
+</xf:set> 
+
+{{ 
+	phrase('CMTV_Badges_you_have_been_awarded_a_badge_x', 
+	{
+		'badge': $badge
+	}) 
+}}

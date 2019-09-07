@@ -1,0 +1,20 @@
+<xf:macro name="featured_badges" arg-location="!" arg-user="!">
+	<xf:if contentcheck="true">
+		<div class="featuredBadges featuredBadges--{$location}">
+			<xf:contentcheck>
+				<xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
+					<xf:set var="$badge" value="{$userBadge.Badge}" />
+					
+					<a href="{{ link('members', $user) }}#badges" 
+					   class="featuredBadge" 
+					   title="{$badge.title}" data-xf-init="tooltip">
+						
+						<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
+								  arg-badge="{$badge}" arg-context="featured-{$location}" />
+					</a>
+					
+				</xf:foreach>
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>

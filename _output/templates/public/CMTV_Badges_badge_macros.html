@@ -1,0 +1,90 @@
+<xf:macro name="badge_category" arg-category="!" arg-content="">
+	<div class="badge-category badge-category--{$category.badge_category_id} {$category.class} block">
+		<div class="block-container">
+			<div class="block-header">
+				<xf:if is="$category.icon_type">
+					<xf:if is="$category.icon_type == 'fa'">
+						<xf:fa class="category-icon category-icon--fa" icon="{$category.fa_icon}" />
+					<xf:else />
+						<img class="category-icon category-icon--img" src="{$category.image_url}" />
+					</xf:if>
+				</xf:if>
+				
+				<xf:if is="$category.badge_category_id != 0">
+					{$category.title}
+				<xf:else />
+					{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}
+				</xf:if>
+			</div>
+			
+			<div class="block-body">
+				{$content}
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="badge" arg-badge="!" arg-reason="{{ false }}" arg-counter="{{ false }}" 
+		  arg-extra="" arg-extraHeader="" arg-extraMinor="">
+	
+	<div class="badgeItem badgeItem--{$badge.badge_id} {$badge.class} block-row block-row--separated">
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<div class="contentRow-figureIcon">
+					<xf:macro name="badge_icon" arg-badge="{$badge}" />
+				</div>
+			</div>
+			
+			<div class="contentRow-main">
+				<xf:if is="$extra">
+					<div class="contentRow-extra">
+						{$extra}
+					</div>
+				</xf:if>
+				
+				<h3 class="contentRow-header">
+					<span class="title">{$badge.title}</span>
+					
+					<xf:if is="$extraHeader">
+						{$extraHeader}
+					</xf:if>
+				</h3>
+				
+				<div class="contentRow-lesser">
+					{$badge.description}
+				</div>
+				
+				<div class="badge-extra contentRow-spaced contentRow-minor contentRow-minor--hideLinks">
+					<xf:if is="$counter">
+						<a href="{{ link('badges/awarded-list', $badge) }}" 
+						   class="extra-item badge-awarded" 
+						   title="{{ phrase('CMTV_Badges_awarded_users') }}">
+							
+							<xf:fa icon="fa-users" /> {$badge.awarded_number}
+						</a>
+					</xf:if>
+					
+					<xf:if is="$reason">
+						<span class="extra-item reason" title="{{ phrase('CMTV_Badges_award_reason') }}">
+							<xf:fa icon="fa-info-circle" /> {{ $reason|raw }}
+						</span>
+					</xf:if>
+					
+					<xf:if is="$extraMinor">
+						{$extraMinor}
+					</xf:if>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="badge_icon" arg-badge="!" arg-context="">
+	<xf:set var="$class" value="badgeIcon badgeIcon--{$badge.icon_type} {{ $context ? 'badgeIcon-context--' . $context : '' }}" />
+	
+	<xf:if is="$badge.icon_type == 'fa'">
+		<xf:fa class="{$class}" icon="{$badge.fa_icon}" />	
+	<xf:else />
+		<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+	</xf:if>
+</xf:macro>

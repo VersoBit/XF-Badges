@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="CMTV_Badges_message_badge_size" group_name="CMTV_Badges" title="Size of featured badge in message" property_type="value" value_type="unit" value_group="messageFeaturedBadges" display_order="20">
+    <value>"22px"</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_message_badges_gap" group_name="CMTV_Badges" title="Gap between badges in message" property_type="value" value_type="unit" value_group="messageFeaturedBadges" display_order="30">
+    <value>"10px"</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_profile_badge_size" group_name="CMTV_Badges" title="Size of featured badge in profile" property_type="value" value_type="unit" value_group="profileFeaturedBadges" display_order="50">
+    <value>"30px"</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_profile_badges_gap" group_name="CMTV_Badges" title="Gap between badges in profile" property_type="value" value_type="unit" value_group="profileFeaturedBadges" display_order="60">
+    <value>"10px"</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_show_in_message" group_name="CMTV_Badges" title="Display featured badges in messages" property_type="value" value_type="boolean" value_group="messageFeaturedBadges" display_order="10">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_show_in_profile" group_name="CMTV_Badges" title="Display featured badges in user profile" property_type="value" value_type="boolean" value_group="profileFeaturedBadges" display_order="40">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_show_in_tooltip" group_name="CMTV_Badges" title="Display featured badges in member tooltip" property_type="value" value_type="boolean" value_group="memberTooltipFeaturedBadges" display_order="70">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_tooltip_badge_size" group_name="CMTV_Badges" title="Size of featured badge in member tooltip" property_type="value" value_type="unit" value_group="memberTooltipFeaturedBadges" display_order="80">
+    <value>"25px"</value>
+  </style_property>
+  <style_property property_name="CMTV_Badges_tooltip_badges_gap" group_name="CMTV_Badges" title="Gap between badges in member tooltip" property_type="value" value_type="unit" value_group="memberTooltipFeaturedBadges" display_order="90">
+    <value>"10px"</value>
+  </style_property>
+</style_properties>

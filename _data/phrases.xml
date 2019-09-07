@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="CMTV_Badge_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Badge category]]></phrase>
+  <phrase title="CMTV_Badges_add_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Add badge]]></phrase>
+  <phrase title="CMTV_Badges_add_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Add badge category]]></phrase>
+  <phrase title="CMTV_Badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award]]></phrase>
+  <phrase title="CMTV_Badges_award_reason" version_id="1000070" version_string="1.0.0"><![CDATA[Award reason]]></phrase>
+  <phrase title="CMTV_Badges_award_this_badge_if" version_id="1000070" version_string="1.0.0"><![CDATA[Award this badge if...]]></phrase>
+  <phrase title="CMTV_Badges_award_with_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Award with badge]]></phrase>
+  <phrase title="CMTV_Badges_awarded_users" version_id="1000070" version_string="1.0.0"><![CDATA[Awarded users]]></phrase>
+  <phrase title="CMTV_Badges_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Badge]]></phrase>
+  <phrase title="CMTV_Badges_badge_award_body_html" version_id="1000070" version_string="1.0.0"><![CDATA[<p>{username},</p>
+
+<p>You have been awarded with a new badge: {badge}</p>
+
+<p>The following reason was provided:</p>
+
+<div class="message">{reason}</div>]]></phrase>
+  <phrase title="CMTV_Badges_badge_award_subject" version_id="1000070" version_string="1.0.0"><![CDATA[{board} - New badge]]></phrase>
+  <phrase title="CMTV_Badges_badge_category_title.uncategorized" version_id="1000070" version_string="1.0.0"><![CDATA[Uncategorized badges]]></phrase>
+  <phrase title="CMTV_Badges_badge_options" version_id="1000070" version_string="1.0.0"><![CDATA[Badge options]]></phrase>
+  <phrase title="CMTV_Badges_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="CMTV_Badges_badges_awarded_to_x" version_id="1000070" version_string="1.0.0"><![CDATA[Badges awarded to {name}]]></phrase>
+  <phrase title="CMTV_Badges_comma_separated_badge_ids" version_id="1000070" version_string="1.0.0"><![CDATA[Comma separated badge IDs.]]></phrase>
+  <phrase title="CMTV_Badges_css_class" version_id="1000070" version_string="1.0.0"><![CDATA[CSS class]]></phrase>
+  <phrase title="CMTV_Badges_css_class_explain" version_id="1000070" version_string="1.0.0"><![CDATA[This class can be used for applying additional styles.]]></phrase>
+  <phrase title="CMTV_Badges_delete_badges_in_category" version_id="1000070" version_string="1.0.0"><![CDATA[Delete badges in category]]></phrase>
+  <phrase title="CMTV_Badges_delete_category" version_id="1000070" version_string="1.0.0"><![CDATA[Delete category]]></phrase>
+  <phrase title="CMTV_Badges_deleting_badges_in_category" version_id="1000070" version_string="1.0.0"><![CDATA[Deleting badges in category...]]></phrase>
+  <phrase title="CMTV_Badges_edit_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Edit badge]]></phrase>
+  <phrase title="CMTV_Badges_edit_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Edit badge category]]></phrase>
+  <phrase title="CMTV_Badges_edit_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[Edit badge reason]]></phrase>
+  <phrase title="CMTV_Badges_edit_reason" version_id="1000270" version_string="1.0.2"><![CDATA[Edit reason]]></phrase>
+  <phrase title="CMTV_Badges_feature_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Feature badge]]></phrase>
+  <phrase title="CMTV_Badges_featured_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Featured badges]]></phrase>
+  <phrase title="CMTV_Badges_has_user_criteria" version_id="1000070" version_string="1.0.0"><![CDATA[Has user criteria]]></phrase>
+  <phrase title="CMTV_Badges_icon_code_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Font Awesome icon code. For example: <code>fa-comments</code> or <code>fas fa-adjust</code>. <a href="https://fontawesome.com/icons?d=gallery" target="_blank">List of icon codes</a>.]]></phrase>
+  <phrase title="CMTV_Badges_icon_type" version_id="1000070" version_string="1.0.0"><![CDATA[Icon type]]></phrase>
+  <phrase title="CMTV_Badges_image_url_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The web path from your site's XenForo installation directory to icon image. For default XenForo style use the square image icon.]]></phrase>
+  <phrase title="CMTV_Badges_members_awarded_with_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Members awarded with this badge]]></phrase>
+  <phrase title="CMTV_Badges_no_badges_have_been_added_to_this_category_yet" version_id="1000070" version_string="1.0.0"><![CDATA[No badges have been added to this category yet.]]></phrase>
+  <phrase title="CMTV_Badges_no_badges_have_been_created_yet" version_id="1000070" version_string="1.0.0"><![CDATA[No badges have been created yet.]]></phrase>
+  <phrase title="CMTV_Badges_optionally_describe_badge_and_criteria_user_needs_to_award" version_id="1000070" version_string="1.0.0"><![CDATA[Optionally describe the badge and the criteria the user needs to meet to be awarded it.]]></phrase>
+  <phrase title="CMTV_Badges_please_select_the_badge_icon_type" version_id="1000070" version_string="1.0.0"><![CDATA[Please select the badge icon type.]]></phrase>
+  <phrase title="CMTV_Badges_please_specify_a_badge_icon_value" version_id="1000070" version_string="1.0.0"><![CDATA[Please specify a badge icon value.]]></phrase>
+  <phrase title="CMTV_Badges_recalculate_badge_count" version_id="1000070" version_string="1.0.0"><![CDATA[Recalculate badge count]]></phrase>
+  <phrase title="CMTV_Badges_sort_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Sort badges]]></phrase>
+  <phrase title="CMTV_Badges_take_away" version_id="1000070" version_string="1.0.0"><![CDATA[Take away]]></phrase>
+  <phrase title="CMTV_Badges_take_away_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Take away badge]]></phrase>
+  <phrase title="CMTV_Badges_total_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Total badges]]></phrase>
+  <phrase title="CMTV_Badges_unfeature_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Unfeature badge]]></phrase>
+  <phrase title="CMTV_Badges_user_has_at_least_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has at least X badges]]></phrase>
+  <phrase title="CMTV_Badges_user_has_no_more_than_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has no more than X badges]]></phrase>
+  <phrase title="CMTV_Badges_user_has_the_following_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has the following badges]]></phrase>
+  <phrase title="CMTV_Badges_view_all_available_badges" version_id="1000070" version_string="1.0.0"><![CDATA[View all available badges]]></phrase>
+  <phrase title="CMTV_Badges_you_cant_change_this_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[You can't change this badge's reason!]]></phrase>
+  <phrase title="CMTV_Badges_you_cant_feature_more_than_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature more than {badgeCount} badges!]]></phrase>
+  <phrase title="CMTV_Badges_you_cant_feature_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature this badge!]]></phrase>
+  <phrase title="CMTV_Badges_you_have_been_awarded_a_badge_x" version_id="1000070" version_string="1.0.0"><![CDATA[You have been awarded a badge: {badge}]]></phrase>
+  <phrase title="admin_navigation.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="admin_permission.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Manage badges]]></phrase>
+  <phrase title="cron_entry.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Update user badges]]></phrase>
+  <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
+  <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="member_stat.CMTV_Badges_most_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Most badges]]></phrase>
+  <phrase title="permission.CMTV_Badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award user with badge]]></phrase>
+  <phrase title="permission.CMTV_Badges_featuredNumber" version_id="1000070" version_string="1.0.0"><![CDATA[Max number of featured badges]]></phrase>
+  <phrase title="permission.CMTV_Badges_manageFeatured" version_id="1000070" version_string="1.0.0"><![CDATA[Manage featured badges]]></phrase>
+  <phrase title="permission.CMTV_Badges_takeAway" version_id="1000070" version_string="1.0.0"><![CDATA[Take away the badge]]></phrase>
+  <phrase title="permission_interface.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badge permissions]]></phrase>
+  <phrase title="permission_interface.CMTV_Badges_moderatorPermissions" version_id="1000070" version_string="1.0.0"><![CDATA[Badge moderator permissions]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_message_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in message]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_message_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in message]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_profile_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in profile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_profile_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in profile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_show_in_message" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in messages]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_show_in_profile" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in user profile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_show_in_tooltip" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in member tooltip]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_tooltip_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in member tooltip]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_tooltip_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in member tooltip]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_message_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_message_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_profile_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_profile_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_show_in_message" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_show_in_profile" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_show_in_tooltip" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_tooltip_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_tooltip_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="style_prop_group_desc.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Styling options for "Badges" addon.]]></phrase>
+</phrases>

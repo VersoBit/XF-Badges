@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<help_pages>
+  <help_page page_id="badges" page_name="badges" display_order="35" callback_class="CMTV\Badges\Help\Badges" callback_method="renderBadges" advanced_mode="1" active="1"/>
+</help_pages>

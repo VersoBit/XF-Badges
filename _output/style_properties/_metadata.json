@@ -1,0 +1,29 @@
+{
+    "CMTV_Badges_message_badge_size.json": {
+        "hash": "72d904cadf75f3256ef30b82da148c37"
+    },
+    "CMTV_Badges_message_badges_gap.json": {
+        "hash": "bba990430c4959fd09eef1be4c805d6f"
+    },
+    "CMTV_Badges_profile_badge_size.json": {
+        "hash": "9dba5edd232a6c2fa5f376a0c92bd1bc"
+    },
+    "CMTV_Badges_profile_badges_gap.json": {
+        "hash": "eed7b4ad976c3995666f66c6a0eced6e"
+    },
+    "CMTV_Badges_show_in_message.json": {
+        "hash": "48f30eebb3da59bd22ff1cefd5c34872"
+    },
+    "CMTV_Badges_show_in_profile.json": {
+        "hash": "de6f4604290012a3d9668b2064662bb3"
+    },
+    "CMTV_Badges_show_in_tooltip.json": {
+        "hash": "370713c1539dec3856eadb13ed23f6eb"
+    },
+    "CMTV_Badges_tooltip_badge_size.json": {
+        "hash": "ae6ebc4ccaba779234c1cf98e4b2d621"
+    },
+    "CMTV_Badges_tooltip_badges_gap.json": {
+        "hash": "73a77368a0083d092e9a4768ea3b5e6a"
+    }
+}

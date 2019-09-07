@@ -1,0 +1,61 @@
+//
+// This stylesheet is for featured badges layout purposes only.
+// DO NOT USE IT FOR STYLING! (use CMTV_Badges.less instead)
+//
+
+.featuredBadges
+{
+	display: grid;
+	
+	.featuredBadgesGridParams(@xf-CMTV_Badges_message_badge_size, @xf-CMTV_Badges_message_badges_gap);
+
+	margin-top: 5px;
+	
+	.featuredBadge
+	{
+		text-align: center;
+	}
+	
+	&--message
+	{	
+		justify-content: center;
+		margin: 5px 0;
+		
+		@media (max-width: @xf-messageSingleColumnWidth)
+		{
+			display: none;
+		}
+	}
+	
+	&--member_view
+	{
+		.featuredBadgesGridParams(@xf-CMTV_Badges_profile_badge_size, @xf-CMTV_Badges_profile_badges_gap);
+		
+		@media (max-width: @xf-responsiveNarrow)
+		{
+			justify-content: center;
+		}
+	}
+	
+	&--member_tooltip
+	{
+		.featuredBadgesGridParams(@xf-CMTV_Badges_tooltip_badge_size, @xf-CMTV_Badges_tooltip_badges_gap);
+	}
+}
+
+.featuredBadgesGridParams(@badgeSize, @gapSize)
+{
+	grid-template-columns: repeat(auto-fit, @badgeSize);
+	gap: @gapSize;
+
+	.featuredBadge
+	{
+		width: @badgeSize;
+		height: @badgeSize;
+		
+		.badgeIcon--fa
+		{
+			font-size: @badgeSize;
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="CMTV_Badges" parent_navigation_id="userCustomization" display_order="250" link="badges" admin_permission_id="CMTV_Badges" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

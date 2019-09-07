@@ -1,0 +1,1 @@
+You can't feature more than {badgeCount} badges!

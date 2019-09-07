@@ -1,0 +1,18 @@
+<xf:title>{{ phrase('CMTV_Badges_take_away_badge') }}</xf:title>
+
+<xf:form action="{{ link('members/take-away-badge', $user) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="badge_id" label="{{ phrase('CMTV_Badges_badge') }}">
+				<xf:foreach loop="$userBadgesData.badgeCategories" key="$catId" value="$category">
+					<xf:optgroup label="{{ $catId == 0 ? phrase('CMTV_Badges_badge_category_title.uncategorized') : $category.title }}">
+						<xf:foreach loop="{$userBadgesData.userBadges.{$catId}}" value="$userBadge">
+							<xf:option value="{$userBadge.Badge.badge_id}" label="{$userBadge.Badge.title}" />
+						</xf:foreach>
+					</xf:optgroup>
+				</xf:foreach>
+			</xf:selectrow>
+		</div>
+		<xf:submitrow fa="fa-minus-square" submit="{{ phrase('CMTV_Badges_take_away') }}" />
+	</div>
+</xf:form>

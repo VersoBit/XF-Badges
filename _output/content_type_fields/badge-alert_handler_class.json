@@ -1,0 +1,5 @@
+{
+    "content_type": "badge",
+    "field_name": "alert_handler_class",
+    "field_value": "CMTV\\Badges\\Alert\\Badge"
+}

@@ -1,0 +1,29 @@
+{
+    "admin/CMTV_Badges_helper_criteria.json": {
+        "hash": "eec1a42d28a324d22bfbe8591c0fda4a"
+    },
+    "admin/CMTV_Badges_tools_rebuild_badge_count.json": {
+        "hash": "a7b1ee89000a9785549d233ff1036a4c"
+    },
+    "public/CMTV_Badges_helper_js_global.json": {
+        "hash": "62881714113b01b9d40f2e01e17a3979"
+    },
+    "public/CMTV_Badges_member_macros.json": {
+        "hash": "e0503cca203df1a647b832f8bb8b9301"
+    },
+    "public/CMTV_Badges_member_tooltip.json": {
+        "hash": "c21a908b40cc1d86775b3402df029470"
+    },
+    "public/CMTV_Badges_member_view_badges_pane.json": {
+        "hash": "b6ff04d06075a53ee1f8fe2a57e5363e"
+    },
+    "public/CMTV_Badges_member_view_badges_tab.json": {
+        "hash": "36f90d9d7a08f9b6bc5eb3c342e5e498"
+    },
+    "public/CMTV_Badges_member_view_featured_badges.json": {
+        "hash": "3d658203193bc9ddeaa2210d7e933d8f"
+    },
+    "public/CMTV_Badges_message_macros.json": {
+        "hash": "c856b0946686f5a334959c63b40020e0"
+    }
+}

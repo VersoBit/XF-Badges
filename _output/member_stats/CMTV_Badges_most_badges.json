@@ -1,0 +1,14 @@
+{
+    "criteria": [],
+    "sort_order": "message_count",
+    "sort_direction": "desc",
+    "permission_limit": "",
+    "callback_class": "CMTV\\Badges\\MemberStat\\MostBadges",
+    "callback_method": "getBadgeUsers",
+    "show_value": true,
+    "overview_display": true,
+    "active": true,
+    "user_limit": 20,
+    "display_order": 10,
+    "cache_lifetime": 0
+}

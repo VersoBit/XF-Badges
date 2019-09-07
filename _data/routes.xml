@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="badge-categories" format=":int&lt;badge_category_id&gt;/" controller="CMTV\Badges:BadgeCategory" context="CMTV_Badges"/>
+  <route route_type="admin" route_prefix="badges" format=":int&lt;badge_id&gt;/" controller="CMTV\Badges:Badge" context="CMTV_Badges"/>
+  <route route_type="public" route_prefix="badges" format=":int&lt;badge_id&gt;/" controller="CMTV\Badges:Badge"/>
+</routes>

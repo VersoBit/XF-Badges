@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="CMTV_Badges.less" version_id="1000070" version_string="1.0.0"><![CDATA[.badge-category-edit,
+.badge-edit
+{
+	.image-icon-preview
+	{
+		margin-top: @xf-elementSpacer;
+
+		padding: @xf-paddingLarge;
+		max-height: 150px;
+
+		border: 2px dashed @xf-borderColorFeature;
+		background: @xf-contentHighlightBg;
+	}
+}
+
+.badge-list
+{
+	.category,
+	.badgeLi
+	{
+		.icon
+		{			
+			img
+			{
+				display: block;
+				width: 22px;
+				height: 22px;
+				
+				max-width: 22px;
+			}
+		}
+	}
+	
+	.badgeLi
+	{
+		.has-userCriteria
+		{
+			float: right;
+			color: @xf-textColorMuted;
+			
+			position: relative;
+			top: 3px;
+		}
+	}
+}]]></template>
+  <template type="admin" title="CMTV_Badges_badge_category_edit" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:if is="$badgeCategory.isInsert()">
+	<xf:title>{{ phrase('CMTV_Badges_add_badge_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('CMTV_Badges_edit_badge_category:') }} {$badgeCategory.title}</xf:title>
+</xf:if>
+
+<xf:css src="CMTV_Badges.less" />
+
+<xf:pageaction if="$badgeCategory.isUpdate()">
+	<xf:button href="{{ link('badge-categories/delete', $badgeCategory) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('badge-categories/save', $badgeCategory) }}" ajax="true" class="badge-category-edit block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{{ $badgeCategory.exists() ? $badgeCategory.MasterTitle.phrase_text : '' }}"
+						   label="{{ phrase('title') }}"/>
+
+			<hr class="formRowSep" />
+			
+			<xf:radiorow name="icon_type" value="{$badgeCategory.icon_type}" label="{{ phrase('CMTV_Badges_icon_type') }}">
+				<xf:option value="" label="{{ phrase('none') }}" />
+				<xf:option value="fa" label="{{ phrase('icon') }}">
+					<xf:dependent>
+						<xf:textbox name="fa_icon" value="{$badgeCategory.fa_icon}" fa="{$badgeCategory.fa_icon}" />
+						<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_icon_code_explain') }}</dfn>
+					</xf:dependent>
+				</xf:option>
+				<xf:option value="image" label="{{ phrase('image') }}">
+					<xf:dependent>
+						<xf:textbox name="image_url" value="{$badgeCategory.image_url}" />
+						<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+						<xf:if is="$badgeCategory.image_url">
+							<img class="image-icon-preview" src="{{ base_url($badgeCategory.image_url) }}" />
+						</xf:if>
+					</xf:dependent>
+				</xf:option>
+			</xf:radiorow>
+			
+			<hr class="formRowSep" />
+			
+			<xf:textboxrow name="class" value="{$badgeCategory.class}"
+						   label="{{ phrase('CMTV_Badges_css_class') }}" explain="{{ phrase('CMTV_Badges_css_class_explain') }}" />
+			
+			<hr class="formRowSep" />
+			
+			<xf:macro template="display_order_macros" name="row"
+					  arg-value="{$badgeCategory.display_order}" />
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="CMTV_Badges_badge_edit" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:if is="$badge.isInsert()">
+	<xf:title>{{ phrase('CMTV_Badges_add_badge') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badgeCategory.title}</xf:title>
+</xf:if>
+
+<xf:css src="CMTV_Badges.less" />
+
+<xf:pageaction if="$badge.isUpdate()">
+	<xf:button href="{{ link('badges/delete', $badge) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('badges/save', $badge) }}" ajax="true" class="badge-edit block">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller tabs" role="tablist">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="badge-options">{{ phrase('CMTV_Badges_badge_options') }}</a>
+				<xf:macro template="helper_criteria" name="user_tabs" arg-userTabTitle="{{ phrase('CMTV_Badges_award_this_badge_if') }}" />
+			</span>
+		</h2>
+
+		<ul class="block-body tabPanes">
+			<li class="is-active" role="tabpanel" id="badge-options">
+				<xf:textboxrow name="title" value="{{ $badge.badge_id ? $badge.MasterTitle.phrase_text : ''  }}"
+							   label="{{ phrase('title') }}"/>
+
+				<xf:textarearow name="description" value="{{ $badge.badge_id ? $badge.MasterDescription.phrase_text : ''  }}" autosize="true"
+								label="{{ phrase('description') }}"
+								hint="{{ phrase('you_may_use_html') }}"
+								explain="{{ phrase('CMTV_Badges_optionally_describe_badge_and_criteria_user_needs_to_award') }}" />
+
+				<hr class="formRowSep" />
+				
+				<xf:radiorow name="icon_type" value="{$badge.icon_type}" label="{{ phrase('CMTV_Badges_icon_type') }}">
+					<xf:option value="fa" label="{{ phrase('icon') }}">
+						<xf:dependent>
+							<xf:textbox name="fa_icon" value="{$badge.fa_icon}" fa="{$badge.fa_icon}" />
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_icon_code_explain') }}</dfn>
+						</xf:dependent>
+					</xf:option>
+					<xf:option value="image" label="{{ phrase('image') }}">
+						<xf:dependent>
+							<xf:textbox name="image_url" value="{$badge.image_url}" />
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+							<xf:if is="$badge.image_url">
+								<img class="image-icon-preview" src="{{ base_url($badge.image_url) }}" />
+							</xf:if>
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
+				
+				<hr class="formRowSep" />
+				
+				<xf:textboxrow name="class" value="{$badge.class}"
+							   label="{{ phrase('CMTV_Badges_css_class') }}" explain="{{ phrase('CMTV_Badges_css_class_explain') }}" />
+
+				<hr class="formRowSep" />
+
+				<xf:selectrow name="badge_category_id" value="{$badge.badge_category_id}"
+							  label="{{ phrase('CMTV_Badge_badge_category') }}">
+
+					<xf:option value="0" label="{{ phrase('(none)') }}" />
+					<xf:options source="{$badgeCategories}" />
+				</xf:selectrow>
+				
+				<xf:macro template="display_order_macros" name="row"
+						  arg-value="{$badge.display_order}" />
+			</li>
+
+			<xf:macro template="helper_criteria" name="user_panes"
+				arg-criteria="{{ $userCriteria.getCriteriaForTemplate() }}"
+				arg-data="{{ $userCriteria.getExtraTemplateData() }}" />
+		</ul>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="CMTV_Badges_badge_list" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_badges') }}</xf:title>
+
+<xf:css src="CMTV_Badges.less" />
+
+<xf:pageaction>
+	<div class="buttonGroup">
+		<xf:button href="{{ link('badges/add') }}" icon="add">{{ phrase('CMTV_Badges_add_badge') }}</xf:button>
+		<xf:button href="{{ link('badge-categories/add') }}" icon="add">{{ phrase('CMTV_Badges_add_badge_category') }}</xf:button>
+	
+		<div class="buttonGroup-buttonWrapper">
+			<xf:button class="menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true" title="{{ phrase('more_options') }}">&#8226;&#8226;&#8226;</xf:button>
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('more_options') }}</h4>
+					<a href="{{ link('badges/sort') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.sort') }}</a>
+					<a href="{{ link('badges/import') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.import') }}</a>
+					<a href="{{ link('badges/export') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.export') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$totalCategories == 1 && !$totalBadges">
+	<div class="blockMessage">{{ phrase('CMTV_Badges_no_badges_have_been_created_yet') }}</div>
+<xf:else />
+	<div class="block">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="badges" arg-class="block-outer-opposite" />
+		</div>
+
+		<div class="block-container">
+			<div class="block-body badge-list">
+				<xf:datalist>
+
+					<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+						<xf:set var="$catActionDelete" value="{{ $catId > 0 }}" />
+						<xf:set var="$catActionDeleteBadges" value="{{ $badgeData.badges.{$catId} }}" />
+						<xf:set var="$catHasActions" value="{{ $catActionDelete || $catActionDeleteBadges }}" />
+						<xf:set var="$catSpan" value="{{ 1 + (!$category.icon_type ? 1 : 0) + (!$catHasActions ? 1 : 0) }}" />
+						<xf:set var="$catHref" value="{{ $catId != 0 ? link('badge-categories/edit', $category) : '' }}" />
+
+						<tbody class="dataList-rowGroup">
+
+							<xf:if is="$totalCategories != 1">
+								<xf:datarow rowtype="subsection" rowclass="category">								
+									<xf:if is="$category.icon_type">
+										<xf:cell class="icon dataList-cell--min" href="{$catHref}">
+											<xf:if is="$category.icon_type == 'fa'">
+												<xf:fa icon="{$category.fa_icon}" />
+												<xf:else />
+												<img src="{{ base_url($category.image_url) }}" />
+											</xf:if>
+										</xf:cell>
+									</xf:if>
+
+									<xf:cell colspan="{$catSpan}" href="{$catHref}">
+										<xf:if is="$catId == 0">
+											{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}
+											<xf:else />
+											{$category.title}
+										</xf:if>
+									</xf:cell>
+
+									<xf:if is="{{ $catHasActions }}">
+										<xf:popup label="&#8226;&#8226;&#8226;">
+											<div class="menu" data-menu="menu" aria-hidden="true" data-menu-builder="dataList">
+												<div class="menu-content">
+													<h3 class="menu-header">{{ phrase('actions') }}</h3>
+													<xf:if is="{{ $catActionDelete }}">
+														<a href="{{ link('badge-categories/delete', $category) }}" class="menu-linkRow" data-xf-click="overlay">
+															{{ phrase('CMTV_Badges_delete_category') }}
+														</a>
+													</xf:if>
+
+													<xf:if is="{{ $catActionDeleteBadges }}">
+														<a href="{{ link('badge-categories/delete-badges', $category) }}" class="menu-linkRow" data-xf-click="overlay">
+															{{ phrase('CMTV_Badges_delete_badges_in_category') }}
+														</a>
+													</xf:if>
+												</div>
+											</div>
+										</xf:popup>
+									</xf:if>
+								</xf:datarow>
+							</xf:if>
+
+							<xf:foreach loop="{$badgeData.badges.{$catId}}" key="$badgeId" value="$badge">
+								<xf:set var="$badgeSpan" value="{{ 1 + (!$badge.icon_type ? 1 : 0) }}" />
+								<xf:set var="$badgeHref" value="{{ link('badges/edit', $badge) }}" />
+
+								<xf:datarow rowclass="badgeLi">
+									<xf:if is="$badge.icon_type">
+										<xf:cell class="icon dataList-cell--min" href="{$badgeHref}">
+											<xf:if is="$badge.icon_type == 'fa'">
+												<xf:fa icon="{$badge.fa_icon}" />
+												<xf:else />
+												<img src="{{ base_url($badge.image_url) }}" />
+											</xf:if>
+										</xf:cell>
+									</xf:if>
+
+									<xf:cell colspan="{$badgeSpan}" href="{$badgeHref}">
+										{$badge.title}
+										
+										<xf:if is="{$badge.user_criteria}">
+											<xf:fa
+												   title="{{ phrase('CMTV_Badges_has_user_criteria') }}" 
+												   data-xf-init="tooltip"
+												   class="has-userCriteria" 
+												   icon="fa-filter" />
+										</xf:if>
+									</xf:cell>
+
+									<xf:delete href="{{ link('badges/delete', $badge) }}" />
+
+								</xf:datarow>
+								<xf:else />
+								<xf:datarow rowclass="dataList-row--noHover dataList-row--note">
+									<xf:cell colspan="3" class="dataList-cell--noSearch">
+										{{ phrase('CMTV_Badges_no_badges_have_been_added_to_this_category_yet') }}
+									</xf:cell>
+								</xf:datarow>
+							</xf:foreach>
+
+						</tbody>
+					</xf:foreach>
+
+				</xf:datalist>
+			</div>
+
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($totalBadges) }}</span>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="admin" title="CMTV_Badges_badge_sort" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_sort_badges') }}</xf:title>
+
+<xf:macro template="public:nestable_macros" name="setup" />
+
+<xf:form action="{{ link('badges/sort') }}" class="block" ajax="true">
+	<div class="block-container">
+		<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+			<xf:if is="{{ $catId > 0 }}">
+				<h4 class="block-minorHeader">{$category.title}</h4>
+			<xf:else />
+				<h4 class="block-minorHeader">{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}</h4>
+			</xf:if>
+			<div class="block-body">
+				<div class="nestable-container" data-xf-init="nestable" data-parent-id="{$catId}" data-max-depth="1" data-value-target=".js-badgeData">
+					<xf:if contentcheck="true">
+						<ol class="nestable-list">
+							<xf:contentcheck>
+							<xf:foreach loop="{$badgeData.badges.{$catId}}" key="$badgeId" value="$badge" i="$i">
+								<li class="nestable-item" data-id="{$badgeId}">
+									<div class="nestable-handle nestable-handle--full" aria-label="{{ phrase('drag_handle')|for_attr }}"><xf:fa icon="fa-bars" /></div>
+									<div class="nestable-content">{$badge.title}</div>
+								</li>
+							</xf:foreach>
+							</xf:contentcheck>
+						</ol>
+					</xf:if>
+					<xf:hiddenval name="badges[]" value="" class="js-badgeData" />
+				</div>
+			</div>
+		</xf:foreach>
+		<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="CMTV_Badges_delete_badges" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('badge-categories/delete-badges', $badgeCategory) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong>{{ phrase('CMTV_Badges_badges') }} ({$totalBadges})</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="CMTV_Badges_helper_criteria" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:checkboxrow label="{{ phrase('CMTV_Badges_badges') }}">
+	<xf:option name="user_criteria[CMTV_Badges_badge_count][rule]" 
+			   value="CMTV_Badges_badge_count" 
+			   selected="{$criteria.CMTV_Badges_badge_count}"
+			   label="{{ phrase('CMTV_Badges_user_has_at_least_x_badges:') }}">
+		
+		<xf:numberbox name="user_criteria[CMTV_Badges_badge_count][data][badges]" 
+					  value="{$criteria.CMTV_Badges_badge_count.badges}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+
+	<xf:option name="user_criteria[CMTV_Badges_badge_count_max][rule]" 
+			   value="CMTV_Badges_badge_count_max" 
+			   selected="{$criteria.CMTV_Badges_badge_count_max}"
+			   label="{{ phrase('CMTV_Badges_user_has_no_more_than_x_badges:') }}">
+		
+		<xf:numberbox name="user_criteria[CMTV_Badges_badge_count_max][data][badges]" 
+					  value="{$criteria.CMTV_Badges_badge_count_max.badges}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+	
+	<xf:option name="user_criteria[CMTV_Badges_has_badge][rule]" 
+			   value="CMTV_Badges_has_badge" 
+			   selected="{$criteria.CMTV_Badges_has_badge}"
+			   label="{{ phrase('CMTV_Badges_user_has_the_following_badges:') }}">
+
+		<xf:textbox name="user_criteria[CMTV_Badges_has_badge][data][badge_ids]" 
+					value="{$criteria.CMTV_Badges_has_badge.badge_ids}" />
+		
+		<xf:afterhint>{{ phrase('CMTV_Badges_comma_separated_badge_ids') }}</xf:afterhint>
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />]]></template>
+  <template type="email" title="CMTV_Badges_badge_award" version_id="1000070" version_string="1.0.0"><![CDATA[<mail:subject>
+	{{ phrase('CMTV_Badges_badge_award_subject', {'board': $xf.options.boardTitle}) }}
+</mail:subject>
+
+<xf:set var="$badge">
+	<a href="{{ link('members', $xf.visitor) }}#badges" class="badgeTitle badgeMail badgeMail--{$badge.badge_id} {$badge.class}">
+		{$badge.title}
+	</a>
+</xf:set>
+
+{{ phrase('CMTV_Badges_badge_award_body_html', {
+	'username': $user.username,
+	'badge': $badge,
+	'reason': $reason|raw
+}) }}]]></template>
+  <template type="public" title="CMTV_Badges.less" version_id="1000270" version_string="1.0.2"><![CDATA[.category-icon
+{
+	text-align: center;
+	border-right: 1px solid @xf-borderColorFaint;
+
+	padding-right: 10px;
+	margin-right: 5px;
+	
+	&--fa { }
+	
+	&--img
+	{
+		width: ~'calc(22px + 10px)';
+		height: 22px;
+		
+		position: relative;
+		top: 3px;
+	}
+}
+
+.badge-extra
+{
+	.reason a
+	{
+		text-decoration: underline;
+	}
+
+	.edit-reason
+	{
+		opacity: 0;
+		transition: opacity .2s;
+	
+		.badgeItem:hover &
+		{
+			opacity: 1;
+		}
+	}
+	
+	.extra-item:not(:last-child)
+	{
+		margin-right: @xf-paddingMedium;
+	}
+}
+
+.badgeItem
+{
+	.contentRow-figureIcon i
+	{
+		font-size: 3em;
+	}
+	
+	&:hover .featureIcon
+	{
+		opacity: 0.65;
+	}
+	
+	.featureIcon
+	{
+		margin-left: @xf-paddingSmall;
+		
+		color: @xf-textColorMuted;
+		font-size: @xf-fontSizeSmall;
+		opacity: 0.3;
+		transition: opacity 0.2s;
+		
+		&:hover
+		{
+			opacity: 1;
+		}
+		
+		&--featured
+		{
+			opacity: 1 !important;
+			color: @xf-textColorAttention;
+		}
+	}
+}
+
+//
+// Badge icon + title on new line when in menu
+//
+
+.menu-row .badgeAlert
+{
+	display: block;
+	margin: @xf-paddingSmall 0;
+}
+
+//
+// Badge icon
+//
+
+.badgeIcon
+{
+	&--fa
+	{
+		color: @xf-textColorFeature;
+		text-align: center;
+		
+		&.badgeIcon-context--alert
+		{
+			position: relative;
+			top: -1px;
+		}
+	}
+	
+	// Alert
+	
+	&.badgeIcon-context--alert
+	{
+		vertical-align: middle;
+		width: 22px;
+	}
+}]]></template>
+  <template type="public" title="CMTV_Badges_award_with_badge" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_award_with_badge') }}</xf:title>
+
+<xf:form action="{{ link('members/award-badge', $user) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="badge_id" label="{{ phrase('CMTV_Badges_badge') }}">
+				<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+					<xf:optgroup label="{{ $catId == 0 ? phrase('CMTV_Badges_badge_category_title.uncategorized') : $category.title }}">
+						<xf:foreach loop="{$badgeData.badges.{$catId}}" value="$badge">
+							<xf:option value="{$badge.badge_id}" label="{$badge.title}" />
+						</xf:foreach>
+					</xf:optgroup>
+				</xf:foreach>
+			</xf:selectrow>
+			
+			<xf:textarearow name="reason" autosize="true"
+							label="{{ phrase('reason') }}"
+							hint="{{ phrase('you_may_use_html') }}" />
+		</div>
+		<xf:submitrow fa="fa-medal" submit="{{ phrase('CMTV_Badges_award') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="CMTV_Badges_awarded_list" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_members_awarded_with_this_badge') }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:breadcrumb source="{$breadcrumbs}" />
+
+<div class="block">
+	<div class="block-container">
+		<ol class="block-body">
+			<xf:foreach loop="$userBadges" value="$userBadge">
+				<li class="block-row block-row--separated">
+					<xf:set var="$user" value="{$userBadge.User}" />
+					
+					<div class="contentRow">
+						<div class="contentRow-figure">
+							<xf:avatar user="$user" size="s" notooltip="true" />
+						</div>
+						
+						<div class="contentRow-main">
+							<div class="contentRow-extra">
+								<xf:date time="{$userBadge.award_date}" />
+							</div>
+
+							<h3 class="contentRow-header"><xf:username user="$user" rich="true" notooltip="true" /></h3>
+
+							<div class="contentRow-snippet" title="{{ phrase('CMTV_Badges_award_reason') }}">
+								{{ $userBadge.reason|raw }}
+							</div>
+						</div>
+					</div>
+				</li>
+			</xf:foreach>
+		</ol>
+	</div>
+	
+	<xf:pagenav
+				page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="badges/awarded-list"
+				data="{$badge}"
+				wrapperclass="block-outer block-outer--after" />
+</div>]]></template>
+  <template type="public" title="CMTV_Badges_badge_macros" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:macro name="badge_category" arg-category="!" arg-content="">
+	<div class="badge-category badge-category--{$category.badge_category_id} {$category.class} block">
+		<div class="block-container">
+			<div class="block-header">
+				<xf:if is="$category.icon_type">
+					<xf:if is="$category.icon_type == 'fa'">
+						<xf:fa class="category-icon category-icon--fa" icon="{$category.fa_icon}" />
+					<xf:else />
+						<img class="category-icon category-icon--img" src="{$category.image_url}" />
+					</xf:if>
+				</xf:if>
+				
+				<xf:if is="$category.badge_category_id != 0">
+					{$category.title}
+				<xf:else />
+					{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}
+				</xf:if>
+			</div>
+			
+			<div class="block-body">
+				{$content}
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="badge" arg-badge="!" arg-reason="{{ false }}" arg-counter="{{ false }}" 
+		  arg-extra="" arg-extraHeader="" arg-extraMinor="">
+	
+	<div class="badgeItem badgeItem--{$badge.badge_id} {$badge.class} block-row block-row--separated">
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<div class="contentRow-figureIcon">
+					<xf:macro name="badge_icon" arg-badge="{$badge}" />
+				</div>
+			</div>
+			
+			<div class="contentRow-main">
+				<xf:if is="$extra">
+					<div class="contentRow-extra">
+						{$extra}
+					</div>
+				</xf:if>
+				
+				<h3 class="contentRow-header">
+					<span class="title">{$badge.title}</span>
+					
+					<xf:if is="$extraHeader">
+						{$extraHeader}
+					</xf:if>
+				</h3>
+				
+				<div class="contentRow-lesser">
+					{$badge.description}
+				</div>
+				
+				<div class="badge-extra contentRow-spaced contentRow-minor contentRow-minor--hideLinks">
+					<xf:if is="$counter">
+						<a href="{{ link('badges/awarded-list', $badge) }}" 
+						   class="extra-item badge-awarded" 
+						   title="{{ phrase('CMTV_Badges_awarded_users') }}">
+							
+							<xf:fa icon="fa-users" /> {$badge.awarded_number}
+						</a>
+					</xf:if>
+					
+					<xf:if is="$reason">
+						<span class="extra-item reason" title="{{ phrase('CMTV_Badges_award_reason') }}">
+							<xf:fa icon="fa-info-circle" /> {{ $reason|raw }}
+						</span>
+					</xf:if>
+					
+					<xf:if is="$extraMinor">
+						{$extraMinor}
+					</xf:if>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="badge_icon" arg-badge="!" arg-context="">
+	<xf:set var="$class" value="badgeIcon badgeIcon--{$badge.icon_type} {{ $context ? 'badgeIcon-context--' . $context : '' }}" />
+	
+	<xf:if is="$badge.icon_type == 'fa'">
+		<xf:fa class="{$class}" icon="{$badge.fa_icon}" />	
+	<xf:else />
+		<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="CMTV_Badges_edit_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_edit_badge_reason') }}</xf:title>
+
+<xf:form action="{{ link('members/edit-badge-reason', $user, { 'badge_id': $userBadge.badge_id }) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textarearow name="reason" autosize="true"
+							value="{$userBadge.reason}"
+							label="{{ phrase('reason') }}"
+							hint="{{ phrase('you_may_use_html') }}" />
+		</div>
+		<xf:submitrow fa="fa-edit" submit="{{ phrase('edit') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="CMTV_Badges_featured_badges.less" version_id="1000070" version_string="1.0.0"><![CDATA[//
+// This stylesheet is for featured badges layout purposes only.
+// DO NOT USE IT FOR STYLING! (use CMTV_Badges.less instead)
+//
+
+.featuredBadges
+{
+	display: grid;
+	
+	.featuredBadgesGridParams(@xf-CMTV_Badges_message_badge_size, @xf-CMTV_Badges_message_badges_gap);
+
+	margin-top: 5px;
+	
+	.featuredBadge
+	{
+		text-align: center;
+	}
+	
+	&--message
+	{	
+		justify-content: center;
+		margin: 5px 0;
+		
+		@media (max-width: @xf-messageSingleColumnWidth)
+		{
+			display: none;
+		}
+	}
+	
+	&--member_view
+	{
+		.featuredBadgesGridParams(@xf-CMTV_Badges_profile_badge_size, @xf-CMTV_Badges_profile_badges_gap);
+		
+		@media (max-width: @xf-responsiveNarrow)
+		{
+			justify-content: center;
+		}
+	}
+	
+	&--member_tooltip
+	{
+		.featuredBadgesGridParams(@xf-CMTV_Badges_tooltip_badge_size, @xf-CMTV_Badges_tooltip_badges_gap);
+	}
+}
+
+.featuredBadgesGridParams(@badgeSize, @gapSize)
+{
+	grid-template-columns: repeat(auto-fit, @badgeSize);
+	gap: @gapSize;
+
+	.featuredBadge
+	{
+		width: @badgeSize;
+		height: @badgeSize;
+		
+		.badgeIcon--fa
+		{
+			font-size: @badgeSize;
+		}
+	}
+}]]></template>
+  <template type="public" title="CMTV_Badges_featured_badges_macros" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:macro name="featured_badges" arg-location="!" arg-user="!">
+	<xf:if contentcheck="true">
+		<div class="featuredBadges featuredBadges--{$location}">
+			<xf:contentcheck>
+				<xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
+					<xf:set var="$badge" value="{$userBadge.Badge}" />
+					
+					<a href="{{ link('members', $user) }}#badges" 
+					   class="featuredBadge" 
+					   title="{$badge.title}" data-xf-init="tooltip">
+						
+						<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
+								  arg-badge="{$badge}" arg-context="featured-{$location}" />
+					</a>
+					
+				</xf:foreach>
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="CMTV_Badges_member_badges" version_id="1000370" version_string="1.0.3"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_badges_awarded_to_x', {'name': $user.username}) }}</xf:title>
+
+<xf:head option="noindex"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:breadcrumb href="{{ link('members', $user) }}">{$user.username}</xf:breadcrumb>
+
+<xf:set var="$footer">
+	<div class="block-footer block-footer--split">
+		<span class="block-footer-counter">{{ phrase('CMTV_Badges_total_badges:') }} {$totalBadges}</span>
+		<span class="block-footer-controls">		
+			<xf:button href="{{ link('help', {'page_name': 'badges'}) }}">
+				{{ phrase('CMTV_Badges_view_all_available_badges') }}
+			</xf:button>
+		</span>
+	</div>
+</xf:set>
+
+<xf:foreach loop="$badgeCategories" key="$catId" value="$category">
+	<xf:set var="$catContent">
+		<xf:foreach loop="{$userBadges.{$catId}}" key="$badgeId" value="$userBadge">
+			<xf:set var="$extra">	
+				<xf:date time="{$userBadge.award_date}" />
+			</xf:set>
+			
+			<xf:set var="$extraHeader">
+				<xf:if is="$user.canManageFeaturedBadges()">
+					<xf:if is="$userBadge.featured || $user.canAddFeaturedBadge()">
+						<a href="{{ link('members/mark-badge-featured', $user, { 'badge_id': $badgeId }) }}"
+						   class="featureIcon {{ $userBadge.featured ? 'featureIcon--featured' : '' }}"
+						   title="{{ $userBadge.featured ? phrase('CMTV_Badges_unfeature_badge') : phrase('CMTV_Badges_feature_badge') }}">
+							
+							<xf:fa icon="fa-bullhorn" />
+						</a>
+					</xf:if>
+				</xf:if>
+			</xf:set>
+			
+			<xf:set var="$extraMinor">
+				<xf:if is="$user.canEditBadgeReason()">
+					<a class="extra-item edit-reason" href="{{ link('members/edit-badge-reason', $user, { 'badge_id': $badgeId }) }}"
+					   title="{{ phrase('CMTV_Badges_edit_reason') }}" data-xf-click="overlay">
+						
+						<xf:fa icon="fa-pen" />
+					</a>
+				</xf:if>
+			</xf:set>
+			
+			<xf:macro name="badge" template="CMTV_Badges_badge_macros"
+					  arg-badge="{$userBadge.Badge}" 
+					  arg-reason="{$userBadge.reason}" 
+					  arg-extra="{$extra}"
+					  arg-extraHeader="{$extraHeader}"
+					  arg-extraMinor="{$extraMinor}" />
+		</xf:foreach>
+	</xf:set>
+
+	<xf:if is="$totalCategories == 1">
+		<div class="block">
+			<div class="block-container">
+				{$catContent}
+				{$footer}
+			</div>
+		</div>
+	<xf:else />
+		<xf:macro name="badge_category"
+				  template="CMTV_Badges_badge_macros"
+				  arg-category="{$category}"
+				  arg-content="{$catContent}" />
+	</xf:if>
+</xf:foreach>
+
+<xf:if is="$totalCategories != 1">
+	<div class="block">
+		<div class="block-container">
+			{$footer}
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="CMTV_Badges_member_macros" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:macro name="badges_tab" arg-user="!">
+	<xf:if is="$user.badge_count != 0">
+		<!--[CMTV\Badges:tabs:before_badges]-->
+
+		<a href="{{ link('members/badges', $user) }}"
+		   class="tabs-tab"
+		   id="badges"
+		   role="tab">{{ phrase('CMTV_Badges_badges') }}</a>
+
+		<!--[CMTV\Badges:tabs:after_badges]-->
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="badges_pane" arg-user="!">
+	<xf:if is="$user.badge_count != 0">
+		<!--[CMTV\Badges:tab_panes:before_badges]-->
+
+		<li data-href="{{ link('members/badges', $user) }}" role="tabpanel" aria-labelledby="badges">
+			<div class="blockMessage">{{ phrase('loading...') }}</div>
+		</li>
+
+		<!--[CMTV\Badges:tab_panes:after_badges]-->
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="CMTV_Badges_moderator_actions" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:if is="$user.canAwardWithBadge()">
+	<a href="{{ link('members/award-badge', $user) }}" class="menu-linkRow" data-xf-click="overlay">
+		{{ phrase('CMTV_Badges_award_with_badge') }}
+	</a>
+</xf:if>
+
+<xf:if is="$user.canTakeAwayBadge()">
+	<a href="{{ link('members/take-away-badge', $user) }}" class="menu-linkRow" data-xf-click="overlay">
+		{{ phrase('CMTV_Badges_take_away_badge') }}
+	</a>
+</xf:if>]]></template>
+  <template type="public" title="CMTV_Badges_take_away_badge" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_take_away_badge') }}</xf:title>
+
+<xf:form action="{{ link('members/take-away-badge', $user) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="badge_id" label="{{ phrase('CMTV_Badges_badge') }}">
+				<xf:foreach loop="$userBadgesData.badgeCategories" key="$catId" value="$category">
+					<xf:optgroup label="{{ $catId == 0 ? phrase('CMTV_Badges_badge_category_title.uncategorized') : $category.title }}">
+						<xf:foreach loop="{$userBadgesData.userBadges.{$catId}}" value="$userBadge">
+							<xf:option value="{$userBadge.Badge.badge_id}" label="{$userBadge.Badge.title}" />
+						</xf:foreach>
+					</xf:optgroup>
+				</xf:foreach>
+			</xf:selectrow>
+		</div>
+		<xf:submitrow fa="fa-minus-square" submit="{{ phrase('CMTV_Badges_take_away') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="_help_page_badges" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:macro template="metadata_macros" name="metadata" arg-description="{{ phrase('help_page_desc.badges') }}" />
+
+<xf:if is="$badgeData.badges is empty">
+	<div class="blockMessage">{{ phrase('CMTV_Badges_no_badges_have_been_created_yet') }}</div>
+</xf:if>
+
+<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+	<xf:set var="$catContent">
+		<xf:foreach loop="{$badgeData.badges.{$catId}}" value="$badge">
+			<xf:macro name="badge" template="CMTV_Badges_badge_macros"
+					  arg-badge="{$badge}" arg-counter="{{ true }}" />
+		</xf:foreach>
+	</xf:set>
+	
+	<xf:if is="count($badgeData.badgeCategories) == 1">
+		<div class="block">
+			<div class="block-container">
+				{$catContent}
+			</div>
+		</div>
+	<xf:else />
+		<xf:macro name="badge_category"
+			  template="CMTV_Badges_badge_macros"
+			  arg-category="{$category}"
+			  arg-content="{$catContent}" />
+	</xf:if>
+</xf:foreach>]]></template>
+  <template type="public" title="alert_badge_award" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:set var="$badge">
+	<span class="badgeAlert badgeAlert--{$content.badge_id} {$content.class}">
+		<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" arg-badge="{$content}" arg-context="alert" />
+		
+		<a href="{{ link('members', $xf.visitor) }}#badges" class="badgeTitle fauxBlockLink-blockLink">
+			{$content.title}
+		</a>
+	</span>
+</xf:set> 
+
+{{ 
+	phrase('CMTV_Badges_you_have_been_awarded_a_badge_x', 
+	{
+		'badge': $badge
+	}) 
+}}]]></template>
+  <template type="public" title="push_badge_award" version_id="1000270" version_string="1.0.2"><![CDATA[{{ phrase('CMTV_Badges_you_have_been_awarded_a_badge_x', {'badge': $content.title}) }}
+<push:url>{{ link('canonical:members', $user) }}#badges</push:url>]]></template>
+</templates>

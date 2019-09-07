@@ -1,0 +1,33 @@
+<xf:title>{{ phrase('CMTV_Badges_sort_badges') }}</xf:title>
+
+<xf:macro template="public:nestable_macros" name="setup" />
+
+<xf:form action="{{ link('badges/sort') }}" class="block" ajax="true">
+	<div class="block-container">
+		<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+			<xf:if is="{{ $catId > 0 }}">
+				<h4 class="block-minorHeader">{$category.title}</h4>
+			<xf:else />
+				<h4 class="block-minorHeader">{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}</h4>
+			</xf:if>
+			<div class="block-body">
+				<div class="nestable-container" data-xf-init="nestable" data-parent-id="{$catId}" data-max-depth="1" data-value-target=".js-badgeData">
+					<xf:if contentcheck="true">
+						<ol class="nestable-list">
+							<xf:contentcheck>
+							<xf:foreach loop="{$badgeData.badges.{$catId}}" key="$badgeId" value="$badge" i="$i">
+								<li class="nestable-item" data-id="{$badgeId}">
+									<div class="nestable-handle nestable-handle--full" aria-label="{{ phrase('drag_handle')|for_attr }}"><xf:fa icon="fa-bars" /></div>
+									<div class="nestable-content">{$badge.title}</div>
+								</li>
+							</xf:foreach>
+							</xf:contentcheck>
+						</ol>
+					</xf:if>
+					<xf:hiddenval name="badges[]" value="" class="js-badgeData" />
+				</div>
+			</div>
+		</xf:foreach>
+		<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>

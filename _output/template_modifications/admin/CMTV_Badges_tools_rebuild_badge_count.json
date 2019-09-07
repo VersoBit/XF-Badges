@@ -1,0 +1,9 @@
+{
+    "template": "tools_rebuild",
+    "description": "Rebuilding badge count job",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:after_reactions]-->",
+    "replace": "$0\n\n<xf:macro name=\"rebuild_job\"\n\targ-header=\"{{ phrase('CMTV_Badges_recalculate_badge_count') }}\"\n\targ-job=\"CMTV\\Badges:BadgeCount\" />\n\n<!--[CMTV\\Badges:after_badge_count]-->"
+}

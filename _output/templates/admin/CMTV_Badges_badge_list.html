@@ -1,0 +1,137 @@
+<xf:title>{{ phrase('CMTV_Badges_badges') }}</xf:title>
+
+<xf:css src="CMTV_Badges.less" />
+
+<xf:pageaction>
+	<div class="buttonGroup">
+		<xf:button href="{{ link('badges/add') }}" icon="add">{{ phrase('CMTV_Badges_add_badge') }}</xf:button>
+		<xf:button href="{{ link('badge-categories/add') }}" icon="add">{{ phrase('CMTV_Badges_add_badge_category') }}</xf:button>
+	
+		<div class="buttonGroup-buttonWrapper">
+			<xf:button class="menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true" title="{{ phrase('more_options') }}">&#8226;&#8226;&#8226;</xf:button>
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('more_options') }}</h4>
+					<a href="{{ link('badges/sort') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.sort') }}</a>
+					<a href="{{ link('badges/import') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.import') }}</a>
+					<a href="{{ link('badges/export') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('button.export') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$totalCategories == 1 && !$totalBadges">
+	<div class="blockMessage">{{ phrase('CMTV_Badges_no_badges_have_been_created_yet') }}</div>
+<xf:else />
+	<div class="block">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="badges" arg-class="block-outer-opposite" />
+		</div>
+
+		<div class="block-container">
+			<div class="block-body badge-list">
+				<xf:datalist>
+
+					<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+						<xf:set var="$catActionDelete" value="{{ $catId > 0 }}" />
+						<xf:set var="$catActionDeleteBadges" value="{{ $badgeData.badges.{$catId} }}" />
+						<xf:set var="$catHasActions" value="{{ $catActionDelete || $catActionDeleteBadges }}" />
+						<xf:set var="$catSpan" value="{{ 1 + (!$category.icon_type ? 1 : 0) + (!$catHasActions ? 1 : 0) }}" />
+						<xf:set var="$catHref" value="{{ $catId != 0 ? link('badge-categories/edit', $category) : '' }}" />
+
+						<tbody class="dataList-rowGroup">
+
+							<xf:if is="$totalCategories != 1">
+								<xf:datarow rowtype="subsection" rowclass="category">								
+									<xf:if is="$category.icon_type">
+										<xf:cell class="icon dataList-cell--min" href="{$catHref}">
+											<xf:if is="$category.icon_type == 'fa'">
+												<xf:fa icon="{$category.fa_icon}" />
+												<xf:else />
+												<img src="{{ base_url($category.image_url) }}" />
+											</xf:if>
+										</xf:cell>
+									</xf:if>
+
+									<xf:cell colspan="{$catSpan}" href="{$catHref}">
+										<xf:if is="$catId == 0">
+											{{ phrase('CMTV_Badges_badge_category_title.uncategorized') }}
+											<xf:else />
+											{$category.title}
+										</xf:if>
+									</xf:cell>
+
+									<xf:if is="{{ $catHasActions }}">
+										<xf:popup label="&#8226;&#8226;&#8226;">
+											<div class="menu" data-menu="menu" aria-hidden="true" data-menu-builder="dataList">
+												<div class="menu-content">
+													<h3 class="menu-header">{{ phrase('actions') }}</h3>
+													<xf:if is="{{ $catActionDelete }}">
+														<a href="{{ link('badge-categories/delete', $category) }}" class="menu-linkRow" data-xf-click="overlay">
+															{{ phrase('CMTV_Badges_delete_category') }}
+														</a>
+													</xf:if>
+
+													<xf:if is="{{ $catActionDeleteBadges }}">
+														<a href="{{ link('badge-categories/delete-badges', $category) }}" class="menu-linkRow" data-xf-click="overlay">
+															{{ phrase('CMTV_Badges_delete_badges_in_category') }}
+														</a>
+													</xf:if>
+												</div>
+											</div>
+										</xf:popup>
+									</xf:if>
+								</xf:datarow>
+							</xf:if>
+
+							<xf:foreach loop="{$badgeData.badges.{$catId}}" key="$badgeId" value="$badge">
+								<xf:set var="$badgeSpan" value="{{ 1 + (!$badge.icon_type ? 1 : 0) }}" />
+								<xf:set var="$badgeHref" value="{{ link('badges/edit', $badge) }}" />
+
+								<xf:datarow rowclass="badgeLi">
+									<xf:if is="$badge.icon_type">
+										<xf:cell class="icon dataList-cell--min" href="{$badgeHref}">
+											<xf:if is="$badge.icon_type == 'fa'">
+												<xf:fa icon="{$badge.fa_icon}" />
+												<xf:else />
+												<img src="{{ base_url($badge.image_url) }}" />
+											</xf:if>
+										</xf:cell>
+									</xf:if>
+
+									<xf:cell colspan="{$badgeSpan}" href="{$badgeHref}">
+										{$badge.title}
+										
+										<xf:if is="{$badge.user_criteria}">
+											<xf:fa
+												   title="{{ phrase('CMTV_Badges_has_user_criteria') }}" 
+												   data-xf-init="tooltip"
+												   class="has-userCriteria" 
+												   icon="fa-filter" />
+										</xf:if>
+									</xf:cell>
+
+									<xf:delete href="{{ link('badges/delete', $badge) }}" />
+
+								</xf:datarow>
+								<xf:else />
+								<xf:datarow rowclass="dataList-row--noHover dataList-row--note">
+									<xf:cell colspan="3" class="dataList-cell--noSearch">
+										{{ phrase('CMTV_Badges_no_badges_have_been_added_to_this_category_yet') }}
+									</xf:cell>
+								</xf:datarow>
+							</xf:foreach>
+
+						</tbody>
+					</xf:foreach>
+
+				</xf:datalist>
+			</div>
+
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($totalBadges) }}</span>
+			</div>
+		</div>
+	</div>
+</xf:if>

@@ -1,0 +1,9 @@
+{
+    "template": "helper_criteria",
+    "description": "Adding addon user criteria",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:user:after_content]-->",
+    "replace": "$0\n\n<xf:include template=\"CMTV_Badges_helper_criteria\" />"
+}

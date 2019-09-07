@@ -1,0 +1,34 @@
+<xf:checkboxrow label="{{ phrase('CMTV_Badges_badges') }}">
+	<xf:option name="user_criteria[CMTV_Badges_badge_count][rule]" 
+			   value="CMTV_Badges_badge_count" 
+			   selected="{$criteria.CMTV_Badges_badge_count}"
+			   label="{{ phrase('CMTV_Badges_user_has_at_least_x_badges:') }}">
+		
+		<xf:numberbox name="user_criteria[CMTV_Badges_badge_count][data][badges]" 
+					  value="{$criteria.CMTV_Badges_badge_count.badges}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+
+	<xf:option name="user_criteria[CMTV_Badges_badge_count_max][rule]" 
+			   value="CMTV_Badges_badge_count_max" 
+			   selected="{$criteria.CMTV_Badges_badge_count_max}"
+			   label="{{ phrase('CMTV_Badges_user_has_no_more_than_x_badges:') }}">
+		
+		<xf:numberbox name="user_criteria[CMTV_Badges_badge_count_max][data][badges]" 
+					  value="{$criteria.CMTV_Badges_badge_count_max.badges}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+	
+	<xf:option name="user_criteria[CMTV_Badges_has_badge][rule]" 
+			   value="CMTV_Badges_has_badge" 
+			   selected="{$criteria.CMTV_Badges_has_badge}"
+			   label="{{ phrase('CMTV_Badges_user_has_the_following_badges:') }}">
+
+		<xf:textbox name="user_criteria[CMTV_Badges_has_badge][data][badge_ids]" 
+					value="{$criteria.CMTV_Badges_has_badge.badge_ids}" />
+		
+		<xf:afterhint>{{ phrase('CMTV_Badges_comma_separated_badge_ids') }}</xf:afterhint>
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<member_stats>
+  <member_stat member_stat_key="CMTV_Badges_most_badges" callback_class="CMTV\Badges\MemberStat\MostBadges" callback_method="getBadgeUsers" sort_order="message_count" sort_direction="desc" show_value="1" user_limit="20" display_order="10" overview_display="1" active="1" cache_lifetime="0"><![CDATA[[]]]></member_stat>
+</member_stats>

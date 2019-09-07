@@ -1,0 +1,78 @@
+<xf:title>{{ phrase('CMTV_Badges_badges_awarded_to_x', {'name': $user.username}) }}</xf:title>
+
+<xf:head option="noindex"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:breadcrumb href="{{ link('members', $user) }}">{$user.username}</xf:breadcrumb>
+
+<xf:set var="$footer">
+	<div class="block-footer block-footer--split">
+		<span class="block-footer-counter">{{ phrase('CMTV_Badges_total_badges:') }} {$totalBadges}</span>
+		<span class="block-footer-controls">		
+			<xf:button href="{{ link('help', {'page_name': 'badges'}) }}">
+				{{ phrase('CMTV_Badges_view_all_available_badges') }}
+			</xf:button>
+		</span>
+	</div>
+</xf:set>
+
+<xf:foreach loop="$badgeCategories" key="$catId" value="$category">
+	<xf:set var="$catContent">
+		<xf:foreach loop="{$userBadges.{$catId}}" key="$badgeId" value="$userBadge">
+			<xf:set var="$extra">	
+				<xf:date time="{$userBadge.award_date}" />
+			</xf:set>
+			
+			<xf:set var="$extraHeader">
+				<xf:if is="$user.canManageFeaturedBadges()">
+					<xf:if is="$userBadge.featured || $user.canAddFeaturedBadge()">
+						<a href="{{ link('members/mark-badge-featured', $user, { 'badge_id': $badgeId }) }}"
+						   class="featureIcon {{ $userBadge.featured ? 'featureIcon--featured' : '' }}"
+						   title="{{ $userBadge.featured ? phrase('CMTV_Badges_unfeature_badge') : phrase('CMTV_Badges_feature_badge') }}">
+							
+							<xf:fa icon="fa-bullhorn" />
+						</a>
+					</xf:if>
+				</xf:if>
+			</xf:set>
+			
+			<xf:set var="$extraMinor">
+				<xf:if is="$user.canEditBadgeReason()">
+					<a class="extra-item edit-reason" href="{{ link('members/edit-badge-reason', $user, { 'badge_id': $badgeId }) }}"
+					   title="{{ phrase('CMTV_Badges_edit_reason') }}" data-xf-click="overlay">
+						
+						<xf:fa icon="fa-pen" />
+					</a>
+				</xf:if>
+			</xf:set>
+			
+			<xf:macro name="badge" template="CMTV_Badges_badge_macros"
+					  arg-badge="{$userBadge.Badge}" 
+					  arg-reason="{$userBadge.reason}" 
+					  arg-extra="{$extra}"
+					  arg-extraHeader="{$extraHeader}"
+					  arg-extraMinor="{$extraMinor}" />
+		</xf:foreach>
+	</xf:set>
+
+	<xf:if is="$totalCategories == 1">
+		<div class="block">
+			<div class="block-container">
+				{$catContent}
+				{$footer}
+			</div>
+		</div>
+	<xf:else />
+		<xf:macro name="badge_category"
+				  template="CMTV_Badges_badge_macros"
+				  arg-category="{$category}"
+				  arg-content="{$catContent}" />
+	</xf:if>
+</xf:foreach>
+
+<xf:if is="$totalCategories != 1">
+	<div class="block">
+		<div class="block-container">
+			{$footer}
+		</div>
+	</div>
+</xf:if>

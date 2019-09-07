@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Adding \"Badges\" tab to member view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<xf:macro name=\"badges_tab\" template=\"CMTV_Badges_member_macros\"\n\t\t  arg-user=\"{$user}\" />\n\n$0"
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="CMTV_Badges" cron_class="CMTV\Badges\Cron\Badge" cron_method="runBadgeCheck" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[40]}]]></entry>
+</cron>

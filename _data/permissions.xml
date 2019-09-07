@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="CMTV_Badges" permission_id="award" permission_type="flag" interface_group_id="CMTV_Badges_moderatorPermissions" display_order="10"/>
+  <permission permission_group_id="CMTV_Badges" permission_id="featuredNumber" permission_type="integer" depend_permission_id="manageFeatured" interface_group_id="CMTV_Badges" display_order="20"/>
+  <permission permission_group_id="CMTV_Badges" permission_id="manageFeatured" permission_type="flag" interface_group_id="CMTV_Badges" display_order="10"/>
+  <permission permission_group_id="CMTV_Badges" permission_id="takeAway" permission_type="flag" interface_group_id="CMTV_Badges_moderatorPermissions" display_order="20"/>
+</permissions>

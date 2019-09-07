@@ -1,0 +1,17 @@
+{
+    "cron_class": "CMTV\\Badges\\Cron\\Badge",
+    "cron_method": "runBadgeCheck",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            40
+        ]
+    },
+    "active": true
+}

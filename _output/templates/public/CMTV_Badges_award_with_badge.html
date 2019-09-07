@@ -1,0 +1,22 @@
+<xf:title>{{ phrase('CMTV_Badges_award_with_badge') }}</xf:title>
+
+<xf:form action="{{ link('members/award-badge', $user) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="badge_id" label="{{ phrase('CMTV_Badges_badge') }}">
+				<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+					<xf:optgroup label="{{ $catId == 0 ? phrase('CMTV_Badges_badge_category_title.uncategorized') : $category.title }}">
+						<xf:foreach loop="{$badgeData.badges.{$catId}}" value="$badge">
+							<xf:option value="{$badge.badge_id}" label="{$badge.title}" />
+						</xf:foreach>
+					</xf:optgroup>
+				</xf:foreach>
+			</xf:selectrow>
+			
+			<xf:textarearow name="reason" autosize="true"
+							label="{{ phrase('reason') }}"
+							hint="{{ phrase('you_may_use_html') }}" />
+		</div>
+		<xf:submitrow fa="fa-medal" submit="{{ phrase('CMTV_Badges_award') }}" />
+	</div>
+</xf:form>

@@ -1,0 +1,11 @@
+<xf:if is="$user.canAwardWithBadge()">
+	<a href="{{ link('members/award-badge', $user) }}" class="menu-linkRow" data-xf-click="overlay">
+		{{ phrase('CMTV_Badges_award_with_badge') }}
+	</a>
+</xf:if>
+
+<xf:if is="$user.canTakeAwayBadge()">
+	<a href="{{ link('members/take-away-badge', $user) }}" class="menu-linkRow" data-xf-click="overlay">
+		{{ phrase('CMTV_Badges_take_away_badge') }}
+	</a>
+</xf:if>

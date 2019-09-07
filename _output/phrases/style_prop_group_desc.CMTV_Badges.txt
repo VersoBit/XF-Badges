@@ -1,0 +1,1 @@
+Styling options for "Badges" addon.

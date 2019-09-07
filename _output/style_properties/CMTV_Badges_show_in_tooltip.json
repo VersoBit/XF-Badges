@@ -1,0 +1,13 @@
+{
+    "group_name": "CMTV_Badges",
+    "title": "Display featured badges in member tooltip",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "boolean",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "memberTooltipFeaturedBadges",
+    "property_value": 1,
+    "display_order": 70
+}

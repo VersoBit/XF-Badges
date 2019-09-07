@@ -1,0 +1,9 @@
+{
+    "template": "member_tooltip",
+    "description": "Displaying featured badges in member tooltip",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if contentcheck=\"true\">\n\t\t\t\t\t<div class=\"memberTooltip-blurb\">\n\t\t\t\t\t<xf:contentcheck>\n\t\t\t\t\t\t<xf:userblurb user=\"$user\" tag=\"div\" />\n\t\t\t\t\t</xf:contentcheck>\n\t\t\t\t\t</div>\n\t\t\t\t</xf:if>",
+    "replace": "$0\n\n<xf:if is=\"{{ property('CMTV_Badges_show_in_tooltip') }}\">\n\t<xf:css src=\"CMTV_Badges_featured_badges.less\" />\n\t\n\t<xf:macro name=\"featured_badges\" template=\"CMTV_Badges_featured_badges_macros\"\n\t\t\t  arg-location=\"member_tooltip\" arg-user=\"{$user}\" />\n</xf:if>"
+}

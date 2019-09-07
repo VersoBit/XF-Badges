@@ -1,0 +1,1 @@
+Display featured badges in user profile

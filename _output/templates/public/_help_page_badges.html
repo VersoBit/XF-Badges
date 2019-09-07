@@ -1,0 +1,27 @@
+<xf:macro template="metadata_macros" name="metadata" arg-description="{{ phrase('help_page_desc.badges') }}" />
+
+<xf:if is="$badgeData.badges is empty">
+	<div class="blockMessage">{{ phrase('CMTV_Badges_no_badges_have_been_created_yet') }}</div>
+</xf:if>
+
+<xf:foreach loop="$badgeData.badgeCategories" key="$catId" value="$category">
+	<xf:set var="$catContent">
+		<xf:foreach loop="{$badgeData.badges.{$catId}}" value="$badge">
+			<xf:macro name="badge" template="CMTV_Badges_badge_macros"
+					  arg-badge="{$badge}" arg-counter="{{ true }}" />
+		</xf:foreach>
+	</xf:set>
+	
+	<xf:if is="count($badgeData.badgeCategories) == 1">
+		<div class="block">
+			<div class="block-container">
+				{$catContent}
+			</div>
+		</div>
+	<xf:else />
+		<xf:macro name="badge_category"
+			  template="CMTV_Badges_badge_macros"
+			  arg-category="{$category}"
+			  arg-content="{$catContent}" />
+	</xf:if>
+</xf:foreach>

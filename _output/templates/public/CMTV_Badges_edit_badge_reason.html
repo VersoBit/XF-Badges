@@ -1,0 +1,13 @@
+<xf:title>{{ phrase('CMTV_Badges_edit_badge_reason') }}</xf:title>
+
+<xf:form action="{{ link('members/edit-badge-reason', $user, { 'badge_id': $userBadge.badge_id }) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textarearow name="reason" autosize="true"
+							value="{$userBadge.reason}"
+							label="{{ phrase('reason') }}"
+							hint="{{ phrase('you_may_use_html') }}" />
+		</div>
+		<xf:submitrow fa="fa-edit" submit="{{ phrase('edit') }}" />
+	</div>
+</xf:form>

@@ -1,0 +1,8 @@
+{
+    "page_name": "badges",
+    "display_order": 35,
+    "callback_class": "CMTV\\Badges\\Help\\Badges",
+    "callback_method": "renderBadges",
+    "advanced_mode": true,
+    "active": true
+}

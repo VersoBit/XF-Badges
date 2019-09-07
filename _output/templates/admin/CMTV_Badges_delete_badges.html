@@ -1,0 +1,13 @@
+<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('badge-categories/delete-badges', $badgeCategory) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong>{{ phrase('CMTV_Badges_badges') }} ({$totalBadges})</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>

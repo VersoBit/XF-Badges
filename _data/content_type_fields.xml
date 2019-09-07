@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="badge" field_name="alert_handler_class">CMTV\Badges\Alert\Badge</field>
+  <field content_type="badge" field_name="entity">CMTV\Badges:Badge</field>
+</content_type_fields>

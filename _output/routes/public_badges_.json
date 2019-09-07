@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "badges",
+    "sub_name": "",
+    "format": ":int<badge_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "CMTV\\Badges:Badge",
+    "context": "",
+    "action_prefix": ""
+}

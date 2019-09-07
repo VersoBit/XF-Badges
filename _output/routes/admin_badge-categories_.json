@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "badge-categories",
+    "sub_name": "",
+    "format": ":int<badge_category_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "CMTV\\Badges:BadgeCategory",
+    "context": "CMTV_Badges",
+    "action_prefix": ""
+}

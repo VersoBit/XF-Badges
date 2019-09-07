@@ -1,0 +1,77 @@
+<xf:if is="$badge.isInsert()">
+	<xf:title>{{ phrase('CMTV_Badges_add_badge') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badgeCategory.title}</xf:title>
+</xf:if>
+
+<xf:css src="CMTV_Badges.less" />
+
+<xf:pageaction if="$badge.isUpdate()">
+	<xf:button href="{{ link('badges/delete', $badge) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('badges/save', $badge) }}" ajax="true" class="badge-edit block">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller tabs" role="tablist">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="badge-options">{{ phrase('CMTV_Badges_badge_options') }}</a>
+				<xf:macro template="helper_criteria" name="user_tabs" arg-userTabTitle="{{ phrase('CMTV_Badges_award_this_badge_if') }}" />
+			</span>
+		</h2>
+
+		<ul class="block-body tabPanes">
+			<li class="is-active" role="tabpanel" id="badge-options">
+				<xf:textboxrow name="title" value="{{ $badge.badge_id ? $badge.MasterTitle.phrase_text : ''  }}"
+							   label="{{ phrase('title') }}"/>
+
+				<xf:textarearow name="description" value="{{ $badge.badge_id ? $badge.MasterDescription.phrase_text : ''  }}" autosize="true"
+								label="{{ phrase('description') }}"
+								hint="{{ phrase('you_may_use_html') }}"
+								explain="{{ phrase('CMTV_Badges_optionally_describe_badge_and_criteria_user_needs_to_award') }}" />
+
+				<hr class="formRowSep" />
+				
+				<xf:radiorow name="icon_type" value="{$badge.icon_type}" label="{{ phrase('CMTV_Badges_icon_type') }}">
+					<xf:option value="fa" label="{{ phrase('icon') }}">
+						<xf:dependent>
+							<xf:textbox name="fa_icon" value="{$badge.fa_icon}" fa="{$badge.fa_icon}" />
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_icon_code_explain') }}</dfn>
+						</xf:dependent>
+					</xf:option>
+					<xf:option value="image" label="{{ phrase('image') }}">
+						<xf:dependent>
+							<xf:textbox name="image_url" value="{$badge.image_url}" />
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+							<xf:if is="$badge.image_url">
+								<img class="image-icon-preview" src="{{ base_url($badge.image_url) }}" />
+							</xf:if>
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
+				
+				<hr class="formRowSep" />
+				
+				<xf:textboxrow name="class" value="{$badge.class}"
+							   label="{{ phrase('CMTV_Badges_css_class') }}" explain="{{ phrase('CMTV_Badges_css_class_explain') }}" />
+
+				<hr class="formRowSep" />
+
+				<xf:selectrow name="badge_category_id" value="{$badge.badge_category_id}"
+							  label="{{ phrase('CMTV_Badge_badge_category') }}">
+
+					<xf:option value="0" label="{{ phrase('(none)') }}" />
+					<xf:options source="{$badgeCategories}" />
+				</xf:selectrow>
+				
+				<xf:macro template="display_order_macros" name="row"
+						  arg-value="{$badge.display_order}" />
+			</li>
+
+			<xf:macro template="helper_criteria" name="user_panes"
+				arg-criteria="{{ $userCriteria.getCriteriaForTemplate() }}"
+				arg-data="{{ $userCriteria.getExtraTemplateData() }}" />
+		</ul>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

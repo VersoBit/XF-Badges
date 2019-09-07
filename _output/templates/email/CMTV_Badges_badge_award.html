@@ -1,0 +1,15 @@
+<mail:subject>
+	{{ phrase('CMTV_Badges_badge_award_subject', {'board': $xf.options.boardTitle}) }}
+</mail:subject>
+
+<xf:set var="$badge">
+	<a href="{{ link('members', $xf.visitor) }}#badges" class="badgeTitle badgeMail badgeMail--{$badge.badge_id} {$badge.class}">
+		{$badge.title}
+	</a>
+</xf:set>
+
+{{ phrase('CMTV_Badges_badge_award_body_html', {
+	'username': $user.username,
+	'badge': $badge,
+	'reason': $reason|raw
+}) }}

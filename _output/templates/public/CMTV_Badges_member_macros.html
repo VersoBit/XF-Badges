@@ -1,0 +1,24 @@
+<xf:macro name="badges_tab" arg-user="!">
+	<xf:if is="$user.badge_count != 0">
+		<!--[CMTV\Badges:tabs:before_badges]-->
+
+		<a href="{{ link('members/badges', $user) }}"
+		   class="tabs-tab"
+		   id="badges"
+		   role="tab">{{ phrase('CMTV_Badges_badges') }}</a>
+
+		<!--[CMTV\Badges:tabs:after_badges]-->
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="badges_pane" arg-user="!">
+	<xf:if is="$user.badge_count != 0">
+		<!--[CMTV\Badges:tab_panes:before_badges]-->
+
+		<li data-href="{{ link('members/badges', $user) }}" role="tabpanel" aria-labelledby="badges">
+			<div class="blockMessage">{{ phrase('loading...') }}</div>
+		</li>
+
+		<!--[CMTV\Badges:tab_panes:after_badges]-->
+	</xf:if>
+</xf:macro>

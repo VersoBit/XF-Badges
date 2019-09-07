@@ -1,0 +1,7 @@
+<p>{username},</p>
+
+<p>You have been awarded with a new badge: {badge}</p>
+
+<p>The following reason was provided:</p>
+
+<div class="message">{reason}</div>
