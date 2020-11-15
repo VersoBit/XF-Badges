@@ -59,10 +59,15 @@
   <phrase title="CMTV_Badges_you_have_been_awarded_a_badge_x" version_id="1000070" version_string="1.0.0"><![CDATA[You have been awarded a badge: {badge}]]></phrase>
   <phrase title="admin_navigation.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
   <phrase title="admin_permission.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Manage badges]]></phrase>
+  <phrase title="alert_opt_out.badge_award" version_id="1000770" version_string="1.0.7"><![CDATA[Awards you a new badge]]></phrase>
   <phrase title="cron_entry.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Update user badges]]></phrase>
   <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
   <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
   <phrase title="member_stat.CMTV_Badges_most_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Most badges]]></phrase>
+  <phrase title="option.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Globally Disable Email Notifications]]></phrase>
+  <phrase title="option_explain.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Enable this to globally disable email notifications for badges.]]></phrase>
+  <phrase title="option_group.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[[VersoBit] Badges]]></phrase>
+  <phrase title="option_group_description.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[Manage global settings for Badges]]></phrase>
   <phrase title="permission.CMTV_Badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award user with badge]]></phrase>
   <phrase title="permission.CMTV_Badges_featuredNumber" version_id="1000070" version_string="1.0.0"><![CDATA[Max number of featured badges]]></phrase>
   <phrase title="permission.CMTV_Badges_manageFeatured" version_id="1000070" version_string="1.0.0"><![CDATA[Manage featured badges]]></phrase>

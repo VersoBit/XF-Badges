@@ -1,0 +1,1 @@
+Enable this to globally disable email notifications for badges.

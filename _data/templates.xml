@@ -748,25 +748,27 @@
 		}
 	}
 }]]></template>
-  <template type="public" title="CMTV_Badges_featured_badges_macros" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:macro name="featured_badges" arg-location="!" arg-user="!">
-	<xf:if contentcheck="true">
-		<div class="featuredBadges featuredBadges--{$location}">
-			<xf:contentcheck>
-				<xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
-					<xf:set var="$badge" value="{$userBadge.Badge}" />
-					
-					<a href="{{ link('members', $user) }}#badges" 
-					   class="featuredBadge" 
-					   title="{$badge.title}" data-xf-init="tooltip">
-						
-						<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
-								  arg-badge="{$badge}" arg-context="featured-{$location}" />
-					</a>
-					
-				</xf:foreach>
-			</xf:contentcheck>
-		</div>
-	</xf:if>
+  <template type="public" title="CMTV_Badges_featured_badges_macros" version_id="1000770" version_string="1.0.7"><![CDATA[<xf:macro name="featured_badges" arg-location="!" arg-user="!">
+    <xf:if contentcheck="true">
+        <div class="featuredBadges featuredBadges--{$location}">
+            <xf:contentcheck>
+                <xf:if is="$user is not empty">
+                <xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
+                    <xf:set var="$badge" value="{$userBadge.Badge}" />
+                    
+                    <a href="{{ link('members', $user) }}#badges" 
+                       class="featuredBadge" 
+                       title="{$badge.title}" data-xf-init="tooltip">
+                        
+                        <xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
+                                  arg-badge="{$badge}" arg-context="featured-{$location}" />
+                    </a>
+                    
+                </xf:foreach>
+                </xf:if>
+            </xf:contentcheck>
+        </div>
+    </xf:if>
 </xf:macro>]]></template>
   <template type="public" title="CMTV_Badges_member_badges" version_id="1000370" version_string="1.0.3"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_badges_awarded_to_x', {'name': $user.username}) }}</xf:title>
 

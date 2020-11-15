@@ -347,6 +347,30 @@
         "version_string": "1.0.0",
         "hash": "2b42f4c38c1a9c50fd22567b212b5b6e"
     },
+    "option.vBbadgesGlbEmailTgl.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "c54b9291595d216a7b41ae07ca60cbd2"
+    },
+    "option_explain.vBbadgesGlbEmailTgl.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "34298c00cdf19dd066d0186caec2b2ff"
+    },
+    "option_group.vBbadges.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "490bacc42a6777dbf955ff2b362d331f"
+    },
+    "option_group_description.vBbadges.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "99b0e0a0a9ba007a4799a500d853725c"
+    },
     "permission.CMTV_Badges_award.txt": {
         "global_cache": false,
         "version_id": 1000070,
