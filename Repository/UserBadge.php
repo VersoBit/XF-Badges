@@ -36,7 +36,7 @@ class UserBadge extends Repository
                 'reason' => $reason,
                 'badge' => $this->finder(C::__('Badge'))->whereId($badgeId)->fetchOne()
             ];
-
+            //TODO: Fix #8, Add #9
             $this->app()->mailer()->newMail()
                 ->setToUser($user)
                 ->setTemplate(C::_('badge_award'), $params)
