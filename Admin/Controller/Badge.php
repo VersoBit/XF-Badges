@@ -78,8 +78,8 @@ class Badge extends AbstractController
 
         return $plugin->actionDelete(
             $badge,
-            $this->buildLink('trophy-categories/delete', $badge),
-            $this->buildLink('trophy-categories/edit', $badge),
+            $this->buildLink('badges/delete', $badge),
+            $this->buildLink('badges/edit', $badge),
             $this->buildLink('badges'),
             $badge->title
         );
