@@ -98,10 +98,10 @@
 		<xf:submitrow icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="admin" title="CMTV_Badges_badge_edit" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:if is="$badge.isInsert()">
+  <template type="admin" title="CMTV_Badges_badge_edit" version_id="1000570" version_string="1.0.5"><![CDATA[<xf:if is="$badge.isInsert()">
 	<xf:title>{{ phrase('CMTV_Badges_add_badge') }}</xf:title>
 <xf:else />
-	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badgeCategory.title}</xf:title>
+	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badge.title}</xf:title>
 </xf:if>
 
 <xf:css src="CMTV_Badges.less" />
