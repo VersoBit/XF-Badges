@@ -1,15 +1,17 @@
 {
     "legacy_addon_id": "",
-    "title": "Badges",
+    "title": "[VersoBit] Badges",
     "description": "Create fancy-looking badges and award users for valuable and unique actions!",
-    "version_id": 1000670,
-    "version_string": "1.0.6",
-    "dev": "CMTV",
-    "dev_url": "https://xenforo.com/community/members/cmtv.162075/",
-    "faq_url": "",
-    "support_url": "",
+    "version_id": 1000770,
+    "version_string": "1.0.7",
+    "dev": "VersoBit",
+    "dev_url": "https://versobit.dev/",
+    "support_url": "https://github.com/VersoBit/XF-Badges/issues",
     "extra_urls": {
-        "My addons & tutorials": "https://xenforo.com/community/resources/authors/cmtv.162075/"
+        "Wiki": "https://github.com/VersoBit/XF-Badges/wiki",
+        "Addon Page": "#",
+        "Addon GitHub": "https://github.com/VersoBit/XF-Badges/",
+        "License": "https://github.com/VersoBit/XF-Badges/blob/master/LICENSE"
     },
     "require": {
         "XF": [
@@ -21,5 +23,5 @@
             "PHP 7+"
         ]
     },
-    "icon": "fa-medal"
+    "icon": "fas fa-award"
 }
