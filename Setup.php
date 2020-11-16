@@ -16,19 +16,18 @@ use XF\Db\Schema\Create;
 
 class Setup extends AbstractSetup
 {
-	use StepRunnerInstallTrait;
-	use StepRunnerUpgradeTrait;
-	use StepRunnerUninstallTrait;
+    use StepRunnerInstallTrait;
+    use StepRunnerUpgradeTrait;
+    use StepRunnerUninstallTrait;
 
-	//
+    //
     // INSTALLATION
     //
 
     /* Table for badges */
     public function installStep1()
     {
-        $this->schemaManager()->createTable(C::_table('badge'), function (Create $table)
-        {
+        $this->schemaManager()->createTable(C::_table('badge'), function (Create $table) {
             $table->addColumn('badge_id', 'int')->autoIncrement();
             $table->addColumn('user_criteria', 'mediumblob');
             $table->addColumn('badge_category_id', 'int')->setDefault(0);
@@ -43,8 +42,7 @@ class Setup extends AbstractSetup
     /* Table for badge categories */
     public function installStep2()
     {
-        $this->schemaManager()->createTable(C::_table('badge_category'), function (Create $table)
-        {
+        $this->schemaManager()->createTable(C::_table('badge_category'), function (Create $table) {
             $table->addColumn('badge_category_id', 'int')->autoIncrement();
             $table->addColumn('icon_type', 'enum')->values(['', 'fa', 'image'])->setDefault('');
             $table->addColumn('fa_icon', 'varchar', 50)->setDefault('');
@@ -57,8 +55,7 @@ class Setup extends AbstractSetup
     /* Table for storing data about user badges */
     public function installStep3()
     {
-        $this->schemaManager()->createTable(C::_table('user_badge'), function (Create $table)
-        {
+        $this->schemaManager()->createTable(C::_table('user_badge'), function (Create $table) {
             $table->addColumn('user_id', 'int');
             $table->addColumn('badge_id', 'int');
             $table->addColumn('award_date', 'int');
@@ -70,8 +67,7 @@ class Setup extends AbstractSetup
 
     public function installStep4()
     {
-        $this->schemaManager()->alterTable('xf_user', function (Alter $table)
-        {
+        $this->schemaManager()->alterTable('xf_user', function (Alter $table) {
             $table->addColumn(C::_column('badge_count'), 'int')->setDefault(0);
         });
     }
@@ -88,8 +84,7 @@ class Setup extends AbstractSetup
             'takeAway'
         ];
 
-        foreach ($registeredPermissions as $permission)
-        {
+        foreach ($registeredPermissions as $permission) {
             $this->applyGlobalPermission(
                 C::_(),
                 $permission,
@@ -98,8 +93,7 @@ class Setup extends AbstractSetup
             );
         }
 
-        foreach ($moderatorPermissions as $permission)
-        {
+        foreach ($moderatorPermissions as $permission) {
             $this->applyGlobalPermission(
                 C::_(),
                 $permission,
@@ -128,8 +122,7 @@ class Setup extends AbstractSetup
         $this->schemaManager()->dropTable(C::_table('badge_category'));
         $this->schemaManager()->dropTable(C::_table('reason'));
 
-        $this->schemaManager()->alterTable('xf_user', function (Alter $table)
-        {
+        $this->schemaManager()->alterTable('xf_user', function (Alter $table) {
             $table->dropColumns(C::_column('badge_count'));
         });
     }
@@ -139,8 +132,7 @@ class Setup extends AbstractSetup
     {
         $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', 'CMTV_Badges_%'])->fetch();
 
-        foreach ($phrases as $phrase)
-        {
+        foreach ($phrases as $phrase) {
             $phrase->delete(false);
         }
     }

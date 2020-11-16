@@ -8,6 +8,7 @@ namespace CMTV\Badges\Repository;
 
 use CMTV\Badges\Constants as C;
 use CMTV\Badges\XF\Entity\User;
+use XF;
 use XF\Mvc\Entity\ArrayCollection;
 use XF\Mvc\Entity\Repository;
 use XF\Repository\UserAlert;
@@ -22,11 +23,10 @@ class UserBadge extends Repository
             'user_id' => $user->user_id,
             'badge_id' => $badgeId,
             'reason' => $reason,
-            'award_date' => \XF::$time
+            'award_date' => XF::$time
         ], false, false, 'IGNORE');
 
-        if ($inserted)
-        {
+        if ($inserted) {
             /** @var UserAlert $alertRepo */
             $alertRepo = $this->repository('XF:UserAlert');
             $alertRepo->alertFromUser($user, $user, 'badge', $badgeId, 'award');
@@ -37,19 +37,17 @@ class UserBadge extends Repository
                 'badge' => $this->finder(C::__('Badge'))->whereId($badgeId)->fetchOne()
             ];
             //TODO: Fix #8
-            if(\XF::option('vBbadgesGlbEmailTgl') == 0){
+            if (XF::options()->vBbadgesGlbEmailTgl == 0) {
                 $this->app()->mailer()->newMail()
-                     ->setToUser($user)
-                     ->setTemplate(C::_('badge_award'), $params)
-                     ->queue();
+                    ->setToUser($user)
+                    ->setTemplate(C::_('badge_award'), $params)
+                    ->queue();
             }
 
             $user->fastUpdate('cmtv_badges_badge_count', $user->cmtv_badges_badge_count + 1);
 
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -66,8 +64,7 @@ class UserBadge extends Repository
             $badgeId
         );
 
-        if ($user->cmtv_badges_badge_count > 0)
-        {
+        if ($user->cmtv_badges_badge_count > 0) {
             $user->fastUpdate('cmtv_badges_badge_count', $user->cmtv_badges_badge_count - 1);
         }
     }
@@ -76,8 +73,7 @@ class UserBadge extends Repository
     {
         $allowedFeatured = $this->getAllowedFeaturedBadges($user);
 
-        if ($allowedFeatured === 0)
-        {
+        if ($allowedFeatured === 0) {
             return new ArrayCollection([]);
         }
 
@@ -87,8 +83,7 @@ class UserBadge extends Repository
             ->with('Badge')
             ->order(['Badge.Category.display_order', 'Badge.display_order']);
 
-        if ($allowedFeatured !== -1)
-        {
+        if ($allowedFeatured !== -1) {
             $finder->limit($allowedFeatured);
         }
 
@@ -97,8 +92,7 @@ class UserBadge extends Repository
 
     public function getAllowedFeaturedBadges(User $user)
     {
-        if (!$user->hasPermission(C::_(), 'manageFeatured'))
-        {
+        if (!$user->hasPermission(C::_(), 'manageFeatured')) {
             return 0;
         }
 
@@ -109,7 +103,7 @@ class UserBadge extends Repository
     {
         $table = C::_table('user_badge');
 
-        return \XF::db()->fetchAllColumn(
+        return XF::db()->fetchAllColumn(
             "SELECT `badge_id` FROM {$table} WHERE `user_id` = ?",
             $userId
         );
@@ -130,14 +124,12 @@ class UserBadge extends Repository
         $userBadgesOut = [];
 
         /** @var \CMTV\Badges\Entity\UserBadge $userBadge */
-        foreach ($userBadges as $userBadge)
-        {
+        foreach ($userBadges as $userBadge) {
             $category = $userBadge->Badge->Category;
             $catId = $category ? $category->badge_category_id : 0;
             $badgeId = $userBadge->badge_id;
 
-            if (!array_key_exists($catId, $userBadgesOut))
-            {
+            if (!array_key_exists($catId, $userBadgesOut)) {
                 $badgeCategories[$catId] = $category ?: $this->getBadgeCategoryRepo()->getDefaultCategory();
                 $userBadgesOut[$catId] = [];
             }
@@ -145,8 +137,7 @@ class UserBadge extends Repository
             $userBadgesOut[$catId][$badgeId] = $userBadge;
         }
 
-        uasort($badgeCategories, function ($a, $b)
-        {
+        uasort($badgeCategories, function ($a, $b) {
             return $a->display_order <=> $b->display_order;
         });
 
@@ -162,8 +153,7 @@ class UserBadge extends Repository
     {
         $finder = $this->finder(C::__('UserBadge'))->where('user_id', $userId);
 
-        if ($featured)
-        {
+        if ($featured) {
             $finder->where('featured', 1);
         }
 

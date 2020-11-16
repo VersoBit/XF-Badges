@@ -28,8 +28,7 @@ class BadgeCategory extends Repository
             ->order('display_order')
             ->fetch();
 
-        if ($getDefault)
-        {
+        if ($getDefault) {
             $defaultCategory = $this->getDefaultCategory();
             $categories = [$defaultCategory] + $categories->toArray();
         }

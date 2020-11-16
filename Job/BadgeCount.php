@@ -7,6 +7,7 @@
 namespace CMTV\Badges\Job;
 
 use CMTV\Badges\XF\Entity\User;
+use XF;
 use XF\Job\AbstractRebuildJob;
 
 class BadgeCount extends AbstractRebuildJob
@@ -26,14 +27,13 @@ class BadgeCount extends AbstractRebuildJob
         /** @var User $user */
         $user = $this->app->finder('XF:User')->whereId($id)->fetchOne();
 
-        if ($user)
-        {
+        if ($user) {
             $user->fastUpdate('cmtv_badges_badge_count', $user->getBadgeCount());
         }
     }
 
     protected function getStatusType()
     {
-        return \XF::phrase('users');
+        return XF::phrase('users');
     }
 }

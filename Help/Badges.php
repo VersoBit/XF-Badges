@@ -20,10 +20,8 @@ class Badges
 
         $badgeData = $badgesRepo->getBadgeListData();
 
-        foreach (array_keys($badgeData['badgeCategories']) as $catId)
-        {
-            if (!array_key_exists($catId, $badgeData['badges']))
-            {
+        foreach (array_keys($badgeData['badgeCategories']) as $catId) {
+            if (!array_key_exists($catId, $badgeData['badges'])) {
                 unset($badgeData['badgeCategories'][$catId]);
             }
         }

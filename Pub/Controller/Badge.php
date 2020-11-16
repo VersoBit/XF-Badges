@@ -7,6 +7,7 @@
 namespace CMTV\Badges\Pub\Controller;
 
 use CMTV\Badges\Constants as C;
+use XF;
 use XF\Mvc\ParameterBag;
 use XF\Pub\Controller\AbstractController;
 
@@ -26,12 +27,12 @@ class Badge extends AbstractController
         $breadcrumbs = [
             [
                 'href' => $this->buildLink('help'),
-                'value' => \XF::phrase('help')
+                'value' => XF::phrase('help')
             ],
 
             [
                 'href' => $this->buildLink('help/badges'),
-                'value' => \XF::phrase(C::_('badges'))
+                'value' => XF::phrase(C::_('badges'))
             ]
         ];
 

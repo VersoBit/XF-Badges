@@ -1,28 +1,28 @@
 {
-    "legacy_addon_id": "",
-    "title": "[VersoBit] Badges",
-    "description": "Create fancy-looking badges and award users for valuable and unique actions!",
-    "version_id": 1000770,
-    "version_string": "1.0.7",
-    "dev": "VersoBit",
-    "dev_url": "https://versobit.dev/",
-    "faq_url": "",
-    "support_url": "https://github.com/VersoBit/XF-Badges/issues",
-    "extra_urls": {
-        "Wiki": "https://github.com/VersoBit/XF-Badges/wiki",
-        "Addon Page": "#",
-        "Addon GitHub": "https://github.com/VersoBit/XF-Badges/",
-        "License": "https://github.com/VersoBit/XF-Badges/blob/master/LICENSE"
-    },
-    "require": {
-        "XF": [
-            2010070,
-            "XenForo 2.1"
-        ],
-        "php": [
-            "7.0.0",
-            "PHP 7+"
-        ]
-    },
-    "icon": "fas fa-award"
+  "legacy_addon_id": "",
+  "title": "[VersoBit] Badges",
+  "description": "Create fancy-looking badges and award users for valuable and unique actions!",
+  "version_id": 1000770,
+  "version_string": "1.0.7",
+  "dev": "VersoBit",
+  "dev_url": "https://versobit.dev/",
+  "faq_url": "",
+  "support_url": "https://github.com/VersoBit/XF-Badges/issues",
+  "extra_urls": {
+    "Wiki": "https://github.com/VersoBit/XF-Badges/wiki",
+    "Addon Page": "#",
+    "Addon GitHub": "https://github.com/VersoBit/XF-Badges/",
+    "License": "https://github.com/VersoBit/XF-Badges/blob/master/LICENSE"
+  },
+  "require": {
+    "XF": [
+      2010070,
+      "XenForo 2.1"
+    ],
+    "php": [
+      "7.0.0",
+      "PHP 7+"
+    ]
+  },
+  "icon": "fas fa-award"
 }

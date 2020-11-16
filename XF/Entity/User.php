@@ -9,6 +9,7 @@ namespace CMTV\Badges\XF\Entity;
 use CMTV\Badges\Constants as C;
 use CMTV\Badges\Entity\Badge;
 use CMTV\Badges\Repository\UserBadge;
+use XF;
 use XF\Mvc\Entity\AbstractCollection;
 use XF\Mvc\Entity\Structure;
 
@@ -99,18 +100,15 @@ class User extends XFCP_User
 
     public function canManageFeaturedBadges()
     {
-        if (!$this->user_id)
-        {
+        if (!$this->user_id) {
             return false;
         }
 
-        if ($this->user_id != \XF::visitor()->user_id)
-        {
+        if ($this->user_id != XF::visitor()->user_id) {
             return false;
         }
 
-        if (!$this->hasPermission(C::_(), 'manageFeatured'))
-        {
+        if (!$this->hasPermission(C::_(), 'manageFeatured')) {
             return false;
         }
 
@@ -119,15 +117,13 @@ class User extends XFCP_User
 
     public function canAddFeaturedBadge()
     {
-        if (!$this->canManageFeaturedBadges())
-        {
+        if (!$this->canManageFeaturedBadges()) {
             return false;
         }
 
         $featuredAllowed = $this->hasPermission(C::_(), 'featuredNumber');
 
-        if ($featuredAllowed == -1)
-        {
+        if ($featuredAllowed == -1) {
             return true;
         }
 
@@ -138,17 +134,15 @@ class User extends XFCP_User
 
     public function canAwardWithBadge()
     {
-        $visitor = \XF::visitor();
+        $visitor = XF::visitor();
 
-        if (!$this->user_id || !$visitor->is_moderator)
-        {
+        if (!$this->user_id || !$visitor->is_moderator) {
             return false;
         }
 
         $totalBadges = $this->finder(C::__('Badge'))->total();
 
-        if ($totalBadges == 0 || $this->badge_count == $totalBadges)
-        {
+        if ($totalBadges == 0 || $this->badge_count == $totalBadges) {
             return false;
         }
 
@@ -157,10 +151,9 @@ class User extends XFCP_User
 
     public function canEditBadgeReason()
     {
-        $visitor = \XF::visitor();
+        $visitor = XF::visitor();
 
-        if (!$this->user_id || !$visitor->is_moderator)
-        {
+        if (!$this->user_id || !$visitor->is_moderator) {
             return false;
         }
 
@@ -169,10 +162,9 @@ class User extends XFCP_User
 
     public function canTakeAwayBadge()
     {
-        $visitor = \XF::visitor();
+        $visitor = XF::visitor();
 
-        if (!$this->user_id || !$visitor->is_moderator || !$this->badge_count)
-        {
+        if (!$this->user_id || !$visitor->is_moderator || !$this->badge_count) {
             return false;
         }
 

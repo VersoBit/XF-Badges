@@ -6,6 +6,9 @@
 
 namespace CMTV\Badges\Entity;
 
+use LogicException;
+use XF;
+use XF\Entity\Phrase;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
@@ -14,15 +17,14 @@ use XF\Mvc\Entity\Structure;
  * @property \XF\Phrase title
  *
  * RELATIONS
- * @property \XF\Entity\Phrase MasterTitle
+ * @property Phrase MasterTitle
  */
 abstract class TitleEntity extends Entity
 {
     protected static function addTitleStructureElements(Structure $structure)
     {
-        if (!isset($structure->primaryKey))
-        {
-            throw new \LogicException(get_called_class() . '::addTitleStructureElements() must be called after setting "primaryKey" property!');
+        if (!isset($structure->primaryKey)) {
+            throw new LogicException(get_called_class() . '::addTitleStructureElements() must be called after setting "primaryKey" property!');
         }
 
         $structure->getters['title'] = true;
@@ -43,8 +45,7 @@ abstract class TitleEntity extends Entity
 
     protected function _postDelete()
     {
-        if ($this->MasterTitle)
-        {
+        if ($this->MasterTitle) {
             $this->MasterTitle->delete();
         }
     }
@@ -55,7 +56,7 @@ abstract class TitleEntity extends Entity
 
     public function getTitle()
     {
-        return \XF::phrase(self::getTitlePhraseName());
+        return XF::phrase(self::getTitlePhraseName());
     }
 
     //
@@ -66,10 +67,11 @@ abstract class TitleEntity extends Entity
     {
         $phrase = $this->MasterTitle;
 
-        if (!$phrase)
-        {
+        if (!$phrase) {
             $phrase = $this->_em->create('XF:Phrase');
-            $phrase->title = $this->_getDeferredValue(function () { return $this->getTitlePhraseName(); }, 'save');
+            $phrase->title = $this->_getDeferredValue(function () {
+                return $this->getTitlePhraseName();
+            }, 'save');
             $phrase->language_id = 0;
             $phrase->addon_id = '';
         }
@@ -88,6 +90,6 @@ abstract class TitleEntity extends Entity
 
     public static function getPrePhrase(): string
     {
-        throw new \LogicException(get_called_class() . '::getPrePhrase() must be overriden!');
+        throw new LogicException(get_called_class() . '::getPrePhrase() must be overriden!');
     }
 }

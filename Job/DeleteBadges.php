@@ -7,6 +7,7 @@
 namespace CMTV\Badges\Job;
 
 use CMTV\Badges\Constants as C;
+use XF;
 use XF\Job\AbstractRebuildJob;
 
 class DeleteBadges extends AbstractRebuildJob
@@ -36,6 +37,6 @@ class DeleteBadges extends AbstractRebuildJob
 
     protected function getStatusType()
     {
-        return \XF::phrase(C::_('deleting_badges_in_category'));
+        return XF::phrase(C::_('deleting_badges_in_category'));
     }
 }

@@ -8,6 +8,7 @@ namespace CMTV\Badges\Admin\Controller;
 
 use CMTV\Badges\Constants as C;
 use CMTV\Badges\ControllerPlugin\TitleDescription;
+use XF;
 use XF\Admin\Controller\AbstractController;
 use XF\ControllerPlugin\Delete;
 use XF\Mvc\FormAction;
@@ -55,12 +56,9 @@ class Badge extends AbstractController
     {
         $this->assertPostOnly();
 
-        if ($params->badge_id)
-        {
+        if ($params->badge_id) {
             $badge = $this->assertBadgeExists($params->badge_id);
-        }
-        else
-        {
+        } else {
             $badge = $this->em()->create(C::__('Badge'));
         }
 
@@ -87,18 +85,14 @@ class Badge extends AbstractController
 
     public function actionSort(ParameterBag $params)
     {
-        if ($this->isPost())
-        {
+        if ($this->isPost()) {
             $badges = $this->finder(C::__('Badge'))->fetch();
 
-            foreach ($this->filter('badges', 'array-json-array') as $badgesInCategory)
-            {
+            foreach ($this->filter('badges', 'array-json-array') as $badgesInCategory) {
                 $lastOrder = 0;
 
-                foreach ($badgesInCategory as $key => $badgeValue)
-                {
-                    if (!isset($badgeValue['id']) || !isset($badges[$badgeValue['id']]))
-                    {
+                foreach ($badgesInCategory as $key => $badgeValue) {
+                    if (!isset($badgeValue['id']) || !isset($badges[$badgeValue['id']])) {
                         continue;
                     }
 
@@ -113,9 +107,7 @@ class Badge extends AbstractController
             }
 
             return $this->redirect($this->buildLink('badges'));
-        }
-        else
-        {
+        } else {
             $badgeData = $this->getBadgeRepo()->getBadgeListData();
 
             $viewParams = [
@@ -170,17 +162,12 @@ class Badge extends AbstractController
         $plugin = $this->plugin(C::__('TitleDescription'));
         $plugin->saveTitleDescription($form, $badge);
 
-        $form->validate(function (FormAction $form) use ($badgeInput)
-        {
-            if (!$badgeInput['icon_type'])
-            {
-                $form->logError(\XF::phrase(C::_('please_select_the_badge_icon_type')), 'icon_type');
-            }
-            else
-            {
-                if (!$badgeInput['image_url'] && !$badgeInput['fa_icon'])
-                {
-                    $form->logError(\XF::phrase(C::_('please_specify_a_badge_icon_value')));
+        $form->validate(function (FormAction $form) use ($badgeInput) {
+            if (!$badgeInput['icon_type']) {
+                $form->logError(XF::phrase(C::_('please_select_the_badge_icon_type')), 'icon_type');
+            } else {
+                if (!$badgeInput['image_url'] && !$badgeInput['fa_icon']) {
+                    $form->logError(XF::phrase(C::_('please_specify_a_badge_icon_value')));
                 }
             }
         });

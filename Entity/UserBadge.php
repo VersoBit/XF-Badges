@@ -8,6 +8,7 @@ namespace CMTV\Badges\Entity;
 
 use CMTV\Badges\Constants as C;
 use CMTV\Badges\XF\Entity\User;
+use XF;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
@@ -44,7 +45,7 @@ class UserBadge extends Entity
 
             'award_date' => [
                 'type' => self::UINT,
-                'default' => \XF::$time
+                'default' => XF::$time
             ],
 
             'reason' => [

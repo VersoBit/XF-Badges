@@ -9,11 +9,14 @@ namespace CMTV\Badges\Cron;
 use CMTV\Badges\Constants as C;
 use CMTV\Badges\Repository\UserBadge;
 use CMTV\Badges\XF\Entity\User;
+use XF;
 
-class Badge {
-    public static function runBadgeCheck() {
+class Badge
+{
+    public static function runBadgeCheck()
+    {
         /** @var \CMTV\Badges\Repository\Badge $badgeRepo */
-        $badgeRepo = \XF::repository(C::__('Badge'));
+        $badgeRepo = XF::repository(C::__('Badge'));
 
         $badges = $badgeRepo->findBadgesForList()->fetch();
 
@@ -21,8 +24,8 @@ class Badge {
             return;
         }
 
-        $userFinder = \XF::finder('XF:User');
-        $cronInterval = \XF::option('vBbadgesCronActivityInterval');
+        $userFinder = XF::finder('XF:User');
+        $cronInterval = XF::options()->vBbadgesCronActivityInterval;
 
         if ($cronInterval == 0) {
             //TODO: No Activity Query
@@ -37,7 +40,7 @@ class Badge {
         /** @var User $user */
         foreach ($users as $user) {
             /** @var UserBadge $userBadgeRepo */
-            $userBadgeRepo = \XF::repository(C::__('UserBadge'));
+            $userBadgeRepo = XF::repository(C::__('UserBadge'));
 
             $awardedIds = $userBadgeRepo->getAwardedBadgeIds($user->user_id);
 
@@ -47,7 +50,7 @@ class Badge {
                     continue;
                 }
 
-                $userCriteria = \XF::app()->criteria('XF:User', $badge->user_criteria);
+                $userCriteria = XF::app()->criteria('XF:User', $badge->user_criteria);
                 $userCriteria->setMatchOnEmpty(false);
 
                 if ($userCriteria->isMatched($user)) {
@@ -57,7 +60,8 @@ class Badge {
         }
     }
 
-    protected function getUserBadgeRepo(): UserBadge {
-        return \XF::repository(C::__('UserBadge'));
+    protected function getUserBadgeRepo(): UserBadge
+    {
+        return XF::repository(C::__('UserBadge'));
     }
 }

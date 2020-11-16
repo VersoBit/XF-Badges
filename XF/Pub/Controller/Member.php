@@ -10,6 +10,7 @@ use CMTV\Badges\Constants as C;
 use CMTV\Badges\Entity\UserBadge;
 use CMTV\Badges\Repository\Badge;
 use CMTV\Badges\XF\Entity\User;
+use XF;
 use XF\Mvc\ParameterBag;
 
 class Member extends XFCP_Member
@@ -28,8 +29,7 @@ class Member extends XFCP_Member
 
         $this->refineFeaturedBadges($user);
 
-        if ($user->user_id == \XF::visitor()->user_id)
-        {
+        if ($user->user_id == XF::visitor()->user_id) {
             // @todo Mark badge award alerts read (see Member pub controller, 'actionTrophies')
         }
 
@@ -53,8 +53,7 @@ class Member extends XFCP_Member
         /** @var User $user */
         $user = $this->assertViewableUser($params->user_id);
 
-        if (!$user->canManageFeaturedBadges())
-        {
+        if (!$user->canManageFeaturedBadges()) {
             return $this->noPermission();
         }
 
@@ -63,21 +62,18 @@ class Member extends XFCP_Member
         /** @var UserBadge $userBadge */
         $userBadge = $this->finder(C::__('UserBadge'))->whereId([$user->user_id, $badgeId])->fetchOne();
 
-        if (!$userBadge)
-        {
-            return $this->error(\XF::phrase(C::_('you_cant_feature_this_badge')));
+        if (!$userBadge) {
+            return $this->error(XF::phrase(C::_('you_cant_feature_this_badge')));
         }
 
-        if ($userBadge->featured)
-        {
+        if ($userBadge->featured) {
             $userBadge->fastUpdate('featured', 0);
             return $this->redirectPermanently($this->buildLink('members', $user) . '#badges');
         }
 
-        if (!$user->canAddFeaturedBadge())
-        {
+        if (!$user->canAddFeaturedBadge()) {
             return $this->noPermission(
-                \XF::phrase(C::_('you_cant_feature_more_than_x_badges'),
+                XF::phrase(C::_('you_cant_feature_more_than_x_badges'),
                     ['badgeCount' => $user->hasPermission(C::_(), 'featuredNumber')]
                 )
             );
@@ -85,7 +81,7 @@ class Member extends XFCP_Member
 
         $userBadge->fastUpdate('featured', 1);
 
-        return $this->redirectPermanently($this->buildLink('members', $user). '#badges');
+        return $this->redirectPermanently($this->buildLink('members', $user) . '#badges');
     }
 
     public function actionAwardBadge(ParameterBag $params)
@@ -93,22 +89,18 @@ class Member extends XFCP_Member
         /** @var User $user */
         $user = $this->assertViewableUser($params->user_id);
 
-        if (!$user->canAwardWithBadge())
-        {
+        if (!$user->canAwardWithBadge()) {
             return $this->noPermission();
         }
 
-        if ($this->isPost())
-        {
+        if ($this->isPost()) {
             $badgeId = $this->filter('badge_id', 'uint');
             $reason = $this->filter('reason', 'str');
 
             $this->getUserBadgeRepo()->awardWithBadge($user, $badgeId, $reason);
 
             return $this->redirectPermanently($this->buildLink('members', $user) . '#badges');
-        }
-        else
-        {
+        } else {
             $userBadgeRepo = $this->getUserBadgeRepo();
             $excludeIds = $userBadgeRepo->getAwardedBadgeIds($user->user_id);
 
@@ -130,21 +122,17 @@ class Member extends XFCP_Member
         /** @var User $user */
         $user = $this->assertViewableUser($params->user_id);
 
-        if (!$user->canTakeAwayBadge())
-        {
+        if (!$user->canTakeAwayBadge()) {
             return $this->noPermission();
         }
 
-        if ($this->isPost())
-        {
+        if ($this->isPost()) {
             $badgeId = $this->filter('badge_id', 'uint');
 
             $this->getUserBadgeRepo()->takeAwayBadge($user, $badgeId);
 
             return $this->redirectPermanently($this->buildLink('members', $user) . '#badges');
-        }
-        else
-        {
+        } else {
             $viewParams = [
                 'user' => $user,
                 'userBadgesData' => $this->getUserBadgeRepo()->getUserBadgesData($user->user_id)
@@ -163,8 +151,7 @@ class Member extends XFCP_Member
         /** @var User $user */
         $user = $this->assertViewableUser($params->user_id);
 
-        if (!$user->canEditBadgeReason())
-        {
+        if (!$user->canEditBadgeReason()) {
             return $this->noPermission();
         }
 
@@ -176,21 +163,17 @@ class Member extends XFCP_Member
             ->where('badge_id', $badgeId)
             ->fetchOne();
 
-        if (!$userBadge)
-        {
-            return $this->error(\XF::phrase(C::_('you_cant_change_this_badge_reason')));
+        if (!$userBadge) {
+            return $this->error(XF::phrase(C::_('you_cant_change_this_badge_reason')));
         }
 
-        if ($this->isPost())
-        {
+        if ($this->isPost()) {
             $reason = $this->filter('reason', 'str');
 
             $userBadge->fastUpdate('reason', $reason);
 
             return $this->redirectPermanently($this->buildLink('members', $user) . '#badges');
-        }
-        else
-        {
+        } else {
             $viewParams = [
                 'user' => $user,
                 'userBadge' => $userBadge
@@ -212,8 +195,7 @@ class Member extends XFCP_Member
     {
         $allowedNumber = $this->getUserBadgeRepo()->getAllowedFeaturedBadges($user);
 
-        if ($allowedNumber == -1)
-        {
+        if ($allowedNumber == -1) {
             return;
         }
 
@@ -227,8 +209,7 @@ class Member extends XFCP_Member
         $toUnfeature = array_slice($fUserBadges, $allowedNumber);
 
         /** @var UserBadge $userBadge */
-        foreach ($toUnfeature as $userBadge)
-        {
+        foreach ($toUnfeature as $userBadge) {
             $userBadge->fastUpdate('featured', 0);
         }
     }

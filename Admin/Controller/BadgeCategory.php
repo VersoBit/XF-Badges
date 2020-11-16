@@ -44,12 +44,9 @@ class BadgeCategory extends AbstractController
     {
         $this->assertPostOnly();
 
-        if ($params['badge_category_id'])
-        {
+        if ($params['badge_category_id']) {
             $badgeCategory = $this->assertBadgeCategoryExists($params['badge_category_id']);
-        }
-        else
-        {
+        } else {
             $badgeCategory = $this->em()->create(C::__('BadgeCategory'));
         }
 
@@ -76,8 +73,7 @@ class BadgeCategory extends AbstractController
 
     public function actionDeleteBadges(ParameterBag $params)
     {
-        if ($this->isPost())
-        {
+        if ($this->isPost()) {
             $badgeCategoryId = $params['badge_category_id'];
 
             $this->app->jobManager()->enqueue(
@@ -87,9 +83,7 @@ class BadgeCategory extends AbstractController
             );
 
             return $this->redirectPermanently($this->buildLink('badges'));
-        }
-        else
-        {
+        } else {
             $badgeCategory = $this->assertBadgeCategoryExists($params['badge_category_id']);
 
             $totalBadges = $this->finder(C::__('Badge'))
@@ -148,8 +142,7 @@ class BadgeCategory extends AbstractController
 
     protected function assertBadgeCategoryExists($id, $with = null, $phraseKey = null): \CMTV\Badges\Entity\BadgeCategory
     {
-        if ($id == 0)
-        {
+        if ($id == 0) {
             return $this->getBadgeCategoryRepo()->getDefaultCategory();
         }
 

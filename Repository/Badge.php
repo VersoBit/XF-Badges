@@ -21,12 +21,9 @@ class Badge extends Repository
         $badges = $this->findBadgesForList()->fetch()->toArray();
         $badgeCategories = $this->getBadgeCategoryRepo()->getBadgeCategoriesForList(true);
 
-        if ($excludeIds)
-        {
-            foreach (array_keys($badges) as $badgeId)
-            {
-                if (in_array($badgeId, $excludeIds))
-                {
+        if ($excludeIds) {
+            foreach (array_keys($badges) as $badgeId) {
+                if (in_array($badgeId, $excludeIds)) {
                     unset($badges[$badgeId]);
                 }
             }

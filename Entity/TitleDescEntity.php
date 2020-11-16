@@ -6,6 +6,8 @@
 
 namespace CMTV\Badges\Entity;
 
+use XF;
+use XF\Entity\Phrase;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
@@ -14,7 +16,7 @@ use XF\Mvc\Entity\Structure;
  * @property \XF\Phrase description
  *
  * RELATIONS
- * @property \XF\Entity\Phrase MasterDescription
+ * @property Phrase MasterDescription
  */
 abstract class TitleDescEntity extends TitleEntity
 {
@@ -42,8 +44,7 @@ abstract class TitleDescEntity extends TitleEntity
     {
         parent::_postDelete();
 
-        if ($this->MasterDescription)
-        {
+        if ($this->MasterDescription) {
             $this->MasterDescription->delete();
         }
     }
@@ -54,7 +55,7 @@ abstract class TitleDescEntity extends TitleEntity
 
     public function getDescription()
     {
-        return \XF::phrase(self::getDescriptionPhraseName());
+        return XF::phrase(self::getDescriptionPhraseName());
     }
 
     //
@@ -65,10 +66,11 @@ abstract class TitleDescEntity extends TitleEntity
     {
         $phrase = $this->MasterDescription;
 
-        if (!$phrase)
-        {
+        if (!$phrase) {
             $phrase = $this->_em->create('XF:Phrase');
-            $phrase->title = $this->_getDeferredValue(function () { return $this->getDescriptionPhraseName(); }, 'save');
+            $phrase->title = $this->_getDeferredValue(function () {
+                return $this->getDescriptionPhraseName();
+            }, 'save');
             $phrase->language_id = 0;
             $phrase->addon_id = '';
         }
