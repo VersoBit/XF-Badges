@@ -1,1 +1,0 @@
-The web path from your site's XenForo installation directory to icon image. For default XenForo style use the square image icon.

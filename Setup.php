@@ -185,9 +185,9 @@ class Setup extends AbstractSetup
     // UPGRADE
     //
 
-    /* Upgrade from 1000670 to 1000770
+    /* Upgrading to 1000770
        Add Custom User Field: Preferences (Email Opt-Out) */
-    public function upgrade1000670Step1()
+    public function upgrade1000770Step1()
     {
         if (!\XF::em()->find('XF:UserField', 'vBbadgesEmailOptOut')) {
             $field = \XF::em()->create('XF:UserField');

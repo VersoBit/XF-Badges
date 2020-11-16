@@ -1,1 +1,0 @@
-This class can be used for applying additional styles.

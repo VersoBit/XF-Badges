@@ -1,1 +1,0 @@
-Font Awesome icon code. For example: <code>fa-comments</code> or <code>fas fa-adjust</code>. <a href="https://fontawesome.com/icons?d=gallery" target="_blank">List of icon codes</a>.
