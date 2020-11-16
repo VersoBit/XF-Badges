@@ -98,10 +98,10 @@
 		<xf:submitrow icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="admin" title="CMTV_Badges_badge_edit" version_id="1000570" version_string="1.0.5"><![CDATA[<xf:if is="$badge.isInsert()">
+  <template type="admin" title="CMTV_Badges_badge_edit" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:if is="$badge.isInsert()">
 	<xf:title>{{ phrase('CMTV_Badges_add_badge') }}</xf:title>
 <xf:else />
-	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badge.title}</xf:title>
+	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badgeCategory.title}</xf:title>
 </xf:if>
 
 <xf:css src="CMTV_Badges.less" />
@@ -687,14 +687,15 @@
 		<xf:submitrow fa="fa-edit" submit="{{ phrase('edit') }}" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="CMTV_Badges_featured_badges.less" version_id="1000070" version_string="1.0.0"><![CDATA[//
+  <template type="public" title="CMTV_Badges_featured_badges.less" version_id="1000770" version_string="1.0.7"><![CDATA[//
 // This stylesheet is for featured badges layout purposes only.
 // DO NOT USE IT FOR STYLING! (use CMTV_Badges.less instead)
 //
 
 .featuredBadges
 {
-	display: grid;
+    display: flex;
+    flex-wrap: wrap;
 	
 	.featuredBadgesGridParams(@xf-CMTV_Badges_message_badge_size, @xf-CMTV_Badges_message_badges_gap);
 
