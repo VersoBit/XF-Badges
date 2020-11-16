@@ -357,19 +357,19 @@
         "global_cache": false,
         "version_id": 1000770,
         "version_string": "1.0.7",
-        "hash": "c54b9291595d216a7b41ae07ca60cbd2"
+        "hash": "da4f5d3a204b11630ac90c3ea4cc271c"
     },
     "option_explain.vBbadgesCronActivityInterval.txt": {
         "global_cache": false,
         "version_id": 1000770,
         "version_string": "1.0.7",
-        "hash": "207d7a864b428fc10912346ae63c75dc"
+        "hash": "796102bda033a274a341bde995234cb9"
     },
     "option_explain.vBbadgesGlbEmailTgl.txt": {
         "global_cache": false,
         "version_id": 1000770,
         "version_string": "1.0.7",
-        "hash": "34298c00cdf19dd066d0186caec2b2ff"
+        "hash": "f5c6e6aa0b1c5c0697a5f5fa895cf380"
     },
     "option_group.vBbadges.txt": {
         "global_cache": false,

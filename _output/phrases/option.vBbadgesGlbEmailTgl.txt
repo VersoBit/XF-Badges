@@ -1,1 +1,1 @@
-Globally Disable Email Notifications
+Disable Email Notifications Globally

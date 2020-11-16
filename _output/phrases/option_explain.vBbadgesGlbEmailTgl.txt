@@ -1,1 +1,1 @@
-Enable this to globally disable email notifications for badges.
+Toggling this setting on will prevent emails from being sent to your users when they are awarded a badge via cron.<br/><strong>Enabling this function will override your users preferences - disabling all emails (for badges).</strong>
