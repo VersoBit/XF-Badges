@@ -38,12 +38,16 @@ class UserBadge extends Repository
             ];
             //TODO: Fix #8
             if (XF::options()->vBbadgesGlbEmailTgl == 0) {
-                //if($user->) {
+                $emailOptOut = $this->app()->finder('XF:UserFieldValue')
+                    ->where(['user_id', $user->user_id])
+                    ->where(['field_id', '=', 'vBbadgesEmailOptOut'])->fetchOne();
+
+                if(!empty($emailOptOut) AND $emailOptOut->field_value == 'a:0:{}' OR empty($emailOptOut)) {
                     $this->app()->mailer()->newMail()
                         ->setToUser($user)
                         ->setTemplate(C::_('badge_award'), $params)
                         ->queue();
-                //}
+                }
             }
 
             $user->fastUpdate('cmtv_badges_badge_count', $user->cmtv_badges_badge_count + 1);
