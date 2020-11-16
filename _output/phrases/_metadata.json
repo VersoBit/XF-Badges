@@ -347,11 +347,23 @@
         "version_string": "1.0.0",
         "hash": "2b42f4c38c1a9c50fd22567b212b5b6e"
     },
+    "option.vBbadgesCronActivityInterval.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "121afb8d8fd3eb4fbc2e2e1e2a87f95b"
+    },
     "option.vBbadgesGlbEmailTgl.txt": {
         "global_cache": false,
         "version_id": 1000770,
         "version_string": "1.0.7",
         "hash": "c54b9291595d216a7b41ae07ca60cbd2"
+    },
+    "option_explain.vBbadgesCronActivityInterval.txt": {
+        "global_cache": false,
+        "version_id": 1000770,
+        "version_string": "1.0.7",
+        "hash": "207d7a864b428fc10912346ae63c75dc"
     },
     "option_explain.vBbadgesGlbEmailTgl.txt": {
         "global_cache": false,

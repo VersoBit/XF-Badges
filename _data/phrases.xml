@@ -64,7 +64,9 @@
   <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
   <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
   <phrase title="member_stat.CMTV_Badges_most_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Most badges]]></phrase>
+  <phrase title="option.vBbadgesCronActivityInterval" version_id="1000770" version_string="1.0.7"><![CDATA[Cron Activity Interval]]></phrase>
   <phrase title="option.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Globally Disable Email Notifications]]></phrase>
+  <phrase title="option_explain.vBbadgesCronActivityInterval" version_id="1000770" version_string="1.0.7"><![CDATA[Set how recent a user must have been active to be awarded a badge.<br/><br/><u>The larger the scope, the greater the performance impact.</u><br/>Consider the number of members (and activity level) your forum has before selecting a scope greater than 24 hours.<br/><strong>Selecting "Disabled" may be performance breaking with large user bases when adding new badges to your forum.</strong>]]></phrase>
   <phrase title="option_explain.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Enable this to globally disable email notifications for badges.]]></phrase>
   <phrase title="option_group.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[[VersoBit] Badges]]></phrase>
   <phrase title="option_group_description.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[Manage global settings for Badges]]></phrase>

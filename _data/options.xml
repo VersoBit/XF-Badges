@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
+  <option option_id="vBbadgesCronActivityInterval" edit_format="select" data_type="string">
+    <default_value>2</default_value>
+    <edit_format_params>0.25=Last 15 Minutes
+0.50=Last 30 Minutes
+0.75=Last 45 Mintes
+1=Last 1 Hour
+2=Last 2 Hours
+3=Last 3 Hours
+6=Last 6 Hours
+12=Last 12 Hours
+24=Last Day
+48=Last 2 Days
+72=Last 3 Days
+96=Last 4 Days
+120=Last 5 Days
+144=Last 6 Days
+168=Last Week
+366=Last 2 Weeks
+0=Disabled (Dangerous Performance Impact!)</edit_format_params>
+    <relation group_id="vBbadges" display_order="2"/>
+  </option>
   <option option_id="vBbadgesGlbEmailTgl" edit_format="onoff" data_type="boolean">
     <default_value>0</default_value>
     <relation group_id="emailOptions" display_order="800"/>
