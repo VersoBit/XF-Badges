@@ -171,7 +171,14 @@ class Setup extends AbstractSetup
     /* Removing custom user fields and associated preferences */
     public function uninstallStep3()
     {
-        //TODO: Uninstall "vBbadgesEmailOptOut"
+        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', 'vBbadges%'])->fetch();
+        foreach ($userFields as $userField) {
+            $userField->delete(false);
+            $userFieldValues = $this->app->finder('XF:UserFieldValue')->where(['field_id', 'LIKE', 'vBbadges%'])->fetch();
+            foreach ($userFieldValues as $userFieldValue){
+                $userFieldValue->delete(false);
+            }
+        }
     }
 
     //
