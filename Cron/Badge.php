@@ -25,7 +25,7 @@ class Badge
         }
 
         $userFinder = \XF::finder('XF:User');
-
+        //TODO: Add settings to adjust activity filter (or turn it off)
         $users = $userFinder
             ->where('last_activity', '>=', time() - 2 * 3600)
             ->isValidUser(false)
