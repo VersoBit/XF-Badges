@@ -28,7 +28,6 @@ class Badge
         $cronInterval = XF::options()->vBbadgesCronActivityInterval;
 
         if ($cronInterval == 0) {
-            //TODO: No Activity Query
             $users = $userFinder->fetch();
         } else {
             $users = $userFinder
