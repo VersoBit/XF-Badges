@@ -110,6 +110,37 @@ class Setup extends AbstractSetup
             'editOwnPost'
         );
     }
+    /* Add Custom User Field: Preferences (Email Opt-Out) */
+    public function installStep6()
+    {
+        if (!\XF::em()->find('XF:UserField', 'vBbadgesEmailOptOut')) {
+            $field = \XF::em()->create('XF:UserField');
+            $title = $field->getMasterPhrase(true);
+            $title->phrase_text = 'Email Opt-Out';
+            $field->addCascadedSave($title);
+
+            $description = $field->getMasterPhrase(false);
+            $description->phrase_text = 'Enable to disable email notifications about badges';
+            $field->addCascadedSave($description);
+
+            $field->field_id = 'vBbadgesEmailOptOut';
+            $field->display_group = 'preferences';
+            $field->display_order = 1;
+            $field->field_type = 'checkbox';
+            $field->field_choices = ['1' => 'Opt-out of emails about badges'];
+            $field->match_type = 'none';
+            $field->match_params = [];
+            $field->max_length = 0;
+            $field->required = 0;
+            $field->show_registration = 0;
+            $field->user_editable = 'yes';
+            $field->viewable_profile = 0;
+            $field->viewable_message = 0;
+            $field->moderator_editable = 0;
+
+            $field->save();
+        }
+    }
 
     //
     // UNINSTALLATION
@@ -137,8 +168,47 @@ class Setup extends AbstractSetup
         }
     }
 
+    /* Removing custom user fields and associated preferences */
+    public function uninstallStep3()
+    {
+        //TODO: Uninstall "vBbadgesEmailOptOut"
+    }
+
     //
     // UPGRADE
     //
+
+    /* Upgrade from 1000670 to 1000770
+       Add Custom User Field: Preferences (Email Opt-Out) */
+    public function upgrade1000670Step1()
+    {
+        if (!\XF::em()->find('XF:UserField', 'vBbadgesEmailOptOut')) {
+            $field = \XF::em()->create('XF:UserField');
+            $title = $field->getMasterPhrase(true);
+            $title->phrase_text = 'Email Opt-Out';
+            $field->addCascadedSave($title);
+
+            $description = $field->getMasterPhrase(false);
+            $description->phrase_text = 'Enable to disable email notifications about badges';
+            $field->addCascadedSave($description);
+
+            $field->field_id = 'vBbadgesEmailOptOut';
+            $field->display_group = 'preferences';
+            $field->display_order = 1;
+            $field->field_type = 'checkbox';
+            $field->field_choices = ['1' => 'Opt-out of emails about badges'];
+            $field->match_type = 'none';
+            $field->match_params = [];
+            $field->max_length = 0;
+            $field->required = 0;
+            $field->show_registration = 0;
+            $field->user_editable = 'yes';
+            $field->viewable_profile = 0;
+            $field->viewable_message = 0;
+            $field->moderator_editable = 0;
+
+            $field->save();
+        }
+    }
 
 }

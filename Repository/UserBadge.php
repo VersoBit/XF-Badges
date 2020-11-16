@@ -38,10 +38,12 @@ class UserBadge extends Repository
             ];
             //TODO: Fix #8
             if (XF::options()->vBbadgesGlbEmailTgl == 0) {
-                $this->app()->mailer()->newMail()
-                    ->setToUser($user)
-                    ->setTemplate(C::_('badge_award'), $params)
-                    ->queue();
+                //if($user->) {
+                    $this->app()->mailer()->newMail()
+                        ->setToUser($user)
+                        ->setTemplate(C::_('badge_award'), $params)
+                        ->queue();
+                //}
             }
 
             $user->fastUpdate('cmtv_badges_badge_count', $user->cmtv_badges_badge_count + 1);
