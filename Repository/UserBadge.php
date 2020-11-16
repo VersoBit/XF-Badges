@@ -36,7 +36,7 @@ class UserBadge extends Repository
                 'reason' => $reason,
                 'badge' => $this->finder(C::__('Badge'))->whereId($badgeId)->fetchOne()
             ];
-            //TODO: Fix #8
+
             if (XF::options()->vBbadgesGlbEmailTgl == 0) {
                 $emailOptOut = $this->app()->finder('XF:UserFieldValue')
                     ->where(['user_id', $user->user_id])
