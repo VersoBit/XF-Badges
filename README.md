@@ -1,6 +1,6 @@
 ![XF-Badges By VersoBit](https://repository-images.githubusercontent.com/312907262/fe598200-2847-11eb-8ca9-941817bbe73a)
 # XF-Badges
-Award your users badges based on different criteria.
+Create fancy-looking badges and award users for valuable and unique actions!
 
 ## Features
  * Award users badges based on criteria.
