@@ -7,12 +7,12 @@
   "dev": "VersoBit",
   "dev_url": "https://versobit.dev/",
   "faq_url": "",
-  "support_url": "https://github.com/VersoBit/XF-Badges/issues",
+  "support_url": "https://versob.it/xfBadgesIssues",
   "extra_urls": {
-    "Wiki": "https://github.com/VersoBit/XF-Badges/wiki",
-    "Addon Page": "#",
-    "Addon GitHub": "https://github.com/VersoBit/XF-Badges/",
-    "License": "https://github.com/VersoBit/XF-Badges/blob/master/LICENSE"
+    "Wiki": "https://versob.it/xfBadgesWiki",
+    "Addon Page": "https://versob.it/xfBadgesAddon",
+    "Addon GitHub": "https://versob.it/xfBadgesGit",
+    "License": "https://versob.it/xfBadgesLicense"
   },
   "require": {
     "XF": [
