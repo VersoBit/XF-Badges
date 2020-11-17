@@ -1,3 +1,4 @@
+![XF-Badges By VersoBit](https://repository-images.githubusercontent.com/312907262/fe598200-2847-11eb-8ca9-941817bbe73a)
 # XF-Badges
 Award your users badges based on different criteria.
 
