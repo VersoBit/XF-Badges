@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
-  <option option_id="vBbadgesCronActivityInterval" edit_format="select" data_type="string">
+  <option option_id="CMTV_Badges_Cron_Activity_Interval" edit_format="select" data_type="string">
     <default_value>2</default_value>
     <edit_format_params>0.25=Last 15 Minutes
 0.50=Last 30 Minutes
-0.75=Last 45 Mintes
+0.75=Last 45 Minutes
 1=Last 1 Hour
 2=Last 2 Hours
 3=Last 3 Hours
@@ -19,11 +19,18 @@
 168=Last Week
 366=Last 2 Weeks
 0=Disabled (Dangerous Performance Impact!)</edit_format_params>
-    <relation group_id="vBbadges" display_order="2"/>
+    <relation group_id="CMTV_Badges" display_order="2"/>
   </option>
-  <option option_id="vBbadgesGlbEmailTgl" edit_format="onoff" data_type="boolean">
+  <option option_id="CMTV_Badges_Email_Toggle" edit_format="onoff" data_type="boolean">
     <default_value>0</default_value>
+    <relation group_id="CMTV_Badges" display_order="1"/>
     <relation group_id="emailOptions" display_order="800"/>
-    <relation group_id="vBbadges" display_order="1"/>
+  </option>
+  <option option_id="CMTV_Badges_Featured_Badges_Sort" edit_format="select" data_type="string">
+    <default_value>desc</default_value>
+    <edit_format_params>asc=Oldest Badges
+desc=Most Recent Badges
+disabled=Disabled (Featured Badges Only)</edit_format_params>
+    <relation group_id="CMTV_Badges" display_order="3"/>
   </option>
 </options>

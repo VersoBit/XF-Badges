@@ -1,33 +1,9 @@
 {
-    "CMTV_Badge_badge_category.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "364eea957f35b58d8254fe38be4e232e"
-    },
-    "admin_navigation.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "ff5627f178b47dbd65d0cc229a956c4e"
-    },
-    "admin_permission.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "094759f6574e59aac5d731e43d7280a2"
-    },
     "alert_opt_out.badge_award.txt": {
         "global_cache": false,
         "version_id": 1000770,
         "version_string": "1.0.7",
         "hash": "f5dc9429d9d28014eb07be1724218471"
-    },
-    "cron_entry.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "f6a2bd5983ceab6de619fde7985ef17b"
     },
     "help_page_desc.badges.txt": {
         "global_cache": false,
@@ -41,35 +17,17 @@
         "version_string": "1.0.0",
         "hash": "ff5627f178b47dbd65d0cc229a956c4e"
     },
-    "member_stat.CMTV_Badges_most_badges.txt": {
+    "option.CMTV_Badges_Featured_Badges_Sort.txt": {
         "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "2b42f4c38c1a9c50fd22567b212b5b6e"
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "c20cc8f5bb7d26404f80b1c990c8a7fd"
     },
-    "option.vBbadgesCronActivityInterval.txt": {
+    "option_explain.CMTV_Badges_Featured_Badges_Sort.txt": {
         "global_cache": false,
-        "version_id": 1000770,
-        "version_string": "1.0.7",
-        "hash": "121afb8d8fd3eb4fbc2e2e1e2a87f95b"
-    },
-    "option.vBbadgesGlbEmailTgl.txt": {
-        "global_cache": false,
-        "version_id": 1000770,
-        "version_string": "1.0.7",
-        "hash": "da4f5d3a204b11630ac90c3ea4cc271c"
-    },
-    "option_explain.vBbadgesCronActivityInterval.txt": {
-        "global_cache": false,
-        "version_id": 1000770,
-        "version_string": "1.0.7",
-        "hash": "796102bda033a274a341bde995234cb9"
-    },
-    "option_explain.vBbadgesGlbEmailTgl.txt": {
-        "global_cache": false,
-        "version_id": 1000770,
-        "version_string": "1.0.7",
-        "hash": "f5c6e6aa0b1c5c0697a5f5fa895cf380"
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "6bef762363b0b391578307d256e2ff86"
     },
     "option_group.vBbadges.txt": {
         "global_cache": false,
@@ -82,161 +40,5 @@
         "version_id": 1000770,
         "version_string": "1.0.7",
         "hash": "99b0e0a0a9ba007a4799a500d853725c"
-    },
-    "permission.CMTV_Badges_award.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "aea47552b5f25c1d5b78b4c81fcdb422"
-    },
-    "permission.CMTV_Badges_featuredNumber.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "fcb627853a08a4729fe8b03ba117cf9f"
-    },
-    "permission.CMTV_Badges_manageFeatured.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "cc39d0ae9e574b385196b7d7215fb43b"
-    },
-    "permission.CMTV_Badges_takeAway.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "40e22fe7ebd84e07b35f1a3683c044f0"
-    },
-    "permission_interface.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "6e6e43ee0372e9698b1b7a927c8c9483"
-    },
-    "permission_interface.CMTV_Badges_moderatorPermissions.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "4c2359f13515cbf6e3ce96d5967d2451"
-    },
-    "style_prop.CMTV_Badges_message_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "ac5fb0bee77254fd97f09b0f2b31e75a"
-    },
-    "style_prop.CMTV_Badges_message_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "4b244a9e6199720e6b4e5d73eefae870"
-    },
-    "style_prop.CMTV_Badges_profile_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "48260be1b4d324f78cd87a8f8d6e4cc0"
-    },
-    "style_prop.CMTV_Badges_profile_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "91a6634f14e71e4373cb42a995ddba79"
-    },
-    "style_prop.CMTV_Badges_show_in_message.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "87eb045ce9cadc4b569e7dbb2af7202a"
-    },
-    "style_prop.CMTV_Badges_show_in_profile.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "dcf8b330c5e4f2baccfbdb34da987838"
-    },
-    "style_prop.CMTV_Badges_show_in_tooltip.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "acca9b5f6c42767e0fe54b2822994695"
-    },
-    "style_prop.CMTV_Badges_tooltip_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "a33e26437ea1044036abe613bd43399a"
-    },
-    "style_prop.CMTV_Badges_tooltip_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "1dfcc4910f96e2ed2fc28351998af954"
-    },
-    "style_prop_desc.CMTV_Badges_message_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_message_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_profile_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_profile_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_show_in_message.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_show_in_profile.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_show_in_tooltip.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_tooltip_badge_size.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_desc.CMTV_Badges_tooltip_badges_gap.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "style_prop_group.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "ff5627f178b47dbd65d0cc229a956c4e"
-    },
-    "style_prop_group_desc.CMTV_Badges.txt": {
-        "global_cache": false,
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "885cc365d0386cfc92f0494aa7a6bcef"
     }
 }

@@ -20,6 +20,7 @@ use XF\Mvc\Entity\Structure;
  * GETTERS
  * @property int badge_count
  * @property AbstractCollection|Badge[] featured_badges
+ * @property AbstractCollection|Badge[] recent_badges
  *
  * RELATIONS
  * @property AbstractCollection|Badge[] Badges
@@ -46,7 +47,8 @@ class User extends XFCP_User
 
         $getters = [
             'badge_count' => true,
-            'featured_badges' => true
+            'featured_badges' => true,
+            'recent_badges' => true
         ];
 
         $structure->getters = array_merge($getters, $structure->getters);
@@ -78,6 +80,11 @@ class User extends XFCP_User
     public function getFeaturedBadges()
     {
         return $this->getUserBadgeRepo()->getFeaturedUserBadges($this);
+    }
+
+    public function getRecentBadges()
+    {
+        return $this->getUserBadgeRepo()->getRecentUserBadges($this);
     }
 
     //

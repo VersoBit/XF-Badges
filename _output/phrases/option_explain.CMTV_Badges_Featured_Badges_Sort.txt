@@ -1,0 +1,1 @@
+Select how you would like badges displayed when a user has not selected any badges to feature on their profile.

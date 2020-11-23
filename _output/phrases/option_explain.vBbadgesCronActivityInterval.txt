@@ -1,3 +1,0 @@
-Changing this interval increases or decreases the scope of users that will be checked for parameters which would trigger a condition awarding a badge.<br/>
-<u>The longer the duration, the bigger the impact on performance.</u><br/>
-<strong>Disabling the activity interval is not recommended as it will search your entire user database whenever the cron is triggered.</strong>

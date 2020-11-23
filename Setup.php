@@ -1,7 +1,6 @@
 <?php
 /**
- * Badges xF2 addon by CMTV
- * Enjoy!
+ * [VersoBit] Badges
  */
 
 namespace CMTV\Badges;
@@ -21,7 +20,7 @@ class Setup extends AbstractSetup
     use StepRunnerUninstallTrait;
 
     //
-    // INSTALLATION
+    // INSTALL
     //
 
     /* Table for badges */
@@ -113,7 +112,7 @@ class Setup extends AbstractSetup
     /* Add Custom User Field: Preferences (Email Opt-Out) */
     public function installStep6()
     {
-        if (!\XF::em()->find('XF:UserField', 'vBbadgesEmailOptOut')) {
+        if (!\XF::em()->find('XF:UserField', 'CMTV_Badges_Email_OptOut')) {
             $field = \XF::em()->create('XF:UserField');
             $title = $field->getMasterPhrase(true);
             $title->phrase_text = 'Email Opt-Out';
@@ -123,7 +122,7 @@ class Setup extends AbstractSetup
             $description->phrase_text = 'Enable to disable email notifications about badges';
             $field->addCascadedSave($description);
 
-            $field->field_id = 'vBbadgesEmailOptOut';
+            $field->field_id = 'CMTV_Badges_Email_OptOut';
             $field->display_group = 'preferences';
             $field->display_order = 1;
             $field->field_type = 'checkbox';
@@ -143,7 +142,7 @@ class Setup extends AbstractSetup
     }
 
     //
-    // UNINSTALLATION
+    // UNINSTALL
     //
 
     /* Removing tables and addon columns */
@@ -151,7 +150,7 @@ class Setup extends AbstractSetup
     {
         $this->schemaManager()->dropTable(C::_table('badge'));
         $this->schemaManager()->dropTable(C::_table('badge_category'));
-        $this->schemaManager()->dropTable(C::_table('reason'));
+        $this->schemaManager()->dropTable(C::_table('user_badge'));
 
         $this->schemaManager()->alterTable('xf_user', function (Alter $table) {
             $table->dropColumns(C::_column('badge_count'));
@@ -161,7 +160,7 @@ class Setup extends AbstractSetup
     /* Removing phrases */
     public function uninstallStep2()
     {
-        $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', 'CMTV_Badges_%'])->fetch();
+        $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', '%CMTV_Badge%'])->fetch();
 
         foreach ($phrases as $phrase) {
             $phrase->delete(false);
@@ -171,10 +170,10 @@ class Setup extends AbstractSetup
     /* Removing custom user fields and associated preferences */
     public function uninstallStep3()
     {
-        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', 'vBbadges%'])->fetch();
+        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', '%CMTV_Badge%'])->fetch();
         foreach ($userFields as $userField) {
             $userField->delete(false);
-            $userFieldValues = $this->app->finder('XF:UserFieldValue')->where(['field_id', 'LIKE', 'vBbadges%'])->fetch();
+            $userFieldValues = $this->app->finder('XF:UserFieldValue')->where(['field_id', 'LIKE', '%CMTV_Badge%'])->fetch();
             foreach ($userFieldValues as $userFieldValue){
                 $userFieldValue->delete(false);
             }
@@ -185,37 +184,44 @@ class Setup extends AbstractSetup
     // UPGRADE
     //
 
-    /* Upgrading to 1000770
+    /* Upgrading to 1000770 (1.0.7|XF2.1)
        Add Custom User Field: Preferences (Email Opt-Out) */
     public function upgrade1000770Step1()
     {
-        if (!\XF::em()->find('XF:UserField', 'vBbadgesEmailOptOut')) {
-            $field = \XF::em()->create('XF:UserField');
-            $title = $field->getMasterPhrase(true);
-            $title->phrase_text = 'Email Opt-Out';
-            $field->addCascadedSave($title);
+        $this->installStep6();
+    }
 
-            $description = $field->getMasterPhrase(false);
-            $description->phrase_text = 'Enable to disable email notifications about badges';
-            $field->addCascadedSave($description);
+    /* Upgrading to 2000070 (2.0.0|XF2.2)
+       Remove vbBadges from database and replace with CMTV_Badges (Standards Cleanup) */
+    public function upgrade2000070Step1()
+    {
+        $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', '%vbBadges%'])->fetch();
 
-            $field->field_id = 'vBbadgesEmailOptOut';
-            $field->display_group = 'preferences';
-            $field->display_order = 1;
-            $field->field_type = 'checkbox';
-            $field->field_choices = ['1' => 'Opt-out of emails about badges'];
-            $field->match_type = 'none';
-            $field->match_params = [];
-            $field->max_length = 0;
-            $field->required = 0;
-            $field->show_registration = 0;
-            $field->user_editable = 'yes';
-            $field->viewable_profile = 0;
-            $field->viewable_message = 0;
-            $field->moderator_editable = 0;
-
-            $field->save();
+        foreach ($phrases as $phrase) {
+            $phrase->delete(false);
         }
+    }
+    public function upgrade2000070Step2()
+    {
+        //Delete vbBadges* from UserField
+        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', '%vbBadges%'])->fetch();
+        foreach ($userFields as $userField) {
+            $userField->delete(false);
+        }
+    }
+    public function upgrade2000070Step3()
+    {
+        //Install New UserField
+        $this->installStep6();
+    }
+    public function upgrade2000070Step4()
+    {
+        //Change field_id on entries in UserFieldValue (vBbadgesEmailOptOut > CMTV_Badges_Email_OptOut)
+        //TODO: Prevent breaking existing settings for the email opt-out (vBbadgesEmailOptOut > CMTV_Badges_Email_OptOut)
+        //$userFieldValues = $this->app->finder('XF:UserFieldValue')->where(['field_id', 'LIKE', '%vbBadges%'])->fetch();
+        //foreach ($userFieldValues as $userFieldValue){
+        //    $userFieldValue->delete(false);
+        //}
     }
 
 }

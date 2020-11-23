@@ -1,5 +1,11 @@
 {
     "CMTV_Badges.json": {
         "hash": "065262314cddd0cf12ff23a55ccd58b3"
+    },
+    "CMTV_Badges_Manage.json": {
+        "hash": "f78254c1af3be7d0a390477c98f3a7c5"
+    },
+    "CMTV_Badges_Master.json": {
+        "hash": "e80194d8c735c3fd796faa138ee90e20"
     }
 }

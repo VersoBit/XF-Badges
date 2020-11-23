@@ -122,6 +122,24 @@ class Badge extends AbstractController
         }
     }
 
+    public function actionImport()
+    {
+        //TODO: Add Import System
+        return $this->view(
+            C::__('Badge\Import'),
+            C::_('badge_import')
+        );
+    }
+
+    public function actionExport()
+    {
+        //TODO: Add Export System
+        return $this->view(
+            C::__('Badge\Export'),
+            C::_('badge_export')
+        );
+    }
+
     //
     // UTIL
     //

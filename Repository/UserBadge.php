@@ -37,10 +37,10 @@ class UserBadge extends Repository
                 'badge' => $this->finder(C::__('Badge'))->whereId($badgeId)->fetchOne()
             ];
 
-            if (XF::options()->vBbadgesGlbEmailTgl == 0) {
+            if (XF::options()->CMTV_Badges_Email_Toggle == 0) {
                 $emailOptOut = $this->app()->finder('XF:UserFieldValue')
                     ->where(['user_id', $user->user_id])
-                    ->where(['field_id', '=', 'vBbadgesEmailOptOut'])->fetchOne();
+                    ->where(['field_id', '=', 'CMTV_Badges_Email_OptOut'])->fetchOne();
 
                 if(!empty($emailOptOut) AND $emailOptOut->field_value == 'a:0:{}' OR empty($emailOptOut)) {
                     $this->app()->mailer()->newMail()
@@ -73,6 +73,27 @@ class UserBadge extends Repository
         if ($user->cmtv_badges_badge_count > 0) {
             $user->fastUpdate('cmtv_badges_badge_count', $user->cmtv_badges_badge_count - 1);
         }
+    }
+
+    public function getRecentUserBadges(User $user)
+    {
+        $sortSetting = XF::options()->CMTV_Badges_Featured_Badges_Sort;
+
+        if($sortSetting == 'asc' || $sortSetting == 'desc') {
+            $finder = $this->finder(C::__('UserBadge'))
+                ->where('user_id', $user->user_id)
+                ->order('award_date', $sortSetting)
+                ->with('Badge')
+                ->limit(5);
+
+            $recentBadges = $finder->fetch();
+        }
+        elseif($sortSetting == 'disabled')
+        {
+            $recentBadges = null;
+        }
+
+        return $recentBadges;
     }
 
     public function getFeaturedUserBadges(User $user)

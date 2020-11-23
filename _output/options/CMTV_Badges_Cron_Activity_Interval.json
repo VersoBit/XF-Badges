@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "0.25=Last 15 Minutes\n0.50=Last 30 Minutes\n0.75=Last 45 Minutes\n1=Last 1 Hour\n2=Last 2 Hours\n3=Last 3 Hours\n6=Last 6 Hours\n12=Last 12 Hours\n24=Last Day\n48=Last 2 Days\n72=Last 3 Days\n96=Last 4 Days\n120=Last 5 Days\n144=Last 6 Days\n168=Last Week\n366=Last 2 Weeks\n0=Disabled (Dangerous Performance Impact!)",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "2",
+    "relations": {
+        "CMTV_Badges": 2
+    }
+}

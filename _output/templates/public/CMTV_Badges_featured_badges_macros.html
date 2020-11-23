@@ -3,18 +3,31 @@
         <div class="featuredBadges featuredBadges--{$location}">
             <xf:contentcheck>
                 <xf:if is="$user is not empty">
-                <xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
-                    <xf:set var="$badge" value="{$userBadge.Badge}" />
-                    
-                    <a href="{{ link('members', $user) }}#badges" 
-                       class="featuredBadge" 
-                       title="{$badge.title}" data-xf-init="tooltip">
-                        
-                        <xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
-                                  arg-badge="{$badge}" arg-context="featured-{$location}" />
-                    </a>
-                    
-                </xf:foreach>
+					<xf:if is="$user.getFeaturedBadges() is not empty">
+                		<xf:foreach loop="$user.getFeaturedBadges()" value="$userBadge">
+                    		<xf:set var="$badge" value="{$userBadge.Badge}" />
+                    		
+                    		<a href="{{ link('members', $user) }}#badges" 
+                       			class="featuredBadge" 
+                       			title="{$badge.title}" data-xf-init="tooltip">
+                        	
+                        	<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
+                        	          arg-badge="{$badge}" arg-context="featured-{$location}" />
+                    		</a>
+                		</xf:foreach>
+					<xf:else />
+						<xf:foreach loop="$user.getRecentBadges()" value="$userBadge">
+                   			<xf:set var="$badge" value="{$userBadge.Badge}" />
+                   		
+                   			<a href="{{ link('members', $user) }}#badges" 
+                      				class="featuredBadge" 
+                      				title="{$badge.title}" data-xf-init="tooltip">
+                       	
+                       		<xf:macro name="badge_icon" template="CMTV_Badges_badge_macros" 
+                       		          arg-badge="{$badge}" arg-context="featured-{$location}" />
+                    		</a>
+                		</xf:foreach>
+					</xf:if>
                 </xf:if>
             </xf:contentcheck>
         </div>

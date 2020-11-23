@@ -1,8 +1,8 @@
 {
     "admin/CMTV_Badges.less": {
-        "version_id": 1000070,
-        "version_string": "1.0.0",
-        "hash": "9d9e76122851987c58f8fb79be6b5dbe"
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "9dfa52e412f423060d079ecdf4268740"
     },
     "admin/CMTV_Badges_badge_category_edit.html": {
         "version_id": 1000270,
@@ -13,6 +13,16 @@
         "version_id": 1000270,
         "version_string": "1.0.2",
         "hash": "a4a9e9da8b2af44376381634bf07da27"
+    },
+    "admin/CMTV_Badges_badge_export.html": {
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "1c1694f5c7b2f2602e1e1b955ce10956"
+    },
+    "admin/CMTV_Badges_badge_import.html": {
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "a05a8339771f0e621671d958d7f165d7"
     },
     "admin/CMTV_Badges_badge_list.html": {
         "version_id": 1000270,
@@ -70,9 +80,9 @@
         "hash": "10de807899a140e77b4185dba1ce0934"
     },
     "public/CMTV_Badges_featured_badges_macros.html": {
-        "version_id": 1000770,
-        "version_string": "1.0.7",
-        "hash": "a9614c4f7b1cb07c9b6062d239c48e87"
+        "version_id": 2000010,
+        "version_string": "2.0.0 Alpha",
+        "hash": "e53bec391c8fad1ca3e7064e2ba47b2d"
     },
     "public/CMTV_Badges_member_badges.html": {
         "version_id": 1000370,

@@ -25,7 +25,7 @@ class Badge
         }
 
         $userFinder = XF::finder('XF:User');
-        $cronInterval = XF::options()->vBbadgesCronActivityInterval;
+        $cronInterval = XF::options()->CMTV_Badges_Cron_Activity_Interval;
 
         if ($cronInterval == 0) {
             $users = $userFinder->fetch();

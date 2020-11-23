@@ -1,8 +1,11 @@
 {
-    "vBbadgesCronActivityInterval.json": {
-        "hash": "284931324172349c9b46e4d6c6afb490"
+    "CMTV_Badges_Cron_Activity_Interval.json": {
+        "hash": "de05a212361cf60ca21a73f94a670351"
     },
-    "vBbadgesGlbEmailTgl.json": {
-        "hash": "e247488a5ef2a46a11cd7dab1e83b28d"
+    "CMTV_Badges_Email_Toggle.json": {
+        "hash": "f94e9c0541aec320b3f326fd61e49f9d"
+    },
+    "CMTV_Badges_Featured_Badges_Sort.json": {
+        "hash": "3b5a17d80fd1d6eb9eede3d1b5ed15b4"
     }
 }

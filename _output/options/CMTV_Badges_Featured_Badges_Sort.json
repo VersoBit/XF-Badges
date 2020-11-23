@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "asc=Oldest Badges\ndesc=Most Recent Badges\ndisabled=Disabled (Featured Badges Only)",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "desc",
+    "relations": {
+        "CMTV_Badges": 3
+    }
+}

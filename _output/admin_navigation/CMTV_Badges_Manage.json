@@ -1,0 +1,10 @@
+{
+    "parent_navigation_id": "CMTV_Badges_Master",
+    "display_order": 1,
+    "link": "badges",
+    "icon": "",
+    "admin_permission_id": "CMTV_Badges",
+    "debug_only": true,
+    "development_only": true,
+    "hide_no_children": false
+}

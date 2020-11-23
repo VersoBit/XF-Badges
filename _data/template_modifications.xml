@@ -20,12 +20,12 @@ $0]]></replace>
   </modification>
   <modification type="public" template="member_tooltip" modification_key="CMTV_Badges_member_tooltip" description="Displaying featured badges in member tooltip" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:if contentcheck="true">
-					<div class="memberTooltip-blurb">
-					<xf:contentcheck>
-						<xf:userblurb user="$user" tag="div" />
-					</xf:contentcheck>
-					</div>
-				</xf:if>]]></find>
+						<div class="memberTooltip-blurb">
+						<xf:contentcheck>
+							<xf:userblurb user="$user" tag="div" />
+						</xf:contentcheck>
+						</div>
+					</xf:if>]]></find>
     <replace><![CDATA[$0
 
 <xf:if is="{{ property('CMTV_Badges_show_in_tooltip') }}">

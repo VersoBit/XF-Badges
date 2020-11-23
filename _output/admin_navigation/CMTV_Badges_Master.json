@@ -1,0 +1,10 @@
+{
+    "parent_navigation_id": "",
+    "display_order": 4000,
+    "link": "badges",
+    "icon": "fa-award",
+    "admin_permission_id": "CMTV_Badges",
+    "debug_only": true,
+    "development_only": true,
+    "hide_no_children": false
+}

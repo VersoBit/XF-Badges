@@ -64,14 +64,16 @@
   <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
   <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
   <phrase title="member_stat.CMTV_Badges_most_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Most badges]]></phrase>
-  <phrase title="option.vBbadgesCronActivityInterval" version_id="1000770" version_string="1.0.7"><![CDATA[Cron Activity Interval]]></phrase>
-  <phrase title="option.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Disable Email Notifications Globally]]></phrase>
-  <phrase title="option_explain.vBbadgesCronActivityInterval" version_id="1000770" version_string="1.0.7"><![CDATA[Changing this interval increases or decreases the scope of users that will be checked for parameters which would trigger a condition awarding a badge.<br/>
+  <phrase title="option.CMTV_Badges_Cron_Activity_Interval" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Cron Activity Interval]]></phrase>
+  <phrase title="option.CMTV_Badges_Email_Toggle" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Disable Email Notifications Globally]]></phrase>
+  <phrase title="option.CMTV_Badges_Featured_Badges_Sort" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Sort Order]]></phrase>
+  <phrase title="option_explain.CMTV_Badges_Cron_Activity_Interval" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Changing this interval increases or decreases the scope of users that will be checked for parameters which would trigger a condition awarding a badge.<br/>
 <u>The longer the duration, the bigger the impact on performance.</u><br/>
 <strong>Disabling the activity interval is not recommended as it will search your entire user database whenever the cron is triggered.</strong>]]></phrase>
-  <phrase title="option_explain.vBbadgesGlbEmailTgl" version_id="1000770" version_string="1.0.7"><![CDATA[Toggling this setting on will prevent emails from being sent to your users when they are awarded a badge via cron.<br/><strong>Enabling this function will override your users preferences - disabling all emails (for badges).</strong>]]></phrase>
-  <phrase title="option_group.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[[VersoBit] Badges]]></phrase>
-  <phrase title="option_group_description.vBbadges" version_id="1000770" version_string="1.0.7"><![CDATA[Manage global settings for Badges]]></phrase>
+  <phrase title="option_explain.CMTV_Badges_Email_Toggle" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Toggling this setting on will prevent emails from being sent to your users when they are awarded a badge via cron.<br/><strong>Enabling this function will override your users preferences - disabling all emails (for badges).</strong>]]></phrase>
+  <phrase title="option_explain.CMTV_Badges_Featured_Badges_Sort" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Select how you would like badges displayed when a user has not selected any badges to feature on their profile.]]></phrase>
+  <phrase title="option_group.CMTV_Badges" version_id="1000770" version_string="1.0.7"><![CDATA[[VersoBit] Badges]]></phrase>
+  <phrase title="option_group_description.CMTV_Badges" version_id="1000770" version_string="1.0.7"><![CDATA[Manage global settings for Badges]]></phrase>
   <phrase title="permission.CMTV_Badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award user with badge]]></phrase>
   <phrase title="permission.CMTV_Badges_featuredNumber" version_id="1000070" version_string="1.0.0"><![CDATA[Max number of featured badges]]></phrase>
   <phrase title="permission.CMTV_Badges_manageFeatured" version_id="1000070" version_string="1.0.0"><![CDATA[Manage featured badges]]></phrase>
