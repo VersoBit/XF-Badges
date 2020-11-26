@@ -13,6 +13,11 @@ use XF\AddOn\StepRunnerUpgradeTrait;
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 
+/**
+ * Class Setup
+ *
+ * @package CMTV\Badges
+ */
 class Setup extends AbstractSetup
 {
     use StepRunnerInstallTrait;
@@ -23,7 +28,8 @@ class Setup extends AbstractSetup
     // INSTALL
     //
 
-    /* Table for badges */
+    /* Table: xf_cmtv_badges_badge
+       Stores individual badges */
     public function installStep1()
     {
         $this->schemaManager()->createTable(C::_table('badge'), function (Create $table) {
@@ -31,27 +37,35 @@ class Setup extends AbstractSetup
             $table->addColumn('user_criteria', 'mediumblob');
             $table->addColumn('badge_category_id', 'int')->setDefault(0);
             $table->addColumn('icon_type', 'enum')->values(['fa', 'image']);
-            $table->addColumn('fa_icon', 'varchar', 50)->setDefault('');
-            $table->addColumn('image_url', 'varchar', 200)->setDefault('');
-            $table->addColumn('class', 'varchar', 50)->setDefault('');
+            $table->addColumn('fa_icon', 'varchar', 256)->setDefault('');
+            $table->addColumn('image_url', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_2x', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_3x', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_4x', 'varchar', 512)->setDefault('');
+            $table->addColumn('class', 'varchar', 256)->setDefault('');
             $table->addColumn('display_order', 'int')->setDefault(10);
         });
     }
 
-    /* Table for badge categories */
+    /* Table: xf_cmtv_badges_badge_category
+       Stores categories for badges */
     public function installStep2()
     {
         $this->schemaManager()->createTable(C::_table('badge_category'), function (Create $table) {
             $table->addColumn('badge_category_id', 'int')->autoIncrement();
             $table->addColumn('icon_type', 'enum')->values(['', 'fa', 'image'])->setDefault('');
-            $table->addColumn('fa_icon', 'varchar', 50)->setDefault('');
-            $table->addColumn('image_url', 'varchar', 200)->setDefault('');
-            $table->addColumn('class', 'varchar', 50)->setDefault('');
+            $table->addColumn('fa_icon', 'varchar', 256)->setDefault('');
+            $table->addColumn('image_url', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_2x', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_3x', 'varchar', 512)->setDefault('');
+            $table->addColumn('image_url_4x', 'varchar', 512)->setDefault('');
+            $table->addColumn('class', 'varchar', 256)->setDefault('');
             $table->addColumn('display_order', 'int')->setDefault(10);
         });
     }
 
-    /* Table for storing data about user badges */
+    /* Table: xf_cmtv_badges_user_badge
+       Stores awarded badges into the database */
     public function installStep3()
     {
         $this->schemaManager()->createTable(C::_table('user_badge'), function (Create $table) {
@@ -184,44 +198,76 @@ class Setup extends AbstractSetup
     // UPGRADE
     //
 
-    /* Upgrading to 1000770 (1.0.7|XF2.1)
-       Add Custom User Field: Preferences (Email Opt-Out) */
-    public function upgrade1000770Step1()
-    {
-        $this->installStep6();
-    }
-
     /* Upgrading to 2000070 (2.0.0|XF2.2)
-       Remove vbBadges from database and replace with CMTV_Badges (Standards Cleanup) */
+       Remove vbBadges from database and replace with CMTV_Badges (Standards Cleanup)
+        */
     public function upgrade2000070Step1()
     {
+        //Remove Phrases
         $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', '%vbBadges%'])->fetch();
-
         foreach ($phrases as $phrase) {
             $phrase->delete(false);
         }
-    }
-    public function upgrade2000070Step2()
-    {
-        //Delete vbBadges* from UserField
+
+        //Remove UserFields
         $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', '%vbBadges%'])->fetch();
         foreach ($userFields as $userField) {
             $userField->delete(false);
         }
-    }
-    public function upgrade2000070Step3()
-    {
+
         //Install New UserField
         $this->installStep6();
     }
-    public function upgrade2000070Step4()
+    public function upgrade2000070Step2(array $stepParams)
     {
-        //Change field_id on entries in UserFieldValue (vBbadgesEmailOptOut > CMTV_Badges_Email_OptOut)
-        //TODO: Prevent breaking existing settings for the email opt-out (vBbadgesEmailOptOut > CMTV_Badges_Email_OptOut)
-        //$userFieldValues = $this->app->finder('XF:UserFieldValue')->where(['field_id', 'LIKE', '%vbBadges%'])->fetch();
-        //foreach ($userFieldValues as $userFieldValue){
-        //    $userFieldValue->delete(false);
-        //}
+        $finder = \XF::finder('XF:UserFieldValue')->where('field_id', '=', 'vBbadgesEmailOptOut');
+        $stepData = isset($stepParams[2]) ? $stepParams[2] : [];
+        if (!isset($stepData['max']))
+        {
+            $stepData['max'] = $finder->total();
+        }
+        $userFields = $finder->limit(50)->fetch();
+        if (!$userFields->count())
+        {
+            return null;
+        }
+
+        $next = 0;
+        foreach ($userFields as $userField)
+        {
+            $next++;
+
+            $userField->field_id = 'CMTV_Badges_Email_OptOut';
+            $userField->save();
+        }
+
+        return [
+            $next,
+            "{$next} / {$stepData['max']}",
+            $stepData
+        ];
+    }
+    public function upgrade2000070Step3()
+    {
+        //Upgrade image_url, fa_icon, and class to new VARCHAR length's.
+        $this->schemaManager()->alterTable(C::_table('badge'), function (Alter $table) {
+            $table->changeColumn('fa_icon','varchar', 256);
+            $table->changeColumn('image_url','varchar', 512);
+            $table->addColumn('image_url_2x', 'varchar', 512)->after('image_url')->setDefault('');
+            $table->addColumn('image_url_3x', 'varchar', 512)->after('image_url_2x')->setDefault('');
+            $table->addColumn('image_url_4x', 'varchar', 512)->after('image_url_3x')->setDefault('');
+            $table->changeColumn('class','varchar', 256);
+        });
+
+        $this->schemaManager()->alterTable(C::_table('badge_category'), function (Alter $table) {
+            $table->changeColumn('fa_icon','varchar', 256);
+            $table->changeColumn('image_url','varchar', 512);
+            $table->addColumn('image_url_2x', 'varchar', 512)->after('image_url')->setDefault('');
+            $table->addColumn('image_url_3x', 'varchar', 512)->after('image_url_2x')->setDefault('');
+            $table->addColumn('image_url_4x', 'varchar', 512)->after('image_url_3x')->setDefault('');
+            $table->changeColumn('class','varchar', 256);
+        });
+
     }
 
 }
