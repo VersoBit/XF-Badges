@@ -1,7 +1,6 @@
 <?php
 /**
- * Badges xF2 addon by CMTV
- * Enjoy!
+ * [VersoBit] Badges
  */
 
 namespace CMTV\Badges\Admin\Controller;
@@ -168,6 +167,9 @@ class Badge extends AbstractController
             'icon_type' => 'str',
             'fa_icon' => 'str',
             'image_url' => 'str',
+            'image_url_2x' => 'str',
+            'image_url_3x' => 'str',
+            'image_url_4x' => 'str',
             'class' => 'str',
             'badge_category_id' => 'uint',
             'display_order' => 'uint'

@@ -36,6 +36,10 @@
   <phrase title="CMTV_Badges_has_user_criteria" version_id="1000070" version_string="1.0.0"><![CDATA[Has user criteria]]></phrase>
   <phrase title="CMTV_Badges_icon_code_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Font Awesome icon code. For example: <code>fa-comments</code> or <code>fas fa-adjust</code>. <a href="https://fontawesome.com/icons?d=gallery" target="_blank">List of icon codes</a>.]]></phrase>
   <phrase title="CMTV_Badges_icon_type" version_id="1000070" version_string="1.0.0"><![CDATA[Icon type]]></phrase>
+  <phrase title="CMTV_Badges_image_url_1x" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[URL to Image (1x Resolution)]]></phrase>
+  <phrase title="CMTV_Badges_image_url_2x" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[URL to Image (2x Resolution) - Optional]]></phrase>
+  <phrase title="CMTV_Badges_image_url_3x" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[URL to Image (3x Resolution) - Optional]]></phrase>
+  <phrase title="CMTV_Badges_image_url_4x" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[URL to Image (4x Resolution) - Optional]]></phrase>
   <phrase title="CMTV_Badges_image_url_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The web path from your site's XenForo installation directory to icon image. For default XenForo style use the square image icon.]]></phrase>
   <phrase title="CMTV_Badges_members_awarded_with_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Members awarded with this badge]]></phrase>
   <phrase title="CMTV_Badges_no_badges_have_been_added_to_this_category_yet" version_id="1000070" version_string="1.0.0"><![CDATA[No badges have been added to this category yet.]]></phrase>

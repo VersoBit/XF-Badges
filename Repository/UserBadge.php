@@ -77,14 +77,18 @@ class UserBadge extends Repository
 
     public function getRecentUserBadges(User $user)
     {
+        $allowedFeatured = $this->getAllowedFeaturedBadges($user);
         $sortSetting = XF::options()->CMTV_Badges_Featured_Badges_Sort;
 
         if($sortSetting == 'asc' || $sortSetting == 'desc') {
             $finder = $this->finder(C::__('UserBadge'))
                 ->where('user_id', $user->user_id)
                 ->order('award_date', $sortSetting)
-                ->with('Badge')
-                ->limit(5);
+                ->with('Badge');
+
+            if ($allowedFeatured !== -1) {
+                $finder->limit($allowedFeatured);
+            }
 
             $recentBadges = $finder->fetch();
         }

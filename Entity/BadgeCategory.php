@@ -16,6 +16,9 @@ use XF\Mvc\Entity\Structure;
  * @property string icon_type
  * @property string fa_icon
  * @property string image_url
+ * @property string image_url_2x
+ * @property string image_url_3x
+ * @property string image_url_4x
  * @property string class
  * @property int display_order
  *
@@ -49,19 +52,37 @@ class BadgeCategory extends TitleEntity
 
             'fa_icon' => [
                 'type' => self::STR,
-                'maxLength' => 50,
+                'maxLength' => 256,
                 'default' => ''
             ],
 
             'image_url' => [
                 'type' => self::STR,
                 'default' => '',
-                'maxLength' => 200
+                'maxLength' => 512
+            ],
+
+            'image_url_2x' => [
+                'type' => self::STR,
+                'default' => '',
+                'maxLength' => 512
+            ],
+
+            'image_url_3x' => [
+                'type' => self::STR,
+                'default' => '',
+                'maxLength' => 512
+            ],
+
+            'image_url_4x' => [
+                'type' => self::STR,
+                'default' => '',
+                'maxLength' => 512
             ],
 
             'class' => [
                 'type' => self::STR,
-                'maxLength' => 50,
+                'maxLength' => 256,
                 'default' => ''
             ],
 

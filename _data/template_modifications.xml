@@ -18,14 +18,8 @@ $0]]></replace>
 
 $0]]></replace>
   </modification>
-  <modification type="public" template="member_tooltip" modification_key="CMTV_Badges_member_tooltip" description="Displaying featured badges in member tooltip" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<xf:if contentcheck="true">
-						<div class="memberTooltip-blurb">
-						<xf:contentcheck>
-							<xf:userblurb user="$user" tag="div" />
-						</xf:contentcheck>
-						</div>
-					</xf:if>]]></find>
+  <modification type="public" template="member_tooltip" modification_key="CMTV_Badges_member_tooltip" description="Displaying featured badges in member tooltip" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:if contentcheck="true">*\s*<div class="memberTooltip-blurb">*\s*<xf:contentcheck>*\s*<xf:userblurb user="\$user" tag="div" \/>*\s*<\/xf:contentcheck>*\s*<\/div>*\s*<\/xf:if>)]]></find>
     <replace><![CDATA[$0
 
 <xf:if is="{{ property('CMTV_Badges_show_in_tooltip') }}">
@@ -60,9 +54,8 @@ $0]]></replace>
 			  arg-location="member_view" arg-user="{$user}" />
 </xf:if>]]></replace>
   </modification>
-  <modification type="public" template="message_macros" modification_key="CMTV_Badges_message_macros" description="Displaying featured badges" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[			<xf:if contentcheck="true">
-				<div class="message-userExtras">]]></find>
+  <modification type="public" template="message_macros" modification_key="CMTV_Badges_message_macros" description="Displaying featured badges" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:if contentcheck="true">*\s*<div class="message-userExtras">)]]></find>
     <replace><![CDATA[<xf:if is="{{ property('CMTV_Badges_show_in_message') }}">
 	<xf:css src="CMTV_Badges_featured_badges.less" />
 	

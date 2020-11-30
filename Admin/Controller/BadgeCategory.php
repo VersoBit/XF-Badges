@@ -126,6 +126,9 @@ class BadgeCategory extends AbstractController
             'icon_type' => 'str',
             'fa_icon' => 'str',
             'image_url' => 'str',
+            'image_url_2x' => 'str',
+            'image_url_3x' => 'str',
+            'image_url_4x' => 'str',
             'class' => 'str',
             'display_order' => 'uint'
         ]);

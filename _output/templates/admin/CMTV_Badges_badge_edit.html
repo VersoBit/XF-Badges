@@ -40,10 +40,39 @@
 					</xf:option>
 					<xf:option value="image" label="{{ phrase('image') }}">
 						<xf:dependent>
-							<xf:textbox name="image_url" value="{$badge.image_url}" />
+							<table style="width:100%">
+								<tr>
+    								<td>
+										<xf:textbox name="image_url" value="{$badge.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
+									</td>
+    								<td>
+										<xf:textbox name="image_url_3x" value="{$badge.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
+									</td>
+  								</tr>
+  								<tr>
+    								<td>
+										<xf:textbox name="image_url_2x" value="{$badge.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
+									</td>
+    								<td>
+										<xf:textbox name="image_url_4x" value="{$badge.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
+									</td>
+  								</tr>
+							</table>
 							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+							
+							
+							<xf:comment>Image Previews (needs formatting)</xf:comment>
 							<xf:if is="$badge.image_url">
 								<img class="image-icon-preview" src="{{ base_url($badge.image_url) }}" />
+							</xf:if>
+							<xf:if is="$badge.image_url_2x">
+								<img class="image-icon-preview" src="{{ base_url($badge.image_url_2x) }}" />
+							</xf:if>
+							<xf:if is="$badge.image_url_3x">
+								<img class="image-icon-preview" src="{{ base_url($badge.image_url_3x) }}" />
+							</xf:if>
+							<xf:if is="$badge.image_url_4x">
+								<img class="image-icon-preview" src="{{ base_url($badge.image_url_4x) }}" />
 							</xf:if>
 						</xf:dependent>
 					</xf:option>
