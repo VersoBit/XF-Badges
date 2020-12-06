@@ -2,8 +2,8 @@
     "legacy_addon_id": "",
     "title": "[VersoBit] Badges",
     "description": "Create fancy-looking badges and award users for valuable and unique actions!",
-    "version_id": 2000070,
-    "version_string": "2.0.0",
+    "version_id": 2000071,
+    "version_string": "2.0.0 Patch 1",
     "dev": "VersoBit",
     "dev_url": "https://versobit.dev/",
     "faq_url": "",
@@ -17,8 +17,8 @@
     },
     "require": {
         "XF": [
-            2020070,
-            "XenForo 2.2"
+            2010070,
+            "XenForo 2.1"
         ],
         "php": [
             "7.0.0",
