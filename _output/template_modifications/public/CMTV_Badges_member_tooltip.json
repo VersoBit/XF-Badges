@@ -1,6 +1,6 @@
 {
     "template": "member_tooltip",
-    "description": "(Badge Display) Displaying badges in member tooltip",
+    "description": "(Badge Display - Icon Set) Displaying badges in member tooltip",
     "execution_order": 10,
     "enabled": true,
     "action": "preg_replace",

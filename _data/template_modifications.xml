@@ -6,19 +6,32 @@
 
 <xf:include template="CMTV_Badges_helper_criteria" />]]></replace>
   </modification>
-  <modification type="public" template="helper_js_global" modification_key="CMTV_Badges_helper_js_global" description="Adding general addon styles" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--XF:CSS-->]]></find>
+  <modification type="public" template="helper_js_global" modification_key="CMTV_Badges_helper_js_global" description="(Helper) Add Badges CSS/JS to Global JS Helper." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--XF:CSS-->)]]></find>
     <replace><![CDATA[<xf:css src="CMTV_Badges.less" />
 
 $0]]></replace>
   </modification>
-  <modification type="public" template="member_macros" modification_key="CMTV_Badges_member_macros" description="Moderator actions for awarding and taking away badges" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--[XF:moderator_menu:bottom]-->]]></find>
+  <modification type="public" template="member_macros" modification_key="CMTV_Badges_member_macros" description="(Admin Tools) Moderator actions for awarding and taking away badges." execution_order="5" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:moderator_menu:bottom\]-->)]]></find>
     <replace><![CDATA[<xf:include template="CMTV_Badges_moderator_actions" />
 
 $0]]></replace>
   </modification>
-  <modification type="public" template="member_tooltip" modification_key="CMTV_Badges_member_tooltip" description="Displaying featured badges in member tooltip" execution_order="10" enabled="1" action="preg_replace">
+  <modification type="public" template="member_macros" modification_key="CMTV_Badges_member_macros_badge_count" description="(Badge Display - Count) Display the number of badges the user has collected." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:stat_pairs:above_trophies\]-->)]]></find>
+    <replace><![CDATA[<!--[XF:stat_pairs:above_badge_total]-->
+<xf:if is="$user.cmtv_badges_badge_count">
+		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
+			<dt>{{ phrase('cmtv_badges') }}</dt>
+			<dd>
+				{$user.cmtv_badges_badge_count|number}
+			</dd>
+		</dl>
+	</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_tooltip" modification_key="CMTV_Badges_member_tooltip" description="(Badge Display - Icon Set) Displaying badges in member tooltip" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA[(<xf:if contentcheck="true">*\s*<div class="memberTooltip-blurb">*\s*<xf:contentcheck>*\s*<xf:userblurb user="\$user" tag="div" \/>*\s*<\/xf:contentcheck>*\s*<\/div>*\s*<\/xf:if>)]]></find>
     <replace><![CDATA[$0
 
@@ -29,22 +42,22 @@ $0]]></replace>
 			  arg-location="member_tooltip" arg-user="{$user}" />
 </xf:if>]]></replace>
   </modification>
-  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_badges_pane" description="Adding &quot;Badges&quot; pane to member view" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_badges_pane" description="(Profile Tab) Display a list of the badges the user has been awarded." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:tab_panes:end\]-->)]]></find>
     <replace><![CDATA[<xf:macro name="badges_pane" template="CMTV_Badges_member_macros"
 		  arg-user="{$user}" />
 
 $0]]></replace>
   </modification>
-  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_badges_tab" description="Adding &quot;Badges&quot; tab to member view" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_badges_tab" description="(Navigation) Add Badges Tab to Profile Page." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:tabs:end\]-->)]]></find>
     <replace><![CDATA[<xf:macro name="badges_tab" template="CMTV_Badges_member_macros"
 		  arg-user="{$user}" />
 
 $0]]></replace>
   </modification>
-  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_featured_badges" description="Displaying featured badges in member view" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<xf:userblurb user="$user" tag="div" class="memberHeader-blurb" />]]></find>
+  <modification type="public" template="member_view" modification_key="CMTV_Badges_member_view_featured_badges" description="(Badge Display - Icon Set) Show badges in the header of the members profile." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:userblurb user="\$user" tag="div" class="memberHeader-blurb" \/>)]]></find>
     <replace><![CDATA[$0
 
 <xf:if is="{{ property('CMTV_Badges_show_in_profile') }}">
@@ -54,16 +67,17 @@ $0]]></replace>
 			  arg-location="member_view" arg-user="{$user}" />
 </xf:if>]]></replace>
   </modification>
-  <modification type="public" template="message_macros" modification_key="CMTV_Badges_message_macros" description="Displaying featured badges" execution_order="10" enabled="1" action="preg_replace">
-    <find><![CDATA[(<xf:if contentcheck="true">*\s*<div class="message-userExtras">)]]></find>
-    <replace><![CDATA[<xf:if is="{{ property('CMTV_Badges_show_in_message') }}">
+  <modification type="public" template="message_macros" modification_key="CMTV_Badges_message_macros" description="(Badge Display - Icon Set) Show badges on the post bit." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:userbanners user="\$user" tag="div" class="message-userBanner" itemprop="jobTitle" />)]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ property('CMTV_Badges_show_in_message') }}">
 	<xf:css src="CMTV_Badges_featured_badges.less" />
 	
 	<xf:macro name="featured_badges" template="CMTV_Badges_featured_badges_macros"
 			  arg-location="message" arg-user="{$user}" />
 </xf:if>
-	
-$0]]></replace>
+]]></replace>
   </modification>
   <modification type="admin" template="tools_rebuild" modification_key="CMTV_Badges_tools_rebuild_badge_count" description="Rebuilding badge count job" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:after_reactions]-->]]></find>

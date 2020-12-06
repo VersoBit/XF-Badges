@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="admin" title="CMTV_Badges.less" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[.badge-category-edit,
-.badge-edit
-{
-	.image-icon-preview
-	{
+  <template type="admin" title="CMTV_Badges.less" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[.badge-category-edit, .badge-edit {
+	
+	.image-icon-description {
+		text-align: center;
+		font-style: italic;
+ 	}
+	
+	.image-icon-description.yellow { color: GoldenRod;}
+	.image-icon-description.blue   { color: @xf-borderColorFeature;}
+	.image-icon-description.purple { color: indigo;}
+	.image-icon-description.grey   { color: @xf-textColorMuted;}
+	
+	.image-icon-preview{
 		margin-top: @xf-elementSpacer;
-
 		padding: @xf-paddingLarge;
 		max-height: 150px;
-
+		max-width: 150px;
+	}
+	
+	.image-icon-preview.yellow {
+		border: 2px dashed GoldenRod;
+		background: LightGoldenRodYellow;
+	}
+	
+	.image-icon-preview.blue {
 		border: 2px dashed @xf-borderColorFeature;
 		background: @xf-contentHighlightBg;
 	}
+	
+	.image-icon-preview.purple {
+		border: 2px dashed indigo;
+		background: lavender;
+	}
+	
+	.image-icon-preview.grey {
+		border: 2px dashed @xf-textColorMuted;
+		background: LightGrey;
+	}
+	
 }
 
-.badge-list
-{
-	.category,
-	.badgeLi
-	{
-		.icon
-		{			
-			img
-			{
+.badge-list {
+	.category, .badgeLi {
+		.icon {			
+			img {
 				display: block;
 				width: 22px;
 				height: 22px;
-				
 				max-width: 22px;
 			}
 		}
 	}
 	
-	.badgeLi
-	{
-		.has-userCriteria
-		{
+	.badgeLi {
+		.has-userCriteria {
 			float: right;
 			color: @xf-textColorMuted;
-			
 			position: relative;
 			top: 3px;
 		}
 	}
 }
-.badge-modal-message
-{
+
+.badge-modal-message {
 	text-align: center;
 }]]></template>
-  <template type="admin" title="CMTV_Badges_badge_category_edit" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:if is="$badgeCategory.isInsert()">
+  <template type="admin" title="CMTV_Badges_badge_category_edit" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[<xf:if is="$badgeCategory.isInsert()">
 	<xf:title>{{ phrase('CMTV_Badges_add_badge_category') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('CMTV_Badges_edit_badge_category:') }} {$badgeCategory.title}</xf:title>
@@ -78,15 +95,61 @@
 					</xf:dependent>
 				</xf:option>
 				<xf:option value="image" label="{{ phrase('image') }}">
-					<xf:dependent>
-						<xf:textbox name="image_url" value="{$badgeCategory.image_url}" />
-						<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
-						<xf:if is="$badgeCategory.image_url">
-							<img class="image-icon-preview" src="{{ base_url($badgeCategory.image_url) }}" />
-						</xf:if>
-					</xf:dependent>
-				</xf:option>
-			</xf:radiorow>
+						<xf:dependent>
+							<table style="width:100%">
+								<tr>
+    								<td>
+										<xf:textbox tabindex="1" name="image_url" value="{$badgeCategory.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
+									</td>
+    								<td>
+										<xf:textbox tabindex="3" name="image_url_3x" value="{$badgeCategory.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
+									</td>
+  								</tr>
+  								<tr>
+    								<td>
+										<xf:textbox tabindex="2" name="image_url_2x" value="{$badgeCategory.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
+									</td>
+    								<td>
+										<xf:textbox tabindex="4" name="image_url_4x" value="{$badgeCategory.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
+									</td>
+  								</tr>
+							</table>
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+							<table>
+								<thead>
+									<tr>
+										<xf:if is="$badgeCategory.image_url">
+											<th>
+												<img class="image-icon-preview yellow" src="{{ base_url($badgeCategory.image_url) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_2x">
+											<th>
+												<img class="image-icon-preview blue" src="{{ base_url($badgeCategory.image_url_2x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_3x">
+											<th>
+												<img class="image-icon-preview purple" src="{{ base_url($badgeCategory.image_url_3x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_4x">
+											<th>
+												<img class="image-icon-preview grey" src="{{ base_url($badgeCategory.image_url_4x) }}" />
+											</th>
+										</xf:if>
+									</tr>
+									<tr>
+										<xf:if is="$badgeCategory.image_url"><td class="image-icon-description yellow">@1x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_2x"><td class="image-icon-description blue">@2x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_3x"><td class="image-icon-description purple">@3x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_4x"><td class="image-icon-description grey">@4x Resolution</td></xf:if>
+									</tr>
+								</thead>
+							</table>
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
 			
 			<hr class="formRowSep" />
 			
@@ -102,7 +165,7 @@
 		<xf:submitrow icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="admin" title="CMTV_Badges_badge_edit" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[<xf:if is="$badge.isInsert()">
+  <template type="admin" title="CMTV_Badges_badge_edit" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[<xf:if is="$badge.isInsert()">
 	<xf:title>{{ phrase('CMTV_Badges_add_badge') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('CMTV_Badges_edit_badge:') }} {$badgeCategory.title}</xf:title>
@@ -132,7 +195,7 @@
 								label="{{ phrase('description') }}"
 								hint="{{ phrase('you_may_use_html') }}"
 								explain="{{ phrase('CMTV_Badges_optionally_describe_badge_and_criteria_user_needs_to_award') }}" />
-
+				
 				<hr class="formRowSep" />
 				
 				<xf:radiorow name="icon_type" value="{$badge.icon_type}" label="{{ phrase('CMTV_Badges_icon_type') }}">
@@ -147,40 +210,61 @@
 							<table style="width:100%">
 								<tr>
     								<td>
-										<xf:textbox name="image_url" value="{$badge.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
+										<xf:textbox tabindex="1" name="image_url" value="{$badge.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
 									</td>
     								<td>
-										<xf:textbox name="image_url_3x" value="{$badge.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
+										<xf:textbox tabindex="3" name="image_url_3x" value="{$badge.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
 									</td>
   								</tr>
   								<tr>
     								<td>
-										<xf:textbox name="image_url_2x" value="{$badge.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
+										<xf:textbox tabindex="2" name="image_url_2x" value="{$badge.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
 									</td>
     								<td>
-										<xf:textbox name="image_url_4x" value="{$badge.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
+										<xf:textbox tabindex="4" name="image_url_4x" value="{$badge.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
 									</td>
   								</tr>
 							</table>
 							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
-							
-							
-							<xf:comment>Image Previews (needs formatting)</xf:comment>
-							<xf:if is="$badge.image_url">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_2x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_2x) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_3x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_3x) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_4x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_4x) }}" />
-							</xf:if>
+							<table>
+								<thead>
+									<tr>
+										<xf:if is="$badge.image_url">
+											<th>
+												<img class="image-icon-preview yellow" src="{{ base_url($badge.image_url) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_2x">
+											<th>
+												<img class="image-icon-preview blue" src="{{ base_url($badge.image_url_2x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_3x">
+											<th>
+												<img class="image-icon-preview purple" src="{{ base_url($badge.image_url_3x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_4x">
+											<th>
+												<img class="image-icon-preview grey" src="{{ base_url($badge.image_url_4x) }}" />
+											</th>
+										</xf:if>
+									</tr>
+									<tr>
+										<xf:if is="$badge.image_url"><td class="image-icon-description yellow">@1x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_2x"><td class="image-icon-description blue">@2x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_3x"><td class="image-icon-description purple">@3x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_4x"><td class="image-icon-description grey">@4x Resolution</td></xf:if>
+									</tr>
+								</thead>
+							</table>
 						</xf:dependent>
 					</xf:option>
 				</xf:radiorow>
+				
+				<xf:textboxrow name="alt_description" value="{{ $badge.badge_id ? $badge.MasterAltDescription.phrase_text : ''  }}" autosize="true"
+								label="{{ phrase('CMTV_alt_description') }}"
+								explain="{{ phrase('CMTV_Badges_alt_desc_explain') }}" />
 				
 				<hr class="formRowSep" />
 				
@@ -450,7 +534,7 @@
 	'badge': $badge,
 	'reason': $reason|raw
 }) }}]]></template>
-  <template type="public" title="CMTV_Badges.less" version_id="1000270" version_string="1.0.2"><![CDATA[.category-icon
+  <template type="public" title="CMTV_Badges.less" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[.category-icon
 {
 	text-align: center;
 	border-right: 1px solid @xf-borderColorFaint;
@@ -467,6 +551,9 @@
 		
 		position: relative;
 		top: 3px;
+		text-indent: 100%;
+    	white-space: nowrap;
+    	overflow: hidden;
 	}
 }
 
@@ -543,7 +630,7 @@
 //
 
 .badgeIcon
-{
+{	
 	&--fa
 	{
 		color: @xf-textColorFeature;
@@ -563,6 +650,14 @@
 		vertical-align: middle;
 		width: 22px;
 	}
+	
+	&--image
+	{
+		text-indent: 100%;
+    	white-space: nowrap;
+    	overflow: hidden;
+	}
+
 }]]></template>
   <template type="public" title="CMTV_Badges_award_with_badge" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_award_with_badge') }}</xf:title>
 
@@ -627,7 +722,7 @@
 				data="{$badge}"
 				wrapperclass="block-outer block-outer--after" />
 </div>]]></template>
-  <template type="public" title="CMTV_Badges_badge_macros" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:macro name="badge_category" arg-category="!" arg-content="">
+  <template type="public" title="CMTV_Badges_badge_macros" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[<xf:macro name="badge_category" arg-category="!" arg-content="">
 	<div class="badge-category badge-category--{$category.badge_category_id} {$category.class} block">
 		<div class="block-container">
 			<div class="block-header">
@@ -635,7 +730,15 @@
 					<xf:if is="$category.icon_type == 'fa'">
 						<xf:fa class="category-icon category-icon--fa" icon="{$category.fa_icon}" />
 					<xf:else />
-						<img class="category-icon category-icon--img" src="{$category.image_url}" />
+						<xf:if is="$category.image_url_2x || $category.image_url_3x || $category.image_url_4x">
+							<img srcset="{$category.image_url} 1x,
+	  <xf:if is="$category.image_url_2x">{$category.image_url_2x} 2x<xf:if is="$category.image_url_3x || $category.image_url_4x">,</xf:if></xf:if>
+      <xf:if is="$category.image_url_3x">{$category.image_url_3x} 3x<xf:if is="$category.image_url_4x">,</xf:if></xf:if>
+	  <xf:if is="$category.image_url_4x">{$category.image_url_4x} 4x</xf:if>"
+     							 src="{$category.image_url}">
+						<xf:else />
+							<img class="category-icon category-icon--img" src="{$category.image_url}" />
+						</xf:if>
 					</xf:if>
 				</xf:if>
 				
@@ -714,7 +817,16 @@
 	<xf:if is="$badge.icon_type == 'fa'">
 		<xf:fa class="{$class}" icon="{$badge.fa_icon}" />	
 	<xf:else />
-		<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+		<xf:if is="$badge.image_url_2x || $badge.image_url_3x || $badge.image_url_4x">
+			<img class="{$class}" srcset="{$badge.image_url} 1x,
+	      <xf:if is="$badge.image_url_2x">{$badge.image_url_2x} 2x<xf:if is="$badge.image_url_3x || $badge.image_url_4x">,</xf:if></xf:if>
+          <xf:if is="$badge.image_url_3x">{$badge.image_url_3x} 3x<xf:if is="$badge.image_url_4x">,</xf:if></xf:if>
+	      <xf:if is="$badge.image_url_4x">{$badge.image_url_4x} 4x</xf:if>"
+				alt="{$badge.alt_description}"
+     			src="{$badge.image_url}">
+		<xf:else />
+			<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+		</xf:if>
 	</xf:if>
 </xf:macro>]]></template>
   <template type="public" title="CMTV_Badges_edit_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:title>{{ phrase('CMTV_Badges_edit_badge_reason') }}</xf:title>
@@ -730,7 +842,7 @@
 		<xf:submitrow fa="fa-edit" submit="{{ phrase('edit') }}" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="CMTV_Badges_featured_badges.less" version_id="1000770" version_string="1.0.7"><![CDATA[//
+  <template type="public" title="CMTV_Badges_featured_badges.less" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[//
 // This stylesheet is for featured badges layout purposes only.
 // DO NOT USE IT FOR STYLING! (use CMTV_Badges.less instead)
 //
@@ -756,7 +868,14 @@
 		
 		@media (max-width: @xf-messageSingleColumnWidth)
 		{
-			display: none;
+			& when (@xf-CMTV_Badges_show_on_mobile = 1) {
+        		position: absolute;
+				top: 10px;
+				right: 10px;
+    		}
+			& when (@xf-CMTV_Badges_show_on_mobile = 0) {
+        		display: none;
+			}
 		}
 	}
 	

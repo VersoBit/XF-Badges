@@ -1,6 +1,6 @@
 {
     "template": "message_macros",
-    "description": "(Badge Display) Show badges on the post bit.",
+    "description": "(Badge Display - Icon Set) Show badges on the post bit.",
     "execution_order": 10,
     "enabled": true,
     "action": "preg_replace",

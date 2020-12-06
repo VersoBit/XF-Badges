@@ -1,6 +1,6 @@
 {
     "template": "member_macros",
-    "description": "(Badge Display) Display the number of badges the user has collected.",
+    "description": "(Badge Display - Count) Display the number of badges the user has collected.",
     "execution_order": 10,
     "enabled": true,
     "action": "preg_replace",

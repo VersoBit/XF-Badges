@@ -3,6 +3,8 @@
   <phrase title="CMTV_Badge_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Badge category]]></phrase>
   <phrase title="CMTV_Badges_add_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Add badge]]></phrase>
   <phrase title="CMTV_Badges_add_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Add badge category]]></phrase>
+  <phrase title="CMTV_Badges_alt_desc_explain" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[Provide a short description of the image you are using for this badge.<br><br>
+Alternative Descriptions purpose is to describe badges (images) to visitors who are unable to see them. This includes screen readers and browsers that block images, but it also includes users who are sight-impaired or otherwise unable to visually identify an image. Including alt text with your badges ensures all users, regardless of visual ability, can appreciate the content on your site &mdash; <a href="https://versob.it/vbBadgesAltDescLM" target="_blank">Learn More</a>.]]></phrase>
   <phrase title="CMTV_Badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award]]></phrase>
   <phrase title="CMTV_Badges_award_reason" version_id="1000070" version_string="1.0.0"><![CDATA[Award reason]]></phrase>
   <phrase title="CMTV_Badges_award_this_badge_if" version_id="1000070" version_string="1.0.0"><![CDATA[Award this badge if...]]></phrase>
@@ -61,9 +63,13 @@
   <phrase title="CMTV_Badges_you_cant_feature_more_than_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature more than {badgeCount} badges!]]></phrase>
   <phrase title="CMTV_Badges_you_cant_feature_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature this badge!]]></phrase>
   <phrase title="CMTV_Badges_you_have_been_awarded_a_badge_x" version_id="1000070" version_string="1.0.0"><![CDATA[You have been awarded a badge: {badge}]]></phrase>
+  <phrase title="CMTV_alt_description" version_id="2000011" version_string="2.0.0 Alpha 1"><![CDATA[Alt Description]]></phrase>
   <phrase title="admin_navigation.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
   <phrase title="admin_permission.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Manage badges]]></phrase>
   <phrase title="alert_opt_out.badge_award" version_id="1000770" version_string="1.0.7"><![CDATA[Awards you a new badge]]></phrase>
+  <phrase title="api_scope.badges_award" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Award a badge via API call]]></phrase>
+  <phrase title="api_scope.badges_remove" version_id="2000010" version_string="2.0.0 Alpha"><![CDATA[Remove a badge via API call]]></phrase>
+  <phrase title="cmtv_badges" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Badges]]></phrase>
   <phrase title="cron_entry.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Update user badges]]></phrase>
   <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
   <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
@@ -84,14 +90,15 @@
   <phrase title="permission.CMTV_Badges_takeAway" version_id="1000070" version_string="1.0.0"><![CDATA[Take away the badge]]></phrase>
   <phrase title="permission_interface.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badge permissions]]></phrase>
   <phrase title="permission_interface.CMTV_Badges_moderatorPermissions" version_id="1000070" version_string="1.0.0"><![CDATA[Badge moderator permissions]]></phrase>
-  <phrase title="style_prop.CMTV_Badges_message_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in message]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_message_badge_size" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Size of badges in message]]></phrase>
   <phrase title="style_prop.CMTV_Badges_message_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in message]]></phrase>
-  <phrase title="style_prop.CMTV_Badges_profile_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in profile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_profile_badge_size" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Size of badge in profile]]></phrase>
   <phrase title="style_prop.CMTV_Badges_profile_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in profile]]></phrase>
   <phrase title="style_prop.CMTV_Badges_show_in_message" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in messages]]></phrase>
-  <phrase title="style_prop.CMTV_Badges_show_in_profile" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in user profile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_show_in_profile" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Display badges in user profile]]></phrase>
   <phrase title="style_prop.CMTV_Badges_show_in_tooltip" version_id="1000070" version_string="1.0.0"><![CDATA[Display featured badges in member tooltip]]></phrase>
-  <phrase title="style_prop.CMTV_Badges_tooltip_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[Size of featured badge in member tooltip]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_show_on_mobile" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Display badges on mobile]]></phrase>
+  <phrase title="style_prop.CMTV_Badges_tooltip_badge_size" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[Size of badge in member tooltip]]></phrase>
   <phrase title="style_prop.CMTV_Badges_tooltip_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[Gap between badges in member tooltip]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_message_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_message_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
@@ -100,6 +107,7 @@
   <phrase title="style_prop_desc.CMTV_Badges_show_in_message" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_show_in_profile" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_show_in_tooltip" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.CMTV_Badges_show_on_mobile" version_id="2000012" version_string="2.0.0 Alpha 2"><![CDATA[]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_tooltip_badge_size" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
   <phrase title="style_prop_desc.CMTV_Badges_tooltip_badges_gap" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
   <phrase title="style_prop_group.CMTV_Badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
