@@ -198,10 +198,10 @@ class Setup extends AbstractSetup
     // UPGRADE
     //
 
-    /* Upgrading to 2000070 (2.0.0|XF2.2)
+    /* Upgrading to 2000071 (2.0.0|PL1)
        Remove vbBadges from database and replace with CMTV_Badges (Standards Cleanup)
         */
-    public function upgrade2000070Step1()
+    public function upgrade2000071Step1()
     {
         //Remove Phrases
         $phrases = $this->app->finder('XF:Phrase')->where(['title', 'LIKE', '%vbBadges%'])->fetch();
@@ -210,7 +210,7 @@ class Setup extends AbstractSetup
         }
 
         //Remove UserFields
-        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', '%vbBadges%'])->fetch();
+        $userFields = $this->app->finder('XF:UserField')->where(['field_id', 'LIKE', '%vBbadges%'])->fetch();
         foreach ($userFields as $userField) {
             $userField->delete(false);
         }
@@ -218,7 +218,7 @@ class Setup extends AbstractSetup
         //Install New UserField
         $this->installStep6();
     }
-    public function upgrade2000070Step2(array $stepParams)
+    public function upgrade2000071Step2(array $stepParams)
     {
         $finder = \XF::finder('XF:UserFieldValue')->where('field_id', '=', 'vBbadgesEmailOptOut');
         $stepData = isset($stepParams[2]) ? $stepParams[2] : [];
@@ -247,7 +247,7 @@ class Setup extends AbstractSetup
             $stepData
         ];
     }
-    public function upgrade2000070Step3()
+    public function upgrade2000071Step3()
     {
         //Upgrade image_url, fa_icon, and class to new VARCHAR length's.
         $this->schemaManager()->alterTable(C::_table('badge'), function (Alter $table) {
