@@ -1,29 +1,32 @@
 {
     "CMTV_Badges_message_badge_size.json": {
-        "hash": "72d904cadf75f3256ef30b82da148c37"
+        "hash": "102685ddfe668e8165c79c7f6b7d0d5c"
     },
     "CMTV_Badges_message_badges_gap.json": {
-        "hash": "bba990430c4959fd09eef1be4c805d6f"
+        "hash": "d0a0be0a3e6c3b39ae7a365d5d29a40b"
     },
     "CMTV_Badges_profile_badge_size.json": {
-        "hash": "9dba5edd232a6c2fa5f376a0c92bd1bc"
+        "hash": "3b6607b23f6a12c1aea8d5a4f1ddb316"
     },
     "CMTV_Badges_profile_badges_gap.json": {
-        "hash": "eed7b4ad976c3995666f66c6a0eced6e"
+        "hash": "a43b32e6319136b884b7c2e03a4788f1"
     },
     "CMTV_Badges_show_in_message.json": {
         "hash": "48f30eebb3da59bd22ff1cefd5c34872"
     },
     "CMTV_Badges_show_in_profile.json": {
-        "hash": "de6f4604290012a3d9668b2064662bb3"
+        "hash": "6ac758abb3bed2b74e2c06e828710f82"
     },
     "CMTV_Badges_show_in_tooltip.json": {
-        "hash": "370713c1539dec3856eadb13ed23f6eb"
+        "hash": "62c42b53248218edb7ee5aaa1f83ec44"
+    },
+    "CMTV_Badges_show_on_mobile.json": {
+        "hash": "621e7c303080e02b425bef682334ca34"
     },
     "CMTV_Badges_tooltip_badge_size.json": {
-        "hash": "ae6ebc4ccaba779234c1cf98e4b2d621"
+        "hash": "59bc69f165fa219982c0e7b56d082eeb"
     },
     "CMTV_Badges_tooltip_badges_gap.json": {
-        "hash": "73a77368a0083d092e9a4768ea3b5e6a"
+        "hash": "9751bb820b630bd8f8572fc3931cf43b"
     }
 }

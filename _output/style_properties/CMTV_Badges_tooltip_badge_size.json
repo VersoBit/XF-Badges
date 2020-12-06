@@ -1,6 +1,6 @@
 {
     "group_name": "CMTV_Badges",
-    "title": "Size of featured badge in member tooltip",
+    "title": "Size of badge in member tooltip",
     "description": "",
     "property_type": "value",
     "css_components": [],
@@ -9,5 +9,5 @@
     "depends_on": "",
     "value_group": "memberTooltipFeaturedBadges",
     "property_value": "25px",
-    "display_order": 80
+    "display_order": 90
 }

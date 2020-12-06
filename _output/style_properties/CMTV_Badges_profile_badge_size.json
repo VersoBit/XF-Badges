@@ -1,6 +1,6 @@
 {
     "group_name": "CMTV_Badges",
-    "title": "Size of featured badge in profile",
+    "title": "Size of badge in profile",
     "description": "",
     "property_type": "value",
     "css_components": [],
@@ -9,5 +9,5 @@
     "depends_on": "",
     "value_group": "profileFeaturedBadges",
     "property_value": "30px",
-    "display_order": 50
+    "display_order": 60
 }

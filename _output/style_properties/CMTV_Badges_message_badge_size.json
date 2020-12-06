@@ -1,6 +1,6 @@
 {
     "group_name": "CMTV_Badges",
-    "title": "Size of featured badge in message",
+    "title": "Size of badges in message",
     "description": "",
     "property_type": "value",
     "css_components": [],
@@ -9,5 +9,5 @@
     "depends_on": "",
     "value_group": "messageFeaturedBadges",
     "property_value": "22px",
-    "display_order": 20
+    "display_order": 30
 }

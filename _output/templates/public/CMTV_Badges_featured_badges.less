@@ -24,7 +24,14 @@
 		
 		@media (max-width: @xf-messageSingleColumnWidth)
 		{
-			display: none;
+			& when (@xf-CMTV_Badges_show_on_mobile = 1) {
+        		position: absolute;
+				top: 10px;
+				right: 10px;
+    		}
+			& when (@xf-CMTV_Badges_show_on_mobile = 0) {
+        		display: none;
+			}
 		}
 	}
 	

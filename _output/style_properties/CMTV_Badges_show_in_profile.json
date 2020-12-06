@@ -1,6 +1,6 @@
 {
     "group_name": "CMTV_Badges",
-    "title": "Display featured badges in user profile",
+    "title": "Display badges in user profile",
     "description": "",
     "property_type": "value",
     "css_components": [],
@@ -9,5 +9,5 @@
     "depends_on": "",
     "value_group": "profileFeaturedBadges",
     "property_value": 1,
-    "display_order": 40
+    "display_order": 50
 }
