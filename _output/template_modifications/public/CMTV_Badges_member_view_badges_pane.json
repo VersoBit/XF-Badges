@@ -3,7 +3,7 @@
     "description": "(Profile Tab) Display a list of the badges the user has been awarded.",
     "execution_order": 10,
     "enabled": true,
-    "action": "str_replace",
-    "find": "<!--[XF:tab_panes:end]-->",
+    "action": "preg_replace",
+    "find": "(<!--\\[XF:tab_panes:end\\]-->)",
     "replace": "<xf:macro name=\"badges_pane\" template=\"CMTV_Badges_member_macros\"\n\t\t  arg-user=\"{$user}\" />\n\n$0"
 }

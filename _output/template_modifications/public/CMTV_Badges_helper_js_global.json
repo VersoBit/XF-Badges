@@ -3,7 +3,7 @@
     "description": "(Helper) Add Badges CSS/JS to Global JS Helper.",
     "execution_order": 10,
     "enabled": true,
-    "action": "str_replace",
-    "find": "<!--XF:CSS-->",
+    "action": "preg_replace",
+    "find": "(<!--XF:CSS-->)",
     "replace": "<xf:css src=\"CMTV_Badges.less\" />\n\n$0"
 }

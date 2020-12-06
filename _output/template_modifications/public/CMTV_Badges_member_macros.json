@@ -1,9 +1,9 @@
 {
     "template": "member_macros",
     "description": "(Admin Tools) Moderator actions for awarding and taking away badges.",
-    "execution_order": 10,
+    "execution_order": 5,
     "enabled": true,
-    "action": "str_replace",
-    "find": "<!--[XF:moderator_menu:bottom]-->",
+    "action": "preg_replace",
+    "find": "(<!--\\[XF:moderator_menu:bottom\\]-->)",
     "replace": "<xf:include template=\"CMTV_Badges_moderator_actions\" />\n\n$0"
 }

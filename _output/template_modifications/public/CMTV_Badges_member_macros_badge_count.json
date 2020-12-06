@@ -1,0 +1,9 @@
+{
+    "template": "member_macros",
+    "description": "(Badge Display) Display the number of badges the user has collected.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "(<!--\\[XF:stat_pairs:above_trophies\\]-->)",
+    "replace": "<!--[XF:stat_pairs:above_badge_total]-->\n<xf:if is=\"$user.cmtv_badges_badge_count\">\n\t\t<dl class=\"pairs pairs--rows pairs--rows--centered fauxBlockLink\">\n\t\t\t<dt>{{ phrase('cmtv_badges') }}</dt>\n\t\t\t<dd>\n\t\t\t\t{$user.cmtv_badges_badge_count|number}\n\t\t\t</dd>\n\t\t</dl>\n\t</xf:if>\n$0"
+}

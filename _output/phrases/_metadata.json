@@ -41,6 +41,12 @@
         "version_string": "1.0.7",
         "hash": "f5dc9429d9d28014eb07be1724218471"
     },
+    "cmtv_badges.txt": {
+        "global_cache": false,
+        "version_id": 2000012,
+        "version_string": "2.0.0 Alpha 2",
+        "hash": "ff5627f178b47dbd65d0cc229a956c4e"
+    },
     "help_page_desc.badges.txt": {
         "global_cache": false,
         "version_id": 1000070,

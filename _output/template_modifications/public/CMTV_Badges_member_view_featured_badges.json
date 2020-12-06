@@ -3,7 +3,7 @@
     "description": "(Badge Display) Show badges in the header of the members profile.",
     "execution_order": 10,
     "enabled": true,
-    "action": "str_replace",
-    "find": "<xf:userblurb user=\"$user\" tag=\"div\" class=\"memberHeader-blurb\" />",
+    "action": "preg_replace",
+    "find": "(<xf:userblurb user=\"\\$user\" tag=\"div\" class=\"memberHeader-blurb\" \\/>)",
     "replace": "$0\n\n<xf:if is=\"{{ property('CMTV_Badges_show_in_profile') }}\">\n\t<xf:css src=\"CMTV_Badges_featured_badges.less\" />\n\t\n\t<xf:macro name=\"featured_badges\" template=\"CMTV_Badges_featured_badges_macros\"\n\t\t\t  arg-location=\"member_view\" arg-user=\"{$user}\" />\n</xf:if>"
 }
