@@ -27,15 +27,61 @@
 					</xf:dependent>
 				</xf:option>
 				<xf:option value="image" label="{{ phrase('image') }}">
-					<xf:dependent>
-						<xf:textbox name="image_url" value="{$badgeCategory.image_url}" />
-						<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
-						<xf:if is="$badgeCategory.image_url">
-							<img class="image-icon-preview" src="{{ base_url($badgeCategory.image_url) }}" />
-						</xf:if>
-					</xf:dependent>
-				</xf:option>
-			</xf:radiorow>
+						<xf:dependent>
+							<table style="width:100%">
+								<tr>
+    								<td>
+										<xf:textbox tabindex="1" name="image_url" value="{$badgeCategory.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
+									</td>
+    								<td>
+										<xf:textbox tabindex="3" name="image_url_3x" value="{$badgeCategory.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
+									</td>
+  								</tr>
+  								<tr>
+    								<td>
+										<xf:textbox tabindex="2" name="image_url_2x" value="{$badgeCategory.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
+									</td>
+    								<td>
+										<xf:textbox tabindex="4" name="image_url_4x" value="{$badgeCategory.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
+									</td>
+  								</tr>
+							</table>
+							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
+							<table>
+								<thead>
+									<tr>
+										<xf:if is="$badgeCategory.image_url">
+											<th>
+												<img class="image-icon-preview yellow" src="{{ base_url($badgeCategory.image_url) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_2x">
+											<th>
+												<img class="image-icon-preview blue" src="{{ base_url($badgeCategory.image_url_2x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_3x">
+											<th>
+												<img class="image-icon-preview purple" src="{{ base_url($badgeCategory.image_url_3x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badgeCategory.image_url_4x">
+											<th>
+												<img class="image-icon-preview grey" src="{{ base_url($badgeCategory.image_url_4x) }}" />
+											</th>
+										</xf:if>
+									</tr>
+									<tr>
+										<xf:if is="$badgeCategory.image_url"><td class="image-icon-description yellow">@1x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_2x"><td class="image-icon-description blue">@2x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_3x"><td class="image-icon-description purple">@3x Resolution</td></xf:if>
+										<xf:if is="$badgeCategory.image_url_4x"><td class="image-icon-description grey">@4x Resolution</td></xf:if>
+									</tr>
+								</thead>
+							</table>
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
 			
 			<hr class="formRowSep" />
 			

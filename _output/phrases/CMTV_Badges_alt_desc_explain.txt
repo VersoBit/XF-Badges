@@ -1,0 +1,2 @@
+Provide a short description of the image you are using for this badge.<br><br>
+Alternative Descriptions purpose is to describe badges (images) to visitors who are unable to see them. This includes screen readers and browsers that block images, but it also includes users who are sight-impaired or otherwise unable to visually identify an image. Including alt text with your badges ensures all users, regardless of visual ability, can appreciate the content on your site &mdash; <a href="https://versob.it/vbBadgesAltDescLM" target="_blank">Learn More</a>.

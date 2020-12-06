@@ -1,6 +1,6 @@
 {
     "template": "member_view",
-    "description": "Adding \"Badges\" tab to member view",
+    "description": "(Navigation) Add Badges Tab to Profile Page.",
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",

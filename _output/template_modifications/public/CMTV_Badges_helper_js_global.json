@@ -1,6 +1,6 @@
 {
     "template": "helper_js_global",
-    "description": "Adding general addon styles",
+    "description": "(Helper) Add Badges CSS/JS to Global JS Helper.",
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",

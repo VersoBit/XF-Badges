@@ -1,6 +1,6 @@
 {
     "template": "member_view",
-    "description": "Displaying featured badges in member view",
+    "description": "(Badge Display) Show badges in the header of the members profile.",
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",

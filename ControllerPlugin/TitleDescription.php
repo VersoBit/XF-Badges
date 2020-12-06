@@ -1,7 +1,6 @@
 <?php
 /**
- * Badges xF2 addon by CMTV
- * Enjoy!
+ * [VersoBit] Badges
  */
 
 namespace CMTV\Badges\ControllerPlugin;
@@ -43,6 +42,14 @@ class TitleDescription extends AbstractPlugin
             $masterDescription = $entity->getMasterDescriptionPhrase();
             $masterDescription->phrase_text = $descPhrase;
             $masterDescription->save();
+        });
+
+        $altDescPhrase = $this->filter('alt_description', 'str');
+
+        $form->apply(function () use ($altDescPhrase, $entity) {
+            $masterAltDescription = $entity->getMasterAltDescriptionPhrase();
+            $masterAltDescription->phrase_text = $altDescPhrase;
+            $masterAltDescription->save();
         });
 
         return $form;

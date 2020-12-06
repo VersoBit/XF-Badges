@@ -1,4 +1,10 @@
 {
+    "CMTV_Badges_alt_desc_explain.txt": {
+        "global_cache": false,
+        "version_id": 2000011,
+        "version_string": "2.0.0 Alpha 1",
+        "hash": "cc23595bd400dbc322ddfa3c578ecbd9"
+    },
     "CMTV_Badges_image_url_1x.txt": {
         "global_cache": false,
         "version_id": 2000010,
@@ -22,6 +28,12 @@
         "version_id": 2000010,
         "version_string": "2.0.0 Alpha",
         "hash": "8feae4c3c1b3ecb18c4eb440384701d2"
+    },
+    "CMTV_alt_description.txt": {
+        "global_cache": false,
+        "version_id": 2000011,
+        "version_string": "2.0.0 Alpha 1",
+        "hash": "6bb24cc48adae622c5cdf94ae7655a63"
     },
     "alert_opt_out.badge_award.txt": {
         "global_cache": false,

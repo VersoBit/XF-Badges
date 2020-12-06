@@ -1,49 +1,66 @@
-.badge-category-edit,
-.badge-edit
-{
-	.image-icon-preview
-	{
+.badge-category-edit, .badge-edit {
+	
+	.image-icon-description {
+		text-align: center;
+		font-style: italic;
+ 	}
+	
+	.image-icon-description.yellow { color: GoldenRod;}
+	.image-icon-description.blue   { color: @xf-borderColorFeature;}
+	.image-icon-description.purple { color: indigo;}
+	.image-icon-description.grey   { color: @xf-textColorMuted;}
+	
+	.image-icon-preview{
 		margin-top: @xf-elementSpacer;
-
 		padding: @xf-paddingLarge;
 		max-height: 150px;
-
+		max-width: 150px;
+	}
+	
+	.image-icon-preview.yellow {
+		border: 2px dashed GoldenRod;
+		background: LightGoldenRodYellow;
+	}
+	
+	.image-icon-preview.blue {
 		border: 2px dashed @xf-borderColorFeature;
 		background: @xf-contentHighlightBg;
 	}
+	
+	.image-icon-preview.purple {
+		border: 2px dashed indigo;
+		background: lavender;
+	}
+	
+	.image-icon-preview.grey {
+		border: 2px dashed @xf-textColorMuted;
+		background: LightGrey;
+	}
+	
 }
 
-.badge-list
-{
-	.category,
-	.badgeLi
-	{
-		.icon
-		{			
-			img
-			{
+.badge-list {
+	.category, .badgeLi {
+		.icon {			
+			img {
 				display: block;
 				width: 22px;
 				height: 22px;
-				
 				max-width: 22px;
 			}
 		}
 	}
 	
-	.badgeLi
-	{
-		.has-userCriteria
-		{
+	.badgeLi {
+		.has-userCriteria {
 			float: right;
 			color: @xf-textColorMuted;
-			
 			position: relative;
 			top: 3px;
 		}
 	}
 }
-.badge-modal-message
-{
+
+.badge-modal-message {
 	text-align: center;
 }

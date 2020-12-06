@@ -28,7 +28,7 @@
 								label="{{ phrase('description') }}"
 								hint="{{ phrase('you_may_use_html') }}"
 								explain="{{ phrase('CMTV_Badges_optionally_describe_badge_and_criteria_user_needs_to_award') }}" />
-
+				
 				<hr class="formRowSep" />
 				
 				<xf:radiorow name="icon_type" value="{$badge.icon_type}" label="{{ phrase('CMTV_Badges_icon_type') }}">
@@ -43,40 +43,61 @@
 							<table style="width:100%">
 								<tr>
     								<td>
-										<xf:textbox name="image_url" value="{$badge.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
+										<xf:textbox tabindex="1" name="image_url" value="{$badge.image_url}" placeholder="{{ phrase('CMTV_Badges_image_url_1x') }}" />
 									</td>
     								<td>
-										<xf:textbox name="image_url_3x" value="{$badge.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
+										<xf:textbox tabindex="3" name="image_url_3x" value="{$badge.image_url_3x}" placeholder="{{ phrase('CMTV_Badges_image_url_3x') }}" />
 									</td>
   								</tr>
   								<tr>
     								<td>
-										<xf:textbox name="image_url_2x" value="{$badge.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
+										<xf:textbox tabindex="2" name="image_url_2x" value="{$badge.image_url_2x}" placeholder="{{ phrase('CMTV_Badges_image_url_2x') }}" />
 									</td>
     								<td>
-										<xf:textbox name="image_url_4x" value="{$badge.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
+										<xf:textbox tabindex="4" name="image_url_4x" value="{$badge.image_url_4x}" placeholder="{{ phrase('CMTV_Badges_image_url_4x') }}" />
 									</td>
   								</tr>
 							</table>
 							<dfn class="inputChoices-explain">{{ phrase('CMTV_Badges_image_url_explain') }}</dfn>
-							
-							
-							<xf:comment>Image Previews (needs formatting)</xf:comment>
-							<xf:if is="$badge.image_url">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_2x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_2x) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_3x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_3x) }}" />
-							</xf:if>
-							<xf:if is="$badge.image_url_4x">
-								<img class="image-icon-preview" src="{{ base_url($badge.image_url_4x) }}" />
-							</xf:if>
+							<table>
+								<thead>
+									<tr>
+										<xf:if is="$badge.image_url">
+											<th>
+												<img class="image-icon-preview yellow" src="{{ base_url($badge.image_url) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_2x">
+											<th>
+												<img class="image-icon-preview blue" src="{{ base_url($badge.image_url_2x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_3x">
+											<th>
+												<img class="image-icon-preview purple" src="{{ base_url($badge.image_url_3x) }}" />
+											</th>
+										</xf:if>
+										<xf:if is="$badge.image_url_4x">
+											<th>
+												<img class="image-icon-preview grey" src="{{ base_url($badge.image_url_4x) }}" />
+											</th>
+										</xf:if>
+									</tr>
+									<tr>
+										<xf:if is="$badge.image_url"><td class="image-icon-description yellow">@1x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_2x"><td class="image-icon-description blue">@2x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_3x"><td class="image-icon-description purple">@3x Resolution</td></xf:if>
+										<xf:if is="$badge.image_url_4x"><td class="image-icon-description grey">@4x Resolution</td></xf:if>
+									</tr>
+								</thead>
+							</table>
 						</xf:dependent>
 					</xf:option>
 				</xf:radiorow>
+				
+				<xf:textboxrow name="alt_description" value="{{ $badge.badge_id ? $badge.MasterAltDescription.phrase_text : ''  }}" autosize="true"
+								label="{{ phrase('CMTV_alt_description') }}"
+								explain="{{ phrase('CMTV_Badges_alt_desc_explain') }}" />
 				
 				<hr class="formRowSep" />
 				

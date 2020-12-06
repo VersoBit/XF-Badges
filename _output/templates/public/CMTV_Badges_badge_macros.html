@@ -6,7 +6,15 @@
 					<xf:if is="$category.icon_type == 'fa'">
 						<xf:fa class="category-icon category-icon--fa" icon="{$category.fa_icon}" />
 					<xf:else />
-						<img class="category-icon category-icon--img" src="{$category.image_url}" />
+						<xf:if is="$category.image_url_2x || $category.image_url_3x || $category.image_url_4x">
+							<img srcset="{$category.image_url} 1x,
+	  <xf:if is="$category.image_url_2x">{$category.image_url_2x} 2x<xf:if is="$category.image_url_3x || $category.image_url_4x">,</xf:if></xf:if>
+      <xf:if is="$category.image_url_3x">{$category.image_url_3x} 3x<xf:if is="$category.image_url_4x">,</xf:if></xf:if>
+	  <xf:if is="$category.image_url_4x">{$category.image_url_4x} 4x</xf:if>"
+     							 src="{$category.image_url}">
+						<xf:else />
+							<img class="category-icon category-icon--img" src="{$category.image_url}" />
+						</xf:if>
 					</xf:if>
 				</xf:if>
 				
@@ -85,6 +93,15 @@
 	<xf:if is="$badge.icon_type == 'fa'">
 		<xf:fa class="{$class}" icon="{$badge.fa_icon}" />	
 	<xf:else />
-		<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+		<xf:if is="$badge.image_url_2x || $badge.image_url_3x || $badge.image_url_4x">
+			<img class="{$class}" srcset="{$badge.image_url} 1x,
+	      <xf:if is="$badge.image_url_2x">{$badge.image_url_2x} 2x<xf:if is="$badge.image_url_3x || $badge.image_url_4x">,</xf:if></xf:if>
+          <xf:if is="$badge.image_url_3x">{$badge.image_url_3x} 3x<xf:if is="$badge.image_url_4x">,</xf:if></xf:if>
+	      <xf:if is="$badge.image_url_4x">{$badge.image_url_4x} 4x</xf:if>"
+				alt="{$badge.alt_description}"
+     			src="{$badge.image_url}">
+		<xf:else />
+			<img class="{$class}" src="{{ base_url($badge.image_url) }}">
+		</xf:if>
 	</xf:if>
 </xf:macro>

@@ -1,7 +1,6 @@
 <?php
 /**
- * Badges xF2 addon by CMTV
- * Enjoy!
+ * [VersoBit] Badges
  */
 
 namespace CMTV\Badges\Admin\Controller;

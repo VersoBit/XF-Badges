@@ -1,9 +1,9 @@
 {
     "template": "message_macros",
-    "description": "Displaying featured badges",
+    "description": "(Badge Display) Show badges on the post bit.",
     "execution_order": 10,
     "enabled": true,
     "action": "preg_replace",
-    "find": "(<div class=\"message-userExtras\">*\\s*<xf:contentcheck>)",
-    "replace": "<xf:if is=\"{{ property('CMTV_Badges_show_in_message') }}\">\n\t<xf:css src=\"CMTV_Badges_featured_badges.less\" />\n\t\n\t<xf:macro name=\"featured_badges\" template=\"CMTV_Badges_featured_badges_macros\"\n\t\t\t  arg-location=\"message\" arg-user=\"{$user}\" />\n</xf:if>\n\t\n$0"
+    "find": "(<xf:userbanners user=\"\\$user\" tag=\"div\" class=\"message-userBanner\" itemprop=\"jobTitle\" />)",
+    "replace": "$0\n\n<xf:if is=\"{{ property('CMTV_Badges_show_in_message') }}\">\n\t<xf:css src=\"CMTV_Badges_featured_badges.less\" />\n\t\n\t<xf:macro name=\"featured_badges\" template=\"CMTV_Badges_featured_badges_macros\"\n\t\t\t  arg-location=\"message\" arg-user=\"{$user}\" />\n</xf:if>\n"
 }

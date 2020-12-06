@@ -1,6 +1,6 @@
 {
     "template": "member_view",
-    "description": "Adding \"Badges\" pane to member view",
+    "description": "(Profile Tab) Display a list of the badges the user has been awarded.",
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",
